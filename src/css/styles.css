@@ -60,15 +60,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: space-around;
-  overflow-y: scroll;
 }
-.lower-pane::-webkit-scrollbar {
-  display:none;
-}
-
-/* .scroll-container {
-  scroll-margin-top: 25vh;
-} */
 
 .data-box {
   padding: 25px;
@@ -86,32 +78,24 @@ main {
   margin-bottom: 2vh;
   color: var(--gray);
 }
-.box-contents {
+.box-contents-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
+
 .number-with-units > p,
 .data-analysis > p {
   font-weight: bolder;
   color: var(--gray);
 }
-.left-side {
+.box-contents {
   width: 50%;
-  height: 10vh;
   margin-right: 20px;
 }
-.right-side {
-  width: 50%;
-  margin-left: 20px;
-}
 
-/* .data-analysis > p {
-  font-weight: bold;
-  color: var(--gray)
-} */
 .number-with-units {
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: baseline;
 }
@@ -120,21 +104,28 @@ main {
   font-weight: bold;
 }
 
+.quality {
+  margin-left: 20px;
+  color: var(--pink);
+  font-size: 30px;
+}
 
 #box1 > div > h2 {
   color: var(--dark-lime-green);
 }
 
-#box2 {
-  display:flex;
-  justify-content: flex-start;
-}
 #box2 > div > h2 {
   color: var(--blue);
 }
-#box3 > h2 {
+
+#box3 > div > h2 {
   color: var(--pink);
 }
+
 #box4 > h2 {
   color: var(--red);
+}
+
+#exception {
+  margin-top: 27px;
 }
