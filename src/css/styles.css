@@ -1,5 +1,140 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+:root {
+  --lime-green: #b4ec34;
+  --dark-lime-green: #7aa037;
+  --black: #142122;
+  --gray: #828b94;
+  --dark-gray: #4e535c;
+  --light-gray: #e5e7eb;
+  --white: #ffffff;
+  --blue: #1f80f3;
+  --red: #ff4244;
+  --orange: #ff9c1b;
+  --green: #4bb84a;
+  --purple: #b13ee7;
+  --pink: #e770be;
+}
+
+body,
+html {
+  font-family: "Helvetica", sans-serif;
   height: 100%;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-pane {
+  padding-left: 10vw;
+  height: 25vh;
+  background-color: var(--lime-green);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 2vw;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lower-pane {
+  height: 200vh;
+  background-color: var(--dark-gray);
+  padding: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  overflow-y: scroll;
+}
+.lower-pane::-webkit-scrollbar {
+  display:none;
+}
+
+/* .scroll-container {
+  scroll-margin-top: 25vh;
+} */
+
+.data-box {
+  padding: 25px;
+  padding-left: 50px;
+  height: 30vh;
+  width: 100%;
+  margin-top: 5vh;
+  border-radius: 15px;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.box-title {
+  margin-bottom: 2vh;
+  color: var(--gray);
+}
+.box-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.number-with-units > p,
+.data-analysis > p {
+  font-weight: bolder;
+  color: var(--gray);
+}
+.left-side {
+  width: 50%;
+  height: 10vh;
+  margin-right: 20px;
+}
+.right-side {
+  width: 50%;
+  margin-left: 20px;
+}
+
+/* .data-analysis > p {
+  font-weight: bold;
+  color: var(--gray)
+} */
+.number-with-units {
+  display:flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.number-with-units > h2 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+
+#box1 > div > h2 {
+  color: var(--dark-lime-green);
+}
+
+#box2 {
+  display:flex;
+  justify-content: flex-start;
+}
+#box2 > div > h2 {
+  color: var(--blue);
+}
+#box3 > h2 {
+  color: var(--pink);
+}
+#box4 > h2 {
+  color: var(--red);
 }
