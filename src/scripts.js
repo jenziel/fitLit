@@ -3,13 +3,24 @@
 import  users  from './data/users';
 // const { users } = require('./data/users');
 
-console.log("User Data:", users.users);
+// console.log("User Data:", users.users);
 
 
 const retrieveUserData = ((userID) => {
 
-  var user = users.users.find(user => user.id === userID) 
-  return user
+  var user = users.users.find(user => user.id === userID) ;
+  return user;
+
+});
+
+const returnAverageSteps = (() => {
+
+ const sumTotalSteps = users.users.reduce((acc, user) => {
+    acc += user.dailyStepGoal;
+    return acc;
+    }, 0);
+  const average = parseInt(sumTotalSteps)/users.users.length;
+  return average;
 
 });
 
@@ -28,5 +39,6 @@ const retrieveUserData = ((userID) => {
 // exampleFunction2('Travis')
 
 export {
-  retrieveUserData
+  retrieveUserData, 
+  returnAverageSteps
 }
