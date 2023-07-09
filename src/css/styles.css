@@ -81,6 +81,11 @@ main {
   flex-direction: column;
   justify-content: space-around;
 }
+.list > h3 {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
 
 
 /* 
