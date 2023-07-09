@@ -4,15 +4,14 @@ import  users  from './data/users';
 // query selectors 
 const userGreeting = document.querySelector('.user-greeting');
 
+// universal variables 
+
 // functions
 
-const getRandomIndex = ((array) => {
-  return Math.floor(Math.random() * array.length);
-})
 
 const updateUserGreeting = () => {
-  console.log('our function is working')
-  userGreeting.innerText = `Good morning, ${users.users[0].name}!`
+  const getRandomIndex = (Math.floor(Math.random() * users.users.length))
+  userGreeting.innerText = `Good morning, ${users.users[getRandomIndex].name}!`
 }
 
 // event handlers 
