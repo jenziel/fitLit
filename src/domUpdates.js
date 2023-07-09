@@ -3,17 +3,23 @@ import  users  from './data/users';
 
 // query selectors 
 const userGreeting = document.querySelector('.user-greeting');
+const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
+
+// universal variables 
 
 // functions
 
-const getRandomIndex = ((array) => {
-  return Math.floor(Math.random() * array.length);
-})
+const RandomIndex = (Math.floor(Math.random() * users.users.length))
+
+const updateUserDailyStepGoal = () => {
+  userDailyStepGoal.innerText = `${users.users[RandomIndex].dailyStepGoal}`
+}
 
 const updateUserGreeting = () => {
-  console.log('our function is working')
-  userGreeting.innerText = `Good morning, ${users.users[0].name}!`
+  updateUserDailyStepGoal()
+  userGreeting.innerText = `Good morning, ${users.users[RandomIndex].name}!`
 }
+
 
 // event handlers 
 window.addEventListener('load', updateUserGreeting)
