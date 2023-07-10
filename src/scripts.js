@@ -15,6 +15,7 @@ const retrieveUserData = ((userID) => {
 
 });
 
+
 const returnAverageSteps = (() => {
 
  const sumTotalSteps = users.users.reduce((acc, user) => {
@@ -26,8 +27,7 @@ const returnAverageSteps = (() => {
 
 });
 
-// // event handlers 
-// window.addEventListener('load', updateUserGreeting)
+
 
 // An example of how you tell webpack to use a CSS file
 
