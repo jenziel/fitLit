@@ -7,6 +7,9 @@ const userName = document.querySelector('.user-greeting');
 const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
 const cohortStepGoal = document.querySelector('.average-step');
 const userStepComparison = document.querySelector('.avg-user-step-comparison');
+const userInfoButton = document.querySelector('.user-info-button')
+const altLowerPane = document.querySelector('.alt-lower-pane')
+const lowerPane = document.querySelector('.lower-pane')
 // universal variables 
 
 // functions
@@ -30,6 +33,16 @@ const updateUserName = () => {
   userName.innerText = `Hello, ${users.users[randomIndex].name}!`
 };
 
+const toggleInfo = () => {
+    altLowerPane.classList.toggle('hidden')
+    lowerPane.classList.toggle('hidden')
+    if (lowerPane.classList.contains('hidden')) {
+      userInfoButton.innerText = `Back to Main`
+    } else {
+      userInfoButton.innerText = `User Info`
+    }
+}
+
 
 // event handlers 
 window.addEventListener('load', () => {
@@ -38,6 +51,7 @@ window.addEventListener('load', () => {
   displayCohortStepAverage();
   calcStepComparison()
 })
+userInfoButton.addEventListener('click', toggleInfo)
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 const exampleFunction1 = (person) => {
