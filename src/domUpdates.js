@@ -1,5 +1,6 @@
 //NOTE: Your DOM manipulation will occur in this file
 import  users  from './data/users';
+import { returnAverageSteps } from './scripts'
 // import returnAverageSteps from './scripts';
 // query selectors 
 const userName = document.querySelector('.user-greeting');
@@ -16,15 +17,6 @@ const updateUserDailyStepGoal = () => {
   userDailyStepGoal.innerText = `${users.users[randomIndex].dailyStepGoal}`
 };
 
-const returnAverageSteps = (() => {
-  const sumTotalSteps = users.users.reduce((acc, user) => {
-     acc += user.dailyStepGoal;
-     return acc;
-     }, 0);
-   const average = parseInt(sumTotalSteps)/users.users.length;
-   return average;
-});
-
 const calcStepComparison = () => {
   const percent = Math.floor((users.users[randomIndex].dailyStepGoal / returnAverageSteps())*100)
   userStepComparison.innerText = `Your step goal is ${percent}% of the average user's step goal!`
@@ -33,8 +25,6 @@ const calcStepComparison = () => {
 const displayCohortStepAverage = () => {
   cohortStepGoal.innerText = `${returnAverageSteps()}`;
 };
-
-
 
 const updateUserName = () => {
   userName.innerText = `Hello, ${users.users[randomIndex].name}!`

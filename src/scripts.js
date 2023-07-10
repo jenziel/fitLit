@@ -15,19 +15,19 @@ const retrieveUserData = ((userID) => {
 
 });
 
-// const returnAverageSteps = (() => {
 
-//  const sumTotalSteps = users.users.reduce((acc, user) => {
-//     acc += user.dailyStepGoal;
-//     return acc;
-//     }, 0);
-//   const average = parseInt(sumTotalSteps)/users.users.length;
-//   return average;
+const returnAverageSteps = (() => {
 
-// });
+ const sumTotalSteps = users.users.reduce((acc, user) => {
+    acc += user.dailyStepGoal;
+    return acc;
+    }, 0);
+  const average = parseInt(sumTotalSteps)/users.users.length;
+  return average;
 
-// // event handlers 
-// window.addEventListener('load', updateUserGreeting)
+});
+
+
 
 // An example of how you tell webpack to use a CSS file
 
@@ -46,5 +46,5 @@ exampleFunction2('Travis');
 
 export {
   retrieveUserData, 
-  // returnAverageSteps
+  returnAverageSteps
 }
