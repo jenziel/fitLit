@@ -62,7 +62,7 @@ main {
   align-items: space-around;
 }
 
-/* .alt-lower-pane {
+.alt-lower-pane {
   height: 75vh;
   background-color: var(--dark-gray);
   padding: 20px;
@@ -84,10 +84,7 @@ main {
 .list > h3 {
   margin-left: 40px;
   margin-right: 40px;
-} */
-
-
-
+}
 
 .data-box {
   padding: 25px;
@@ -155,4 +152,8 @@ main {
 
 #exception {
   margin-top: 27px;
+}
+
+.hidden {
+  display: none;
 }
