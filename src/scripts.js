@@ -29,12 +29,10 @@ const returnAverageSteps = (() => {
 
 const nameFriends = ((currentUser) => {
 let foundFriends = currentUser.friends.map((friend) => {
-    return users.users.find(user => user.id === friend)
+    return (users.users.find(user => user.id === friend)).name
   })
-let foundFriendNames = foundFriends.map(foundFriend => {
- return foundFriend.name
-  })
- return foundFriendNames
+ let formattedArray = foundFriends.map(friend => ` ` + friend)
+ return formattedArray
 })
 
 

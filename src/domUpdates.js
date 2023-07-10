@@ -35,6 +35,7 @@ const updateUserInfoPage = () => {
   strideLengthField.innerText = currentUser.strideLength
   stepGoalField.innerText = currentUser.dailyStepGoal
   friendsField.innerText = nameFriends(currentUser)
+ 
 };
 
 const calcStepComparison = () => {
