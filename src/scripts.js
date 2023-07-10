@@ -5,7 +5,7 @@
 import  users  from './data/users';
 import './css/styles.css';
 import './images/turing-logo.png';
-import { exampleFunction1, exampleFunction2  } from './domUpdates';
+import { exampleFunction1, exampleFunction2, currentUser} from './domUpdates';
 
 
 const retrieveUserData = ((userID) => {
@@ -27,6 +27,19 @@ const returnAverageSteps = (() => {
 
 });
 
+const nameFriends = ((currentUser) => {
+let foundFriends = currentUser.friends.map((friend) => {
+    return users.users.find(user => user.id === friend)
+  })
+let foundFriendNames = foundFriends.map(foundFriend => {
+ return foundFriend.name
+  })
+ return foundFriendNames
+})
+
+
+
+
 
 
 // An example of how you tell webpack to use a CSS file
@@ -46,5 +59,6 @@ exampleFunction2('Travis');
 
 export {
   retrieveUserData, 
-  returnAverageSteps
+  returnAverageSteps,
+  nameFriends,
 }
