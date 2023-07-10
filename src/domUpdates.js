@@ -1,28 +1,53 @@
 //NOTE: Your DOM manipulation will occur in this file
 import  users  from './data/users';
-
+// import returnAverageSteps from './scripts';
 // query selectors 
-const userGreeting = document.querySelector('.user-greeting');
+const userName = document.querySelector('.user-greeting');
 const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
-
+const cohortStepGoal = document.querySelector('.average-step');
+const userStepComparison = document.querySelector('.avg-user-step-comparison');
 // universal variables 
 
 // functions
 
-const RandomIndex = (Math.floor(Math.random() * users.users.length))
+const randomIndex = (Math.floor(Math.random() * users.users.length))
 
 const updateUserDailyStepGoal = () => {
-  userDailyStepGoal.innerText = `${users.users[RandomIndex].dailyStepGoal}`
+  userDailyStepGoal.innerText = `${users.users[randomIndex].dailyStepGoal}`
+};
+
+const returnAverageSteps = (() => {
+  const sumTotalSteps = users.users.reduce((acc, user) => {
+     acc += user.dailyStepGoal;
+     return acc;
+     }, 0);
+   const average = parseInt(sumTotalSteps)/users.users.length;
+   return average;
+});
+
+const calcStepComparison = () => {
+  const percent = Math.floor((users.users[randomIndex].dailyStepGoal / returnAverageSteps())*100)
+  userStepComparison.innerText = `Your step goal is ${percent}% of the average user's step goal!`
 }
 
-const updateUserGreeting = () => {
-  updateUserDailyStepGoal()
-  userGreeting.innerText = `Good morning, ${users.users[RandomIndex].name}!`
-}
+const displayCohortStepAverage = () => {
+  cohortStepGoal.innerText = `${returnAverageSteps()}`;
+};
+
+
+
+const updateUserName = () => {
+  userName.innerText = `Hello, ${users.users[randomIndex].name}!`
+};
 
 
 // event handlers 
-window.addEventListener('load', updateUserGreeting)
+window.addEventListener('load', () => {
+  updateUserDailyStepGoal();
+  updateUserName();
+  displayCohortStepAverage();
+  calcStepComparison()
+})
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 const exampleFunction1 = (person) => {
