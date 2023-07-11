@@ -1,6 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
-import users from './data/users';
-import { returnAverageSteps, nameFriends } from './scripts';
+// import users from './data/users';
+import { returnAverageSteps, nameFriends, currentUser } from './scripts';
+
 // import returnAverageSteps from './scripts';
 // query selectors
 const userName = document.querySelector('.user-greeting');
@@ -20,9 +21,9 @@ const friendsField = document.querySelector('.user-friends');
 
 // functions
 
-const randomIndex = Math.floor(Math.random() * users.users.length);
+// const randomIndex = Math.floor(Math.random() * users.users.length);
 
-let currentUser = users.users[randomIndex];
+// let currentUser = users.users[randomIndex];
 
 const updateUserDailyStepGoal = () => {
   userDailyStepGoal.innerText = `${currentUser.dailyStepGoal}`;
@@ -82,4 +83,4 @@ const exampleFunction2 = (person) => {
   console.log(`bye now ${person}`);
 };
 
-export { exampleFunction1, exampleFunction2, currentUser};
+export { exampleFunction1, exampleFunction2 };
