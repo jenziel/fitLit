@@ -2,19 +2,23 @@
 // Do not delete or rename this file ********
 
 // imports 
-import  users  from './data/users';
+import users  from './data/users';
+import hydration from './data/hydration';
 import './css/styles.css';
 import './images/turing-logo.png';
 import { exampleFunction1, exampleFunction2, currentUser} from './domUpdates';
 
 
+//global variables 
+const userHydrationData = hydration.hydrationData
+  .filter((datum) => datum.userID === currentUser.id);
+
+// functions 
 const retrieveUserData = ((userID) => {
 
-  var user = users.users.find(user => user.id === userID) ;
+  var user = users.users.find(user => user.id === userID);
   return user;
-
 });
-
 
 const returnAverageSteps = (() => {
 
@@ -24,22 +28,31 @@ const returnAverageSteps = (() => {
     }, 0);
   const average = parseInt(sumTotalSteps)/users.users.length;
   return average;
-
 });
 
 const nameFriends = ((currentUser) => {
-let foundFriends = currentUser.friends.map((friend) => {
-    return (users.users.find(user => user.id === friend)).name
+  let foundFriends = currentUser.friends.map((friend) => {
+    return (users.users.find(user => user.id === friend)).name;
   })
- let formattedArray = foundFriends.map(friend => ` ` + friend)
- return formattedArray
+  let formattedArray = foundFriends.map(friend => ` ` + friend);
+  return formattedArray;
 })
 
+const getAllTimeAverageFlOz = (currentUser) => {
+  const flOzSum = userHydrationData.reduce((sum, {numOunces}) => {
+    sum += numOunces;
+    return sum;
+  }, 0);
+  const flOzAverage = Math.floor(flOzSum/userHydrationData.length);
+  return flOzAverage;
+}
+getAllTimeAverageFlOz(currentUser);
 
-
-
-
-
+const getDailyFlOz = (day) => {
+  const todaysData = userHydrationData.find(datum => datum.date === day);
+  return todaysData.numOunces;
+}
+console.log('num oz', getDailyFlOz('2023/03/24'))
 // An example of how you tell webpack to use a CSS file
 
 
