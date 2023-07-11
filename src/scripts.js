@@ -2,7 +2,8 @@
 // Do not delete or rename this file ********
 
 // imports 
-import  users  from './data/users';
+import users  from './data/users';
+import hydration from './data/hydration';
 import './css/styles.css';
 import './images/turing-logo.png';
 import { exampleFunction1, exampleFunction2, currentUser} from './domUpdates';
@@ -28,16 +29,25 @@ const returnAverageSteps = (() => {
 });
 
 const nameFriends = ((currentUser) => {
-let foundFriends = currentUser.friends.map((friend) => {
+  let foundFriends = currentUser.friends.map((friend) => {
     return (users.users.find(user => user.id === friend)).name
   })
- let formattedArray = foundFriends.map(friend => ` ` + friend)
- return formattedArray
+  let formattedArray = foundFriends.map(friend => ` ` + friend)
+  return formattedArray
 })
 
 
-
-
+const getAllTimeAverageFlOz = (currentUser) => {
+  const userHydrationData = hydration.hydrationData
+    .filter((datum) => datum.userID === currentUser.id);
+  const flOzSum = userHydrationData.reduce((sum, {numOunces}) => {
+    sum += numOunces;
+    return sum;
+  }, 0)
+  const flOzAverage = Math.floor(flOzSum/userHydrationData.length) ;
+  return flOzAverage;
+}
+getAllTimeAverageFlOz(currentUser);
 
 
 // An example of how you tell webpack to use a CSS file
