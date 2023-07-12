@@ -44,6 +44,18 @@ export const getDailyFlOz = (day, hydroData) => {
   return todaysData.numOunces;
 }
 
+export const createUserHydroData = (user, hydroData) => {
+    const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
+    return userHydroData;
+}
+
+export const weeklyHydroData = (userHydroData, endDate) => {
+  const weeklyData = [];
+  for(let i = endDate-6; i <= endDate; i++){
+    weeklyData.push(userHydroData[i].numOunces);
+  }
+  console.log(weeklyData);
+}
 
 
 

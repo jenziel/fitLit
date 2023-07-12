@@ -14,7 +14,9 @@ import {
   returnAverageSteps, 
   nameFriends,
   getAllTimeAverageFlOz,
-  getDailyFlOz  
+  getDailyFlOz,
+  createUserHydroData,
+  weeklyHydroData,  
 } from './functions';
 
 import{
@@ -38,6 +40,9 @@ const masterData = {
 
 // event handlers
 window.addEventListener('load', () => {
+  const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
+  console.log(currentUserH2O);
+  weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(masterData.currentUser);
   updateUserName(masterData.currentUser);
   displayCohortStepAverage(masterData.users);
