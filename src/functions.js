@@ -34,12 +34,12 @@ export const createUserHydroData = (user, hydroData) => {
   return userHydroData;
 }
 
-export const getAllTimeAverageFlOz = (currentUser, hydroData) => {
-  const flOzSum = hydroData.reduce((sum, {numOunces}) => {
+export const getAllTimeAverageFlOz = (userHydroData) => {
+  const flOzSum = userHydroData.reduce((sum, {numOunces}) => {
     sum += numOunces;
     return sum;
   }, 0);
-  const flOzAverage = Math.floor(flOzSum/hydroData.length);
+  const flOzAverage = Math.floor(flOzSum/userHydroData.length);
   return flOzAverage;
 }
 
@@ -54,7 +54,7 @@ export function findStartingIndex(userHydroData, endDate){
   for (let i = 0; i< userHydroData.length; i++){
     if (userHydroData[i].date === endDate){
       console.log(i)
-      return i
+      return i;
     }
   }
 }
@@ -62,10 +62,8 @@ export function findStartingIndex(userHydroData, endDate){
 export const weeklyHydroData = (userHydroData, endDateIndex) => {
   const weeklyData = [];
   for(let i = endDateIndex-6; i <= endDateIndex; i++){
-    console.log("userHydroData[i]", userHydroData[i])
     weeklyData.push(userHydroData[i]);
   }
-  console.log("weeklyData: ", weeklyData);
   return weeklyData;
 }
 

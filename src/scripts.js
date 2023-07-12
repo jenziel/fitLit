@@ -26,7 +26,10 @@ import{
   displayCohortStepAverage,
   updateUserName,
   toggleInfo,
-  userInfoButton 
+  userInfoButton, 
+  displayTodayHydro,
+  displayAvgHydro,
+  displayDailyHydro,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -36,18 +39,21 @@ const masterData = {
   users: users.users,
   hydration: hydration.hydrationData,
   currentUser: createRandomUser(users.users),
+  today: '2023/07/01',
 }
 
 // event handlers
 window.addEventListener('load', () => {
   const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
-  console.log(currentUserH2O);
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(masterData.currentUser);
   updateUserName(masterData.currentUser);
   displayCohortStepAverage(masterData.users);
   calcStepComparison(masterData.currentUser, masterData.users);
   updateUserInfoPage(masterData.currentUser, masterData.users);
+  displayTodayHydro(masterData.today, currentUserH2O);
+  displayAvgHydro(currentUserH2O);
+  displayDailyHydro(99, currentUserH2O);
 });
 
 userInfoButton.addEventListener('click', toggleInfo);
