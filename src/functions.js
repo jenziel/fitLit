@@ -59,13 +59,13 @@ export function findStartingIndex(userHydroData, endDate){
   }
 }
 
-export const weeklyHydroData = (userHydroData, endDate) => {
+export const weeklyHydroData = (userHydroData, endDateIndex) => {
   const weeklyData = [];
-  for(let i = endDate-6; i <= endDate; i++){
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
     console.log("userHydroData[i]", userHydroData[i])
-    weeklyData.push(userHydroData[i].numOunces);
+    weeklyData.push(userHydroData[i]);
   }
-  console.log(weeklyData);
+  console.log("weeklyData: ", weeklyData);
   return weeklyData;
 }
 

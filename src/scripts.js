@@ -37,10 +37,6 @@ const masterData = {
   hydration: hydration.hydrationData,
   currentUser: createRandomUser(users.users),
 }
-// console.log("test:")
-// let exampleHydroData = createUserHydroData(masterData.users[2], masterData.hydration)
-// console.log("exampleHydroData", exampleHydroData)
-// console.log(`weeklyHydroData(exampleHydroData, "2023/07/01")` , weeklyHydroData(exampleHydroData, "2023/07/01"))
 
 // event handlers
 window.addEventListener('load', () => {
