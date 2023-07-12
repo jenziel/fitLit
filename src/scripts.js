@@ -2,11 +2,10 @@
 // Do not delete or rename this file ********
 
 // imports 
-import users  from './data/users';
-import hydration from './data/hydration';
 import './css/styles.css';
 import './images/turing-logo.png';
 import './domUpdates';
+import { promises } from './apiCalls';
 
 import { 
   createRandomUser,
@@ -33,21 +32,38 @@ import{
 //   .filter((datum) => datum.userID === currentUser.id);
 
 const masterData = {
-  users: users.users,
-  hydration: hydration.hydrationData,
-  currentUser: createRandomUser(users.users),
-}
+  // users: users.users,
+  // hydration: hydration.hydrationData,     
+  };
 
-// event handlers
-window.addEventListener('load', () => {
+const generateWebPage = () => { 
+  masterData.currentUser = createRandomUser(masterData.users);
   const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
-  console.log(currentUserH2O);
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(masterData.currentUser);
   updateUserName(masterData.currentUser);
   displayCohortStepAverage(masterData.users);
   calcStepComparison(masterData.currentUser, masterData.users);
   updateUserInfoPage(masterData.currentUser, masterData.users);
+};
+
+
+// console.log("test:")
+// let exampleHydroData = createUserHydroData(masterData.users[2], masterData.hydration)
+// console.log("exampleHydroData", exampleHydroData)
+// console.log(`weeklyHydroData(exampleHydroData, "2023/07/01")` , weeklyHydroData(exampleHydroData, "2023/07/01"))
+
+// event handlers
+window.addEventListener('load', () => {
+  Promise.all(promises)
+  .then(response => {
+      const [usersPromise, HydroPromise, sleepPromise, activityPromise] = response
+      masterData.users = usersPromise; // add second keys to actually be able to acces the value from the key
+      masterData.hydration = HydroPromise;
+      masterData.sleep = sleepPromise;
+      masterData.activity = activityPromise;
+    })
+  .then(generateWebPage)
 });
 
 userInfoButton.addEventListener('click', toggleInfo);

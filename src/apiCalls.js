@@ -5,9 +5,23 @@ console.log('I will be a fetch request!')
 
 
 // user data
-fetch('https://fitlit-api.herokuapp.com/api/v1/users')
+const usersPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
   .then(response => response.json()) 
-  .then(data => {
+  .then(data => data.users)
 
-    console.log('the data is here -> ', data)
-  });
+
+const HydroPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
+  .then(response => response.json()) 
+  .then(data => data.hydrationData)
+
+
+const sleepPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
+  .then(response => response.json()) 
+  .then(data => data.sleepData)
+
+
+const activityPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/activity')
+  .then(response => response.json()) 
+  .then(data => data.activityData)
+
+export const promises = [usersPromise, HydroPromise, sleepPromise, activityPromise]
