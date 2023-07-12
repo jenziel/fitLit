@@ -1,6 +1,6 @@
 //NOTE: Your DOM manipulation will occur in this file
 // import users from './data/users';
-import { returnAverageSteps, nameFriends, currentUser } from './functions';
+import { returnAverageSteps, nameFriends, currentUser, getDailyFlOz, getAllTimeAverageFlOz, weeklyHydroData } from './functions';
 
 // import returnAverageSteps from './scripts';
 // query selectors
@@ -17,6 +17,15 @@ const emailField = document.querySelector('.user-email');
 const strideLengthField = document.querySelector('.user-stride-length');
 const stepGoalField = document.querySelector('.user-step-goal');
 const friendsField = document.querySelector('.user-friends');
+const todayHydro = document.querySelector('.todays-hydro');
+const avgHydro = document.querySelector('.average-water');
+const day1Hydro = document.querySelector('.hydro1');
+const day2Hydro = document.querySelector('.hydro2');
+const day3Hydro = document.querySelector('.hydro3');
+const day4Hydro = document.querySelector('.hydro4');
+const day5Hydro = document.querySelector('.hydro5');
+const day6Hydro = document.querySelector('.hydro6');
+const day7Hydro = document.querySelector('.hydro7');
 // universal variables
 
 // functions
@@ -63,6 +72,27 @@ export const toggleInfo = () => {
     userInfoButton.innerText = `User Info`;
   }
 };
+
+export const displayTodayHydro = (day, data) => {
+  todayHydro.innerText = `${getDailyFlOz(day, data)}`;
+}
+
+export const displayAvgHydro = (userHydroData) => {
+  avgHydro.innerText = `${getAllTimeAverageFlOz(userHydroData)}`
+}
+
+export const displayDailyHydro = (day, userHydroData) => {
+  const weeklyData = weeklyHydroData(userHydroData, day);
+  console.log("TEST", weeklyData);
+  day1Hydro.innerText = `${weeklyData[0].numOunces}`;
+  day2Hydro.innerText = `${weeklyData[1].numOunces}`;
+  day3Hydro.innerText = `${weeklyData[2].numOunces}`;
+  day4Hydro.innerText = `${weeklyData[3].numOunces}`;
+  day5Hydro.innerText = `${weeklyData[4].numOunces}`;
+  day6Hydro.innerText = `${weeklyData[5].numOunces}`;
+  day7Hydro.innerText = `${weeklyData[6].numOunces}`;
+  
+}
 
 
 
