@@ -108,6 +108,14 @@ describe('Weekly Hydro Data Function', function(){
     let day2= "2023/07/01"
     let day3 = findStartingIndex(mockAllTimeHydroData, day2)
     // console.log("mockAllTimeHydroData", mockAllTimeHydroData)
-    expect(weeklyHydroData(mockAllTimeHydroData, day3)).to.deep.equal([78,56, 88,70,87,40,31]);
+    expect(weeklyHydroData(mockAllTimeHydroData, day3)).to.deep.equal([
+      { userID: 3, date: '2023/06/25', numOunces: 78 },
+      { userID: 3, date: '2023/06/26', numOunces: 56 },
+      { userID: 3, date: '2023/06/27', numOunces: 88 },
+      { userID: 3, date: '2023/06/28', numOunces: 70 },
+      { userID: 3, date: '2023/06/29', numOunces: 87 },
+      { userID: 3, date: '2023/06/30', numOunces: 40 },
+      { userID: 3, date: '2023/07/01', numOunces: 31 }
+    ]);
   });
 })
