@@ -157,3 +157,13 @@ main {
 .hidden {
   display: none;
 }
+
+.sub-box {
+  display: flex;
+  flex-direction: column;
+}
+.week-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
