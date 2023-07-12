@@ -18,11 +18,11 @@ export const retrieveUserData = ((userID, data) => {
 
 export const returnAverageSteps = ((data) => {
 
- const sumTotalSteps = data.users.reduce((acc, user) => {
+ const sumTotalSteps = data.reduce((acc, user) => {
     acc += user.dailyStepGoal;
     return acc;
     }, 0);
-  const average = parseInt(sumTotalSteps)/data.users.length;
+  const average = parseInt(sumTotalSteps)/data.length;
   return average;
 });
 
