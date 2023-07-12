@@ -1,8 +1,3 @@
-// import users  from './data/users';
-// import hydration from './data/hydration';
-
-
-
 // functions 
 export const createRandomUser = (usersArray) => {
   const randomIndex = Math.floor(Math.random() * usersArray.length);
@@ -16,13 +11,13 @@ export const retrieveUserData = ((userID, data) => {
   return user;
 });
 
-export const returnAverageSteps = ((data) => {
+export const returnAverageSteps = ((userData) => {
 
- const sumTotalSteps = data.reduce((acc, user) => {
+ const sumTotalSteps = userData.reduce((acc, user) => {
     acc += user.dailyStepGoal;
     return acc;
     }, 0);
-  const average = parseInt(sumTotalSteps)/data.length;
+  const average = parseInt(sumTotalSteps)/userData.length;
   return average;
 });
 

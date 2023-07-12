@@ -24,7 +24,7 @@ describe('User Repository', () => {
   });
 
   it('should the average daily step goal for all users (6780)', function() {
-    const avg = returnAverageSteps(mockUsers)
+    const avg = returnAverageSteps(mockUsers.users)
     expect(avg).to.equal(8000)
   });
 

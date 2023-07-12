@@ -26,6 +26,7 @@ import{
   toggleInfo,
   userInfoButton 
 } from './domUpdates'
+
 // const userHydrationData = hydration.hydrationData
 //   .filter((datum) => datum.userID === currentUser.id);
 
