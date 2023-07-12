@@ -6,70 +6,43 @@ import users  from './data/users';
 import hydration from './data/hydration';
 import './css/styles.css';
 import './images/turing-logo.png';
-import { exampleFunction1, exampleFunction2, currentUser} from './domUpdates';
+import './domUpdates';
 
-
-//global variables 
-const userHydrationData = hydration.hydrationData
-  .filter((datum) => datum.userID === currentUser.id);
-
-// functions 
-const retrieveUserData = ((userID) => {
-
-  var user = users.users.find(user => user.id === userID);
-  return user;
-});
-
-const returnAverageSteps = (() => {
-
- const sumTotalSteps = users.users.reduce((acc, user) => {
-    acc += user.dailyStepGoal;
-    return acc;
-    }, 0);
-  const average = parseInt(sumTotalSteps)/users.users.length;
-  return average;
-});
-
-const nameFriends = ((currentUser) => {
-  let foundFriends = currentUser.friends.map((friend) => {
-    return (users.users.find(user => user.id === friend)).name;
-  })
-  let formattedArray = foundFriends.map(friend => ` ` + friend);
-  return formattedArray;
-})
-
-const getAllTimeAverageFlOz = (currentUser) => {
-  const flOzSum = userHydrationData.reduce((sum, {numOunces}) => {
-    sum += numOunces;
-    return sum;
-  }, 0);
-  const flOzAverage = Math.floor(flOzSum/userHydrationData.length);
-  return flOzAverage;
-}
-getAllTimeAverageFlOz(currentUser);
-
-const getDailyFlOz = (day) => {
-  const todaysData = userHydrationData.find(datum => datum.date === day);
-  return todaysData.numOunces;
-}
-console.log('num oz', getDailyFlOz('2023/03/24'))
-// An example of how you tell webpack to use a CSS file
-
-
-
-
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
-// An example of how you tell webpack to use a JS file
-
-// Example of one way to import functions from the domUpdates file.  You will delete these examples.
-
-exampleFunction1('Travis');
-exampleFunction2('Travis');
-
-export {
+import { 
+  createRandomUser,
   retrieveUserData, 
-  returnAverageSteps,
+  returnAverageSteps, 
   nameFriends,
+  getAllTimeAverageFlOz,
+  getDailyFlOz  
+} from './functions';
+
+import{
+  updateUserDailyStepGoal,
+  updateUserInfoPage,
+  calcStepComparison,
+  displayCohortStepAverage,
+  updateUserName,
+  toggleInfo,
+  userInfoButton 
+} from './domUpdates'
+
+// const userHydrationData = hydration.hydrationData
+//   .filter((datum) => datum.userID === currentUser.id);
+
+const masterData = {
+  users: users.users,
+  hydration: hydration.hydrationData,
+  currentUser: createRandomUser(users.users),
 }
+
+// event handlers
+window.addEventListener('load', () => {
+  updateUserDailyStepGoal(masterData.currentUser);
+  updateUserName(masterData.currentUser);
+  displayCohortStepAverage(masterData.users);
+  calcStepComparison(masterData.currentUser, masterData.users);
+  updateUserInfoPage(masterData.currentUser, masterData.users);
+});
+
+userInfoButton.addEventListener('click', toggleInfo);

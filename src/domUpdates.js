@@ -1,13 +1,14 @@
 //NOTE: Your DOM manipulation will occur in this file
-import users from './data/users';
-import { returnAverageSteps, nameFriends } from './scripts';
+// import users from './data/users';
+import { returnAverageSteps, nameFriends, currentUser } from './functions';
+
 // import returnAverageSteps from './scripts';
 // query selectors
 const userName = document.querySelector('.user-greeting');
 const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
 const cohortStepGoal = document.querySelector('.average-step');
 const userStepComparison = document.querySelector('.avg-user-step-comparison');
-const userInfoButton = document.querySelector('.user-info-button');
+export const userInfoButton = document.querySelector('.user-info-button');
 const altLowerPane = document.querySelector('.alt-lower-pane');
 const lowerPane = document.querySelector('.lower-pane');
 const userNameField = document.querySelector('.user-name');
@@ -20,40 +21,40 @@ const friendsField = document.querySelector('.user-friends');
 
 // functions
 
-const randomIndex = Math.floor(Math.random() * users.users.length);
+// const randomIndex = Math.floor(Math.random() * users.users.length);
 
-let currentUser = users.users[randomIndex];
+// let currentUser = users.users[randomIndex];
 
-const updateUserDailyStepGoal = () => {
-  userDailyStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+export const updateUserDailyStepGoal = (user) => {
+  userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
 };
 
-const updateUserInfoPage = () => {
-  userNameField.innerText = currentUser.name
-  addressField.innerText = currentUser.address
-  emailField.innerText = currentUser.email
-  strideLengthField.innerText = currentUser.strideLength
-  stepGoalField.innerText = currentUser.dailyStepGoal
-  friendsField.innerText = nameFriends(currentUser)
+export const updateUserInfoPage = (user, data) => {
+  userNameField.innerText = user.name
+  addressField.innerText = user.address
+  emailField.innerText = user.email
+  strideLengthField.innerText = user.strideLength
+  stepGoalField.innerText = user.dailyStepGoal
+  friendsField.innerText = nameFriends(user, data)
  
 };
 
-const calcStepComparison = () => {
+export const calcStepComparison = (user, data) => {
   const percent = Math.floor(
-    (currentUser.dailyStepGoal / returnAverageSteps()) * 100
+    (user.dailyStepGoal / returnAverageSteps(data)) * 100
   );
   userStepComparison.innerText = `Your step goal is ${percent}% of the average user's step goal!`;
 };
 
-const displayCohortStepAverage = () => {
-  cohortStepGoal.innerText = `${returnAverageSteps()}`;
+export const displayCohortStepAverage = (data) => {
+  cohortStepGoal.innerText = `${returnAverageSteps(data)}`;
 };
 
-const updateUserName = () => {
-  userName.innerText = `Hello, ${currentUser.name}!`;
+export const updateUserName = (user) => {
+  userName.innerText = `Hello, ${user.name}!`;
 };
 
-const toggleInfo = () => {
+export const toggleInfo = () => {
   altLowerPane.classList.toggle('hidden');
   lowerPane.classList.toggle('hidden');
   if (lowerPane.classList.contains('hidden')) {
@@ -63,23 +64,15 @@ const toggleInfo = () => {
   }
 };
 
-// event handlers
-window.addEventListener('load', () => {
-  updateUserDailyStepGoal();
-  updateUserName();
-  displayCohortStepAverage();
-  calcStepComparison();
-  updateUserInfoPage();
-});
-userInfoButton.addEventListener('click', toggleInfo);
+
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-const exampleFunction1 = (person) => {
-  console.log(`oh hi there ${person}`);
-};
+// const exampleFunction1 = (person) => {
+//   console.log(`oh hi there ${person}`);
+// };
 
-const exampleFunction2 = (person) => {
-  console.log(`bye now ${person}`);
-};
+// const exampleFunction2 = (person) => {
+//   console.log(`bye now ${person}`);
+// };
 
-export { exampleFunction1, exampleFunction2, currentUser};
+// export { exampleFunction1, exampleFunction2 };
