@@ -29,6 +29,11 @@ export const nameFriends = ((currentUser, usersArray) => {
   return formattedArray;
 })
 
+export const createUserHydroData = (user, hydroData) => {
+  const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
+  return userHydroData;
+}
+
 export const getAllTimeAverageFlOz = (currentUser, hydroData) => {
   const flOzSum = hydroData.reduce((sum, {numOunces}) => {
     sum += numOunces;
@@ -44,19 +49,25 @@ export const getDailyFlOz = (day, hydroData) => {
   return todaysData.numOunces;
 }
 
-export const createUserHydroData = (user, hydroData) => {
-    const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
-    return userHydroData;
+
+export function findStartingIndex(userHydroData, endDate){
+  for (let i = 0; i< userHydroData.length; i++){
+    if (userHydroData[i].date === endDate){
+      console.log(i)
+      return i
+    }
+  }
 }
 
 export const weeklyHydroData = (userHydroData, endDate) => {
   const weeklyData = [];
   for(let i = endDate-6; i <= endDate; i++){
+    console.log("userHydroData[i]", userHydroData[i])
     weeklyData.push(userHydroData[i].numOunces);
   }
   console.log(weeklyData);
+  return weeklyData;
 }
-
 
 
 
