@@ -28,7 +28,6 @@ import{
   toggleInfo,
   userInfoButton,
   updateIcon,
-  userInfoButton, 
   displayTodayHydro,
   displayAvgHydro,
   displayDailyHydro,
