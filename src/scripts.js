@@ -37,7 +37,7 @@ import{
 //   .filter((datum) => datum.userID === currentUser.id);
 
 const masterData = {
-  today: '2023/07/01',    
+  today: '2023/07/01', 
   };
 
 const generateWebPage = () => { 
@@ -45,7 +45,7 @@ const generateWebPage = () => {
   const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
   updateIcon();
   console.log(currentUserH2O);
-  weeklyHydroData(currentUserH2O,99);
+  weeklyHydroData(currentUserH2O, 99);
   updateUserDailyStepGoal(masterData.currentUser);
   updateUserName(masterData.currentUser);
   displayCohortStepAverage(masterData.users);
