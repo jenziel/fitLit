@@ -17,6 +17,10 @@ const emailField = document.querySelector('.user-email');
 const strideLengthField = document.querySelector('.user-stride-length');
 const stepGoalField = document.querySelector('.user-step-goal');
 const friendsField = document.querySelector('.user-friends');
+
+const userIcon = document.querySelector(".user-icon");
+
+
 const todayHydro = document.querySelector('.todays-hydro');
 const avgHydro = document.querySelector('.average-water');
 const day1Hydro = document.querySelector('.hydro1');
@@ -26,6 +30,7 @@ const day4Hydro = document.querySelector('.hydro4');
 const day5Hydro = document.querySelector('.hydro5');
 const day6Hydro = document.querySelector('.hydro6');
 const day7Hydro = document.querySelector('.hydro7');
+
 // universal variables
 
 // functions
@@ -38,6 +43,14 @@ export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
 };
 
+export const updateIcon = () => {
+  var container = document.getElementById("circle");
+  console.log("container", container)
+  var iconImage = document.createElement("img");
+  iconImage.src = "./images/femaleAvatar.jpg";
+  console.log("iconImage:", iconImage)
+  container.appendChild(iconImage);
+}
 export const updateUserInfoPage = (user, data) => {
   userNameField.innerText = user.name
   addressField.innerText = user.address

@@ -4,6 +4,7 @@
 // imports 
 import './css/styles.css';
 import './images/turing-logo.png';
+import './images/femaleAvatar.jpg';
 import './domUpdates';
 import { promises } from './apiCalls';
 
@@ -25,6 +26,8 @@ import{
   displayCohortStepAverage,
   updateUserName,
   toggleInfo,
+  userInfoButton,
+  updateIcon,
   userInfoButton, 
   displayTodayHydro,
   displayAvgHydro,
@@ -41,6 +44,8 @@ const masterData = {
 const generateWebPage = () => { 
   masterData.currentUser = createRandomUser(masterData.users);
   const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
+  updateIcon();
+  console.log(currentUserH2O);
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(masterData.currentUser);
   updateUserName(masterData.currentUser);
