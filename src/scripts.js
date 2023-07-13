@@ -6,6 +6,7 @@ import users  from './data/users';
 import hydration from './data/hydration';
 import './css/styles.css';
 import './images/turing-logo.png';
+import './images/femaleAvatar.jpg';
 import './domUpdates';
 
 import { 
@@ -26,7 +27,8 @@ import{
   displayCohortStepAverage,
   updateUserName,
   toggleInfo,
-  userInfoButton 
+  userInfoButton,
+  updateIcon,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -41,6 +43,7 @@ const masterData = {
 // event handlers
 window.addEventListener('load', () => {
   const currentUserH2O = createUserHydroData(masterData.currentUser, masterData.hydration);
+  updateIcon();
   console.log(currentUserH2O);
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(masterData.currentUser);

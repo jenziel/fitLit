@@ -17,6 +17,8 @@ const emailField = document.querySelector('.user-email');
 const strideLengthField = document.querySelector('.user-stride-length');
 const stepGoalField = document.querySelector('.user-step-goal');
 const friendsField = document.querySelector('.user-friends');
+const userIcon = document.querySelector(".user-icon");
+
 // universal variables
 
 // functions
@@ -29,6 +31,14 @@ export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
 };
 
+export const updateIcon = () => {
+  var container = document.getElementById("circle");
+  console.log("container", container)
+  var iconImage = document.createElement("img");
+  iconImage.src = "./images/femaleAvatar.jpg";
+  console.log("iconImage:", iconImage)
+  container.appendChild(iconImage);
+}
 export const updateUserInfoPage = (user, data) => {
   userNameField.innerText = user.name
   addressField.innerText = user.address
