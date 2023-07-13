@@ -37,8 +37,8 @@ import{
 //   .filter((datum) => datum.userID === currentUser.id);
 
 const mainData = {
-  today: '2023/07/01',    
-  };
+  today: '2023/07/01',
+}
 
 const generateWebPage = () => { 
   mainData.currentUser = createRandomUser(mainData.users);
@@ -51,6 +51,7 @@ const generateWebPage = () => {
   calcStepComparison(mainData.currentUser, mainData.users);
   updateUserInfoPage(mainData.currentUser, mainData.users);
   displayTodayHydro(mainData.today, currentUserH2O);
+
   displayAvgHydro(currentUserH2O);
   displayDailyHydro(99, currentUserH2O);
 };
