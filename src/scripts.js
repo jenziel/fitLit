@@ -19,6 +19,7 @@ import {
   weeklyHydroData,  
   calculateUserAverageSleep,
   getUserSleepData,
+  calculateUserAverageSleepQuality,
 } from './functions';
 
 import{
@@ -61,6 +62,7 @@ const generateWebPage = () => {
   displayDailyHydro(99, currentUserH2O);
 
   console.log('still here', calculateUserAverageSleep(currentUserSleep));
+  console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));
 };
 
 // event handlers

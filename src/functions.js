@@ -80,7 +80,13 @@ export const calculateUserAverageSleep = (sleepData) => {
   return averageUserSleep.toFixed(2);
 };
 
-
+export const calculateUserAverageSleepQuality = (sleepData) => {
+  const sum = sleepData.reduce((sum, user) => {
+    return sum + user.sleepQuality;
+  }, 0)
+  const averageUserSleepQuality = sum/sleepData.length;
+  return averageUserSleepQuality.toFixed(2);
+};
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
