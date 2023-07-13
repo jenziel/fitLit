@@ -45,7 +45,6 @@ export const updateUserInfoPage = (user, data) => {
   strideLengthField.innerText = user.strideLength
   stepGoalField.innerText = user.dailyStepGoal
   friendsField.innerText = nameFriends(user, data)
- 
 };
 
 export const calcStepComparison = (user, data) => {
