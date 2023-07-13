@@ -17,9 +17,7 @@ const emailField = document.querySelector('.user-email');
 const strideLengthField = document.querySelector('.user-stride-length');
 const stepGoalField = document.querySelector('.user-step-goal');
 const friendsField = document.querySelector('.user-friends');
-
 const userIcon = document.querySelector(".user-icon");
-
 
 const todayHydro = document.querySelector('.todays-hydro');
 const avgHydro = document.querySelector('.average-water');
@@ -30,6 +28,14 @@ const day4Hydro = document.querySelector('.hydro4');
 const day5Hydro = document.querySelector('.hydro5');
 const day6Hydro = document.querySelector('.hydro6');
 const day7Hydro = document.querySelector('.hydro7');
+
+const day1Date = document.querySelector('.day1');
+const day2Date = document.querySelector('.day2');
+const day3Date = document.querySelector('.day3');
+const day4Date = document.querySelector('.day4');
+const day5Date = document.querySelector('.day5');
+const day6Date = document.querySelector('.day6');
+const day7Date = document.querySelector('.day7');
 
 // universal variables
 
@@ -93,9 +99,17 @@ export const displayAvgHydro = (userHydroData) => {
   avgHydro.innerText = `${getAllTimeAverageFlOz(userHydroData)}`
 }
 
+export const formatDate = (weeklyData) => {
+  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const justDates = weeklyData.map(datum => datum.date)
+  const daysArray = justDates.map(date => new Date(date))
+  const previous7Days = daysArray.map(previousDay => weekDays[previousDay.getDay()])
+  return previous7Days
+}
+
 export const displayDailyHydro = (day, userHydroData) => {
   const weeklyData = weeklyHydroData(userHydroData, day);
-  console.log("TEST", weeklyData);
+  const days = formatDate(weeklyData)
   day1Hydro.innerText = `${weeklyData[0].numOunces}`;
   day2Hydro.innerText = `${weeklyData[1].numOunces}`;
   day3Hydro.innerText = `${weeklyData[2].numOunces}`;
@@ -103,7 +117,14 @@ export const displayDailyHydro = (day, userHydroData) => {
   day5Hydro.innerText = `${weeklyData[4].numOunces}`;
   day6Hydro.innerText = `${weeklyData[5].numOunces}`;
   day7Hydro.innerText = `${weeklyData[6].numOunces}`;
-  
+
+  day1Date.innerText = `${days[0]}`; 
+  day2Date.innerText = `${days[1]}`; 
+  day3Date.innerText = `${days[2]}`; 
+  day4Date.innerText = `${days[3]}`; 
+  day5Date.innerText = `${days[4]}`; 
+  day6Date.innerText = `${days[5]}`; 
+  day7Date.innerText = `${days[6]}`; 
 }
 
 
