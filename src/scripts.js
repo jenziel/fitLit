@@ -35,13 +35,7 @@ import{
 //   .filter((datum) => datum.userID === currentUser.id);
 
 const masterData = {
-  users: users.users,
-  hydration: hydration.hydrationData,
-  currentUser: createRandomUser(users.users),
-  today: '2023/07/01',
-}
-  // users: users.users,
-  // hydration: hydration.hydrationData,     
+  today: '2023/07/01',    
   };
 
 const generateWebPage = () => { 
@@ -56,6 +50,25 @@ const generateWebPage = () => {
   displayTodayHydro(masterData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
   displayDailyHydro(99, currentUserH2O);
+};
+
+
+// console.log("test:")
+// let exampleHydroData = createUserHydroData(masterData.users[2], masterData.hydration)
+// console.log("exampleHydroData", exampleHydroData)
+// console.log(`weeklyHydroData(exampleHydroData, "2023/07/01")` , weeklyHydroData(exampleHydroData, "2023/07/01"))
+
+// event handlers
+window.addEventListener('load', () => {
+  Promise.all(promises)
+  .then(response => {
+      const [usersPromise, HydroPromise, sleepPromise, activityPromise] = response
+      masterData.users = usersPromise; // add second keys to actually be able to acces the value from the key
+      masterData.hydration = HydroPromise;
+      masterData.sleep = sleepPromise;
+      masterData.activity = activityPromise;
+    })
+  .then(generateWebPage)
 });
 
 userInfoButton.addEventListener('click', toggleInfo);

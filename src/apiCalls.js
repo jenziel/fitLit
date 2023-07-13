@@ -24,4 +24,4 @@ const activityPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/activity'
   .then(response => response.json()) 
   .then(data => data.activityData)
 
-export const promises = [usersPromise, HydroPromise, sleepPromise, activityPromise]
+export const promises = [usersPromise, HydroPromise, sleepPromise, activityPromise];
