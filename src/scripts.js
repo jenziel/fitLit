@@ -17,6 +17,8 @@ import {
   getDailyFlOz,
   createUserHydroData,
   weeklyHydroData,  
+  calculateUserAverageSleep,
+  getUserSleepData,
 } from './functions';
 
 import{
@@ -43,6 +45,9 @@ const mainData = {
 const generateWebPage = () => { 
   mainData.currentUser = createRandomUser(mainData.users);
   const currentUserH2O = createUserHydroData(mainData.currentUser, mainData.hydration);
+  const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
+
+
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(mainData.currentUser);
@@ -54,6 +59,8 @@ const generateWebPage = () => {
 
   displayAvgHydro(currentUserH2O);
   displayDailyHydro(99, currentUserH2O);
+
+  console.log('still here', calculateUserAverageSleep(currentUserSleep));
 };
 
 // event handlers

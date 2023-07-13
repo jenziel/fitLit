@@ -67,6 +67,19 @@ export const weeklyHydroData = (userHydroData, endDateIndex) => {
   return weeklyData;
 }
 
+export const getUserSleepData = (user, sleepData) => {
+  const userSleep = sleepData.filter(data => data.userID === user.id);
+  return userSleep;
+};
+
+export const calculateUserAverageSleep = (sleepData) => {
+  const sum = sleepData.reduce((sum, user) => {
+    return sum + user.hoursSlept;
+  }, 0)
+  const averageUserSleep = sum/sleepData.length;
+  return averageUserSleep.toFixed(2);
+};
+
 
 
 
