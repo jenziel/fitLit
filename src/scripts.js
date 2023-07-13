@@ -20,6 +20,7 @@ import {
   calculateUserAverageSleep,
   getUserSleepData,
   calculateUserAverageSleepQuality,
+  getUserDailyHrSleep, 
 } from './functions';
 
 import{
@@ -63,6 +64,8 @@ const generateWebPage = () => {
 
   console.log('still here', calculateUserAverageSleep(currentUserSleep));
   console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));
+  console.log('daily hours slept', getUserDailyHrSleep('2023/07/01', currentUserSleep));
+  console.log(mainData.currentUser);
 };
 
 // event handlers
