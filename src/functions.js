@@ -106,6 +106,13 @@ export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   return weeklyHourSleepData;
 }
 
+export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
+  const weeklySleepQuality = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklySleepQuality.push(userSleep[i].sleepQuality);
+  }
+  return weeklySleepQuality;
+}
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
