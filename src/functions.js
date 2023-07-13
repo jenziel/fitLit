@@ -90,9 +90,13 @@ export const calculateUserAverageSleepQuality = (sleepData) => {
 
 export const getUserDailyHrSleep = (day, sleepData) => {
   const dailySleep = sleepData.find(data => data.date === day);
-  return dailySleep.hoursSlept
-}
+  return dailySleep.hoursSlept;
+};
 
+export const getUserDailyQualitySleep = (day, sleepData) => {
+  const dailySleep = sleepData.find(data => data.date === day);
+  return dailySleep.sleepQuality;
+};
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 // An example of how you tell webpack to use a JS file
