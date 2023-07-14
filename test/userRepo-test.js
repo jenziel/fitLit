@@ -6,7 +6,6 @@ import {  retrieveUserData, returnAverageSteps, getAllTimeAverageFlOz, getDailyF
 // import { retrieveUserData, returnAverageSteps } from './utils'
 import mockUsers from './mockUserData'
 import mockAllTimeHydroData from './mockAllTimeHydroData'
-import mockActivityData from './mockActivityData'
 
 describe('User Repository', () => {
 
