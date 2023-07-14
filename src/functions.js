@@ -116,6 +116,52 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
 }
 
 
+export const createUserStepData = (user, stepData) => {
+  const userSteps = stepData.filter(data => data.userID === user.id);
+  return userSteps;
+};
+
+// 1. Calculate the miles a user has walked based on their number of steps
+//  (use their strideLength to help calculate this), based on a specific day
+export const getDaySteps = (day, userStepData) => {
+  const dailySteps = userStepData.find(datum => datum.date === day)
+  console.log("dailySteps", dailySteps)
+  console.log("dailySteps.numSteps", dailySteps.numSteps)
+    return dailySteps.numSteps
+  };
+
+export const calculateDayMileage = (userStepData, userData) => {
+  const miles = (userStepData * userData.strideLength) / 5280
+  return Number(miles.toFixed(2))
+}
+
+//sample step data
+//   {"userID": 23,
+// "date": "2023/03/25",
+// "numSteps": 10949,
+// "minutesActive": 25,
+// "flightsOfStairs": 43}
+//sample user data
+// {
+//   "id": 1,
+// "name": "Trystan Gorczany",
+// "address": "9484 Lucas Flat, West Kittymouth WA 67504",
+// "email": "Taurean_Pollich31@gmail.com",
+// "strideLength": 4,
+// "dailyStepGoal": 7000,
+// "friends": [
+// 5,
+// 43,
+// 46,
+// 11
+// ]
+// }
+
+
+// 2. Return how many minutes a user was active for a given day
+
+// 3. Return if a user reached their step goal for a given day
+
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 

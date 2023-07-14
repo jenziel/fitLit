@@ -24,6 +24,9 @@ import {
   getUserDailyQualitySleep, 
   weeklyHourlySleepData,
   weeklyQualitySleepData,
+  createUserStepData,
+  getDaySteps,
+  calculateDayMileage,
 } from './functions';
 
 import{
@@ -57,6 +60,7 @@ const generateWebPage = () => {
   const currentUserH2O = createUserHydroData(mainData.currentUser, mainData.hydration);
   const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
 
+  console.log("activity data:", mainData.activity)
 
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
