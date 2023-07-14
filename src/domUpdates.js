@@ -1,6 +1,16 @@
 //NOTE: Your DOM manipulation will occur in this file
 // import users from './data/users';
-import { returnAverageSteps, nameFriends, currentUser, getDailyFlOz, getAllTimeAverageFlOz, weeklyHydroData } from './functions';
+import { returnAverageSteps, 
+  nameFriends, 
+  currentUser, 
+  getDailyFlOz, 
+  getAllTimeAverageFlOz, 
+  weeklyHydroData, 
+  getUserDailyHrSleep,
+  getUserDailyQualitySleep, 
+  calculateUserAverageSleep,
+  calculateUserAverageSleepQuality,
+} from './functions';
 
 // import returnAverageSteps from './scripts';
 // query selectors
@@ -21,22 +31,26 @@ const userIcon = document.querySelector(".user-icon");
 
 const todayHydro = document.querySelector('.todays-hydro');
 const avgHydro = document.querySelector('.average-water');
-const day1Hydro = document.querySelector('.hydro1');
-const day2Hydro = document.querySelector('.hydro2');
-const day3Hydro = document.querySelector('.hydro3');
-const day4Hydro = document.querySelector('.hydro4');
-const day5Hydro = document.querySelector('.hydro5');
-const day6Hydro = document.querySelector('.hydro6');
-const day7Hydro = document.querySelector('.hydro7');
+// const day1Hydro = document.querySelector('.hydro1');
+// const day2Hydro = document.querySelector('.hydro2');
+// const day3Hydro = document.querySelector('.hydro3');
+// const day4Hydro = document.querySelector('.hydro4');
+// const day5Hydro = document.querySelector('.hydro5');
+// const day6Hydro = document.querySelector('.hydro6');
+// const day7Hydro = document.querySelector('.hydro7');
 
-const day1Date = document.querySelector('.day1');
-const day2Date = document.querySelector('.day2');
-const day3Date = document.querySelector('.day3');
-const day4Date = document.querySelector('.day4');
-const day5Date = document.querySelector('.day5');
-const day6Date = document.querySelector('.day6');
-const day7Date = document.querySelector('.day7');
+// const day1Date = document.querySelector('.day1');
+// const day2Date = document.querySelector('.day2');
+// const day3Date = document.querySelector('.day3');
+// const day4Date = document.querySelector('.day4');
+// const day5Date = document.querySelector('.day5');
+// const day6Date = document.querySelector('.day6');
+// const day7Date = document.querySelector('.day7');
 
+const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
+const todaysQualitySleep = document.querySelector('.todays-quality-sleep');
+const averageHourlySleep = document.querySelector('.average-hours-slept');
+const averageQualitySleep = document.querySelector('.average-quality-slept');
 
 const hydroBarChart = document.getElementById('hydroChart');
 
@@ -182,7 +196,12 @@ export const createBarGraph = (day, hydroData) => {
   });
 }
 
-
+export const displaySleepDataToDom = (day, sleepData) => {
+  todaysHourlySleep.innerText = `${getUserDailyHrSleep(day, sleepData)}`;
+  todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;
+  averageHourlySleep.innerText = `${calculateUserAverageSleep(sleepData)}`;
+  averageQualitySleep.innerText = `${calculateUserAverageSleepQuality(sleepData)}`;
+}
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 // const exampleFunction1 = (person) => {
