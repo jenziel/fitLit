@@ -82,7 +82,7 @@ describe('Hydration Logic', function() {
     expect(getAllTimeAverageFlOz).to.be.a('function');
   });
   it('it should return the average daily intake for all time', function (){
-    expect(getAllTimeAverageFlOz(user1, user1HydroData)).to.deep.equal(39)
+    expect(getAllTimeAverageFlOz(user1HydroData)).to.deep.equal(39)
   })
   it('should have a function that finds fl oz consumed for a specific day', function () {
     expect(getDailyFlOz).to.be.a('function');
