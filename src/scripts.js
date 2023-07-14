@@ -17,6 +17,13 @@ import {
   getDailyFlOz,
   createUserHydroData,
   weeklyHydroData,  
+  calculateUserAverageSleep,
+  getUserSleepData,
+  calculateUserAverageSleepQuality,
+  getUserDailyHrSleep, 
+  getUserDailyQualitySleep, 
+  weeklyHourlySleepData,
+  weeklyQualitySleepData,
 } from './functions';
 
 import{
@@ -43,6 +50,9 @@ const mainData = {
 const generateWebPage = () => { 
   mainData.currentUser = createRandomUser(mainData.users);
   const currentUserH2O = createUserHydroData(mainData.currentUser, mainData.hydration);
+  const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
+
+
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(mainData.currentUser);
@@ -54,6 +64,14 @@ const generateWebPage = () => {
 
   displayAvgHydro(currentUserH2O);
   displayDailyHydro(99, currentUserH2O);
+
+  console.log('still here', calculateUserAverageSleep(currentUserSleep));
+  console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));
+  console.log('daily hours slept', getUserDailyHrSleep('2023/07/01', currentUserSleep));
+  console.log('daily sleep quality', getUserDailyQualitySleep('2023/07/01', currentUserSleep));
+  console.log(mainData.currentUser);
+  console.log('hourly sleep for a week', weeklyHourlySleepData(currentUserSleep, 99));
+  console.log('weekly sleep quality', weeklyQualitySleepData(currentUserSleep, 99));
 };
 
 // event handlers

@@ -67,8 +67,52 @@ export const weeklyHydroData = (userHydroData, endDateIndex) => {
   return weeklyData;
 }
 
+export const getUserSleepData = (user, sleepData) => {
+  const userSleep = sleepData.filter(data => data.userID === user.id);
+  return userSleep;
+};
 
+export const calculateUserAverageSleep = (sleepData) => {
+  const sum = sleepData.reduce((sum, user) => {
+    return sum + user.hoursSlept;
+  }, 0)
+  const averageUserSleep = sum/sleepData.length;
+  return averageUserSleep.toFixed(2);
+};
 
+export const calculateUserAverageSleepQuality = (sleepData) => {
+  const sum = sleepData.reduce((sum, user) => {
+    return sum + user.sleepQuality;
+  }, 0)
+  const averageUserSleepQuality = sum/sleepData.length;
+  return averageUserSleepQuality.toFixed(2);
+};
+
+export const getUserDailyHrSleep = (day, sleepData) => {
+  const dailySleep = sleepData.find(data => data.date === day);
+  return dailySleep.hoursSlept;
+};
+
+export const getUserDailyQualitySleep = (day, sleepData) => {
+  const dailySleep = sleepData.find(data => data.date === day);
+  return dailySleep.sleepQuality;
+};
+
+export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
+  const weeklyHourSleepData = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklyHourSleepData.push(userSleep[i].hoursSlept);
+  }
+  return weeklyHourSleepData;
+}
+
+export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
+  const weeklySleepQuality = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklySleepQuality.push(userSleep[i].sleepQuality);
+  }
+  return weeklySleepQuality;
+}
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
