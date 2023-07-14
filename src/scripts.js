@@ -39,7 +39,10 @@ import{
   displayAvgHydro,
   displayDailyHydro,
   populateHydroGraph,
-  createBarGraph,
+  createHydroBarGraph,
+  displaySleepDataToDom,
+  createHourlySleepBarGraph,
+  createQualitySleepBarGraph,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -65,22 +68,23 @@ const generateWebPage = () => {
   displayTodayHydro(mainData.today, currentUserH2O);
 
   displayAvgHydro(currentUserH2O);
+  createHourlySleepBarGraph(currentUserSleep, 99);
+  createQualitySleepBarGraph(currentUserSleep, 99);
 
   // displayDailyHydro(99, currentUserH2O);
   // populateHydroGraph(99, currentUserH2O);
-  createBarGraph(99, currentUserH2O);
-  console.log(masterData.currentUser);
+  createHydroBarGraph(99, currentUserH2O);
+  displaySleepDataToDom(mainData.today, currentUserSleep);
 
 
 
-
-  console.log('still here', calculateUserAverageSleep(currentUserSleep));
-  console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));
-  console.log('daily hours slept', getUserDailyHrSleep('2023/07/01', currentUserSleep));
-  console.log('daily sleep quality', getUserDailyQualitySleep('2023/07/01', currentUserSleep));
-  console.log(mainData.currentUser);
-  console.log('hourly sleep for a week', weeklyHourlySleepData(currentUserSleep, 99));
-  console.log('weekly sleep quality', weeklyQualitySleepData(currentUserSleep, 99));
+  // console.log('still here', calculateUserAverageSleep(currentUserSleep));
+  // console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));
+  // console.log('daily hours slept', getUserDailyHrSleep('2023/07/01', currentUserSleep));
+  // console.log('daily sleep quality', getUserDailyQualitySleep('2023/07/01', currentUserSleep));
+  // console.log(mainData.currentUser);
+  // console.log('hourly sleep for a week', weeklyHourlySleepData(currentUserSleep, 99));
+  // console.log('weekly sleep quality', weeklyQualitySleepData(currentUserSleep, 99));
 };
 
 // event handlers
