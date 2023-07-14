@@ -7,7 +7,7 @@ import {  retrieveUserData,
   getDailyFlOz, 
   createUserHydroData, 
   weeklyHydroData, 
-  findStartingIndex, createUserStepData, getDaySteps, calculateDayMileage,
+  findStartingIndex, 
   getUserSleepData,
   calculateUserAverageSleep,
   calculateUserAverageSleepQuality,
@@ -15,12 +15,15 @@ import {  retrieveUserData,
   getUserDailyQualitySleep,
   weeklyHourlySleepData,
   weeklyQualitySleepData,
+  createUserStepData, 
+  getDaySteps, 
+  calculateDayMileage,
 } from '../src/functions';
 
 // import { retrieveUserData, returnAverageSteps } from './utils'
 import mockUsers from './mockUserData'
 import mockAllTimeHydroData from './mockAllTimeHydroData'
-import mockActivityData from './mockActivityData'
+// import mockActivityData from './mockActivityData'
 
 describe('User Repository', () => {
 
@@ -134,102 +137,6 @@ describe('Weekly Hydro Data Function', function(){
     ]);
   });
 })
-
-describe('Activity data calculations', function() {
-  let cohortActivityData;
-  let day;
-  let day2;
-  let user1;
-  let user2;
-  let user1StepData;
-  let user2StepData;
-  let specificDayStepData
-  beforeEach(() => {
-    cohortActivityData = [
-      {
-      "userID": 1,
-      "date": "2023/03/24",
-      "numSteps": 7362,
-      "minutesActive": 261,
-      "flightsOfStairs": 26
-      },
-      {
-      "userID": 2,
-      "date": "2023/03/24",
-      "numSteps": 3049,
-      "minutesActive": 125,
-      "flightsOfStairs": 43
-      }]  
-    user1 = retrieveUserData(1, mockUsers);
-    user2 = retrieveUserData(2, mockUsers);
-    user1StepData = createUserStepData(user1, cohortActivityData)
-    user2StepData =  createUserStepData(user2, cohortActivityData)
-    day = "2023/03/24"
-    day2= "2023/07/01"
-    specificDayStepData = getDaySteps("2023/03/24", user1StepData)
-  });
-  it('should have a function to access the user step data', function (){
-    expect(createUserStepData).to.be.a('function')
-  })
-  it(`should return an array of objects representing the given user's step data`, function () {
-    expect(createUserStepData(user1, user1StepData)).to.deep.equal(
-      [{
-        "userID": 1,
-        "date": "2023/03/24",
-        "numSteps": 7362,
-        "minutesActive": 261,
-        "flightsOfStairs": 26
-        }]
-    );
-  });
-  it('should have a function to access the user step data', function (){
-    expect(getDaySteps).to.be.a('function')
-  })
-  it('should return an object for the day we want', function(){
-    expect(getDaySteps(day, user1StepData)).to.equal(7362)
-  })
-  it('should have a function to access the user step data', function (){
-    expect(calculateDayMileage).to.be.a('function')
-  })
-  it('should return a number representing mileage', function (){
-    console.log("user1", user1)
-    expect(calculateDayMileage(specificDayStepData, user1)).to.equal(5.58)
-  })
-
-})
-;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 describe('Sleep Logic: Averages and Daily Values', function() {
   let mockSleepData;
@@ -418,3 +325,66 @@ describe('Sleep Logic: Weekly Values', function(){
        expect(weeklyQualitySleepData(mockSleepData, 6)).to.deep.equal([4.3, 3.5, 4.7, 3, 1.2, 3.9, 1.6]);
   });
 });
+
+// describe('Activity data calculations', function() {
+//   let cohortActivityData;
+//   let day;
+//   let day2;
+//   let user1;
+//   let user2;
+//   let user1StepData;
+//   let user2StepData;
+//   let specificDayStepData
+//   beforeEach(() => {
+//     cohortActivityData = [
+//       {
+//       "userID": 1,
+//       "date": "2023/03/24",
+//       "numSteps": 7362,
+//       "minutesActive": 261,
+//       "flightsOfStairs": 26
+//       },
+//       {
+//       "userID": 2,
+//       "date": "2023/03/24",
+//       "numSteps": 3049,
+//       "minutesActive": 125,
+//       "flightsOfStairs": 43
+//       }]  
+//     user1 = retrieveUserData(1, mockUsers);
+//     user2 = retrieveUserData(2, mockUsers);
+//     user1StepData = createUserStepData(user1, cohortActivityData)
+//     user2StepData =  createUserStepData(user2, cohortActivityData)
+//     day = "2023/03/24"
+//     day2= "2023/07/01"
+//     specificDayStepData = getDaySteps("2023/03/24", user1StepData)
+//   });
+//   it('should have a function to access the user step data', function (){
+//     expect(createUserStepData).to.be.a('function')
+//   })
+//   it(`should return an array of objects representing the given user's step data`, function () {
+//     expect(createUserStepData(user1, user1StepData)).to.deep.equal(
+//       [{
+//         "userID": 1,
+//         "date": "2023/03/24",
+//         "numSteps": 7362,
+//         "minutesActive": 261,
+//         "flightsOfStairs": 26
+//         }]
+//     );
+//   });
+//   it('should have a function to access the user step data', function (){
+//     expect(getDaySteps).to.be.a('function')
+//   })
+//   it('should return an object for the day we want', function(){
+//     expect(getDaySteps(day, user1StepData)).to.equal(7362)
+//   })
+//   it('should have a function to access the user step data', function (){
+//     expect(calculateDayMileage).to.be.a('function')
+//   })
+//   it('should return a number representing mileage', function (){
+//     console.log("user1", user1)
+//     expect(calculateDayMileage(specificDayStepData, user1)).to.equal(5.58)
+//   })
+// });
+

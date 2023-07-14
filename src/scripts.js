@@ -59,8 +59,11 @@ const generateWebPage = () => {
   mainData.currentUser = createRandomUser(mainData.users);
   const currentUserH2O = createUserHydroData(mainData.currentUser, mainData.hydration);
   const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
-
+  const currentUserActivity = createUserStepData(mainData.currentUser, mainData.activity);
+  
   console.log("activity data:", mainData.activity)
+  console.log('day steps', getDaySteps(mainData.today, currentUserActivity));
+
 
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
