@@ -148,7 +148,25 @@ describe('Weekly Hydro Data Function', function(){
 
 
 
-describe('Sleep Logic', function() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+describe('Sleep Logic: Averages and Daily Values', function() {
   let mockSleepData;
   let day1;
   let day2;
@@ -249,9 +267,89 @@ describe('Sleep Logic', function() {
   it('it should return the hours slept for a different current user', function (){
     expect(getUserDailyHrSleep(day1, user2SleepData)).to.equal(8.4)
   });
+
+  it(`should be a function`, function () {
+    expect(getUserDailyQualitySleep).to.be.a('function')
+  });
+
+  it('it should return the sleep quality for current user for a given day', function (){
+    expect(getUserDailyQualitySleep(day1, user1SleepData)).to.equal(4.3)
+  });
+
+  it('it should return the sleep quality for a different day', function (){
+    expect(getUserDailyQualitySleep(day2, user1SleepData)).to.equal(4.7)
+  });
+
+  it('it should return the sleep quality for a different current user', function (){
+    expect(getUserDailyQualitySleep(day1, user2SleepData)).to.equal(3.5)
+  });
 });
 
-// getUserDailyHrSleep,
-// getUserDailyQualitySleep,
-// weeklyHourlySleepData,
-// weeklyQualitySleepData,
+describe('Sleep Logic: Weekly Values', function(){
+  let mockSleepData;
+
+  beforeEach(() => {
+    mockSleepData = [
+        {
+        "userID": 1,
+        "date": "2023/03/23",
+        "hoursSlept": 9.6,
+        "sleepQuality": 4.3
+        },
+        {
+        "userID": 1,
+        "date": "2023/03/24",
+        "hoursSlept": 8.4,
+        "sleepQuality": 3.5
+        },
+        {
+        "userID": 1,
+        "date": "2023/03/25",
+        "hoursSlept": 9.7,
+        "sleepQuality": 4.7
+        },
+        {
+        "userID": 1,
+        "date": "2023/03/26",
+        "hoursSlept": 4.7,
+        "sleepQuality": 3
+      },
+      {
+        "userID": 1,
+        "date": "2023/03/27",
+        "hoursSlept": 4.2,
+        "sleepQuality": 1.2
+        },
+        {
+        "userID": 1,
+        "date": "2023/03/28",
+        "hoursSlept": 4.1,
+        "sleepQuality": 3.9
+        },
+        {
+        "userID": 1,
+        "date": "2023/03/29",
+        "hoursSlept": 9.2,
+        "sleepQuality": 1.6
+        },
+    ];
+  });
+
+  it(`should be a function`, function () {
+    expect(weeklyHourlySleepData).to.be.a('function')
+  });
+
+  it(`should be a function`, function () {
+    expect(weeklyQualitySleepData).to.be.a('function')
+  });
+
+  it('should return a weeks worth of hourly sleep data for current user', function () {
+      let day= "2023/03/29"
+      expect(weeklyHourlySleepData(mockSleepData, 6)).to.deep.equal([9.6, 8.4, 9.7, 4.7, 4.2, 4.1, 9.2,]);
+    });
+
+ it('should return a weeks worth of sleep quality data for current user', function () {
+       let day= "2023/03/29"
+       expect(weeklyQualitySleepData(mockSleepData, 6)).to.deep.equal([4.3, 3.5, 4.7, 3, 1.2, 3.9, 1.6]);
+  });
+});
