@@ -10,7 +10,7 @@ const usersPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
   .then(data => data.users)
 
 
-const HydroPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
+const hydroPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
   .then(response => response.json()) 
   .then(data => data.hydrationData)
 
@@ -24,4 +24,4 @@ const activityPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/activity'
   .then(response => response.json()) 
   .then(data => data.activityData)
 
-export const promises = [usersPromise, HydroPromise, sleepPromise, activityPromise];
+export const promises = [usersPromise, hydroPromise, sleepPromise, activityPromise];
