@@ -90,7 +90,7 @@ main {
   padding: 25px;
   padding-left: 50px;
   padding-right: 50px;
-  height: 30vh;
+  height: auto;
   width: 100%;
   margin-top: 5vh;
   border-radius: 15px;
@@ -173,7 +173,7 @@ main {
   color: var(--blue);
 }
 
-#box3 > div > h2 {
+.sleep-box > div > h2 {
   color: var(--pink);
 }
 
@@ -205,8 +205,17 @@ main {
   justify-content: center;
   height: 100%;
 }
+
 #hydroChart{
   width: 60%;
   height: 75%;
   padding-bottom: 20px;
+}
+
+
+.last-night-sleep
+.average-sleep 
+.sleep-graph-pane {
+  display:flex;
+  flex-direction: column;
 }
