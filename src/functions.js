@@ -77,7 +77,7 @@ export const calculateUserAverageSleep = (sleepData) => {
     return sum + user.hoursSlept;
   }, 0)
   const averageUserSleep = sum/sleepData.length;
-  return averageUserSleep.toFixed(2);
+  return Number(averageUserSleep.toFixed(2));
 };
 
 export const calculateUserAverageSleepQuality = (sleepData) => {
@@ -85,7 +85,7 @@ export const calculateUserAverageSleepQuality = (sleepData) => {
     return sum + user.sleepQuality;
   }, 0)
   const averageUserSleepQuality = sum/sleepData.length;
-  return averageUserSleepQuality.toFixed(2);
+  return Number(averageUserSleepQuality.toFixed(2));
 };
 
 export const getUserDailyHrSleep = (day, sleepData) => {
