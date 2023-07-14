@@ -31,6 +31,8 @@ import{
   displayTodayHydro,
   displayAvgHydro,
   displayDailyHydro,
+  populateHydroGraph,
+  createBarGraph,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -53,7 +55,10 @@ const generateWebPage = () => {
   updateUserInfoPage(masterData.currentUser, masterData.users);
   displayTodayHydro(masterData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
-  displayDailyHydro(99, currentUserH2O);
+  // displayDailyHydro(99, currentUserH2O);
+  // populateHydroGraph(99, currentUserH2O);
+  createBarGraph(99, currentUserH2O);
+  console.log(masterData.currentUser);
 };
 
 

@@ -37,6 +37,31 @@ const day5Date = document.querySelector('.day5');
 const day6Date = document.querySelector('.day6');
 const day7Date = document.querySelector('.day7');
 
+
+const hydroBarChart = document.getElementById('hydroChart');
+
+// Create the chart
+// const chart = new Chart(hydroBarChart, {
+//   type: 'bar',
+//   data: {
+//     labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+//     datasets: [{
+//       label: 'Last Weeks Hydration',
+//       data: ['0','0','0','0','0','0','0'],
+//       backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+//     }]
+//   },
+//   options: {
+//     maintainAspectRatio: false,
+//     scales: {
+//       y: {
+//         beginAtZero: true
+//       }
+//     }
+//   }
+// });
+
+
 // universal variables
 
 // functions
@@ -110,21 +135,51 @@ export const formatDate = (weeklyData) => {
 export const displayDailyHydro = (day, userHydroData) => {
   const weeklyData = weeklyHydroData(userHydroData, day);
   const days = formatDate(weeklyData)
-  day1Hydro.innerText = `${weeklyData[0].numOunces}`;
-  day2Hydro.innerText = `${weeklyData[1].numOunces}`;
-  day3Hydro.innerText = `${weeklyData[2].numOunces}`;
-  day4Hydro.innerText = `${weeklyData[3].numOunces}`;
-  day5Hydro.innerText = `${weeklyData[4].numOunces}`;
-  day6Hydro.innerText = `${weeklyData[5].numOunces}`;
-  day7Hydro.innerText = `${weeklyData[6].numOunces}`;
+  
+  // day1Hydro.innerText = `${weeklyData[0].numOunces}`;
+  // day2Hydro.innerText = `${weeklyData[1].numOunces}`;
+  // day3Hydro.innerText = `${weeklyData[2].numOunces}`;
+  // day4Hydro.innerText = `${weeklyData[3].numOunces}`;
+  // day5Hydro.innerText = `${weeklyData[4].numOunces}`;
+  // day6Hydro.innerText = `${weeklyData[5].numOunces}`;
+  // day7Hydro.innerText = `${weeklyData[6].numOunces}`;
 
-  day1Date.innerText = `${days[0]}`; 
-  day2Date.innerText = `${days[1]}`; 
-  day3Date.innerText = `${days[2]}`; 
-  day4Date.innerText = `${days[3]}`; 
-  day5Date.innerText = `${days[4]}`; 
-  day6Date.innerText = `${days[5]}`; 
-  day7Date.innerText = `${days[6]}`; 
+  // day1Date.innerText = `${days[0]}`; 
+  // day2Date.innerText = `${days[1]}`; 
+  // day3Date.innerText = `${days[2]}`; 
+  // day4Date.innerText = `${days[3]}`; 
+  // day5Date.innerText = `${days[4]}`; 
+  // day6Date.innerText = `${days[5]}`; 
+  // day7Date.innerText = `${days[6]}`; 
+  const ouncesperDay = weeklyData.map(data => data.numOunces);
+  return ouncesperDay;
+}
+
+// export const populateHydroGraph = (day, hydroData) => {
+//   chart.data.datasets[0].data = displayDailyHydro(day, hydroData);
+//   chart.update();
+// }
+
+export const createBarGraph = (day, hydroData) => {
+  const chart = new Chart(hydroBarChart, {
+    type: 'bar',
+    data: {
+      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      datasets: [{
+        label: 'Last Weeks Hydration',
+        data: displayDailyHydro(day, hydroData),
+        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 
