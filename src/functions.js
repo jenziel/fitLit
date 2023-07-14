@@ -77,7 +77,7 @@ export const calculateUserAverageSleep = (sleepData) => {
     return sum + user.hoursSlept;
   }, 0)
   const averageUserSleep = sum/sleepData.length;
-  return averageUserSleep.toFixed(2);
+  return Number(averageUserSleep.toFixed(2));
 };
 
 export const calculateUserAverageSleepQuality = (sleepData) => {
@@ -85,7 +85,7 @@ export const calculateUserAverageSleepQuality = (sleepData) => {
     return sum + user.sleepQuality;
   }, 0)
   const averageUserSleepQuality = sum/sleepData.length;
-  return averageUserSleepQuality.toFixed(2);
+  return Number(averageUserSleepQuality.toFixed(2));
 };
 
 export const getUserDailyHrSleep = (day, sleepData) => {
@@ -103,7 +103,6 @@ export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   for(let i = endDateIndex-6; i <= endDateIndex; i++){
     weeklyHourSleepData.push(userSleep[i].hoursSlept);
   }
-  console.log('weeklyHourSleepData',weeklyHourSleepData)
   return weeklyHourSleepData;
 }
 
@@ -118,6 +117,7 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
 
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter(data => data.userID === user.id);
+  // console.log('userSteps', userSteps);
   return userSteps;
 };
 
@@ -125,9 +125,7 @@ export const createUserStepData = (user, stepData) => {
 //  (use their strideLength to help calculate this), based on a specific day
 export const getDaySteps = (day, userStepData) => {
   const dailySteps = userStepData.find(datum => datum.date === day)
-  console.log("dailySteps", dailySteps)
-  console.log("dailySteps.numSteps", dailySteps.numSteps)
-    return dailySteps.numSteps
+  return dailySteps.numSteps
   };
 
 export const calculateDayMileage = (userStepData, userData) => {
