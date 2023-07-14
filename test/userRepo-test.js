@@ -188,7 +188,7 @@ describe('Sleep Logic', function() {
     user2 = retrieveUserData(2, mockUsers);
     user1SleepData = getUserSleepData(user1, mockSleepData);
     user2SleepData =  getUserSleepData(user2, mockSleepData);
-    day1 = "2023/03/25";
+    day1 = "2023/03/24";
     day2 = "2023/07/01";
   }); // end of describe block 
 
@@ -238,12 +238,16 @@ describe('Sleep Logic', function() {
     expect(getUserDailyHrSleep).to.be.a('function')
   });
 
-  it('it should return the average quality sleep data for current user', function (){
-    expect(getUserDailyHrSleep(day1, user1SleepData)).to.deep.equal(9.6)
+  it('it should return the hours slept for current user for a given day', function (){
+    expect(getUserDailyHrSleep(day1, user1SleepData)).to.equal(9.6)
   });
 
-  it('it should return average quality sleep for a different current user', function (){
+  it('it should return the hours slept for a different day', function (){
     expect(getUserDailyHrSleep(day2, user1SleepData)).to.equal(9.7)
+  });
+
+  it('it should return the hours slept for a different current user', function (){
+    expect(getUserDailyHrSleep(day1, user2SleepData)).to.equal(8.4)
   });
 });
 
