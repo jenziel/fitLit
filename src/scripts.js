@@ -38,6 +38,8 @@ import{
   displayTodayHydro,
   displayAvgHydro,
   displayDailyHydro,
+  populateHydroGraph,
+  createBarGraph,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -63,7 +65,14 @@ const generateWebPage = () => {
   displayTodayHydro(mainData.today, currentUserH2O);
 
   displayAvgHydro(currentUserH2O);
-  displayDailyHydro(99, currentUserH2O);
+
+  // displayDailyHydro(99, currentUserH2O);
+  // populateHydroGraph(99, currentUserH2O);
+  createBarGraph(99, currentUserH2O);
+  console.log(masterData.currentUser);
+
+
+
 
   console.log('still here', calculateUserAverageSleep(currentUserSleep));
   console.log('avg sleep quality', calculateUserAverageSleepQuality(currentUserSleep));

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Fitlit</title>
     <link rel="stylesheet" href="../src/css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <main>
@@ -73,9 +74,12 @@
                 <p>oz</p>
               </div>
             </div>
-            <div class="box-contents2 wideBox">
-              <h3>This Week's Water Consumption:</h3>
-              <div class="week-display">
+            <div class="graph-chart">
+              <canvas id="hydroChart"></canvas>
+            </div>
+            <!-- <div class="box-contents2 wideBox">
+              <h3>This Week's Water Consumption:</h3> -->
+              <!-- <div class="week-display">
                 <div class="sub-box">
                   <div class="number-with-units">
                     <h3 class="hydro1">70</h3>
@@ -125,8 +129,8 @@
                   </div>
                   <h3 class="day7">7/01</h3>
                 </div>
-              </div>
-              </div>  
+              </div> -->
+              <!-- </div>   -->
             <div class="box-contents2 smallBox">
               <h3>Average Daily Water Consumption:</h3>
               <div class="number-with-units">

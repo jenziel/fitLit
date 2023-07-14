@@ -114,6 +114,8 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
   return weeklySleepQuality;
 }
 
+
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 // An example of how you tell webpack to use a JS file
