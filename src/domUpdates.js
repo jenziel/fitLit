@@ -10,6 +10,8 @@ import { returnAverageSteps,
   getUserDailyQualitySleep, 
   calculateUserAverageSleep,
   calculateUserAverageSleepQuality,
+  weeklyHourlySleepData,
+  weeklyQualitySleepData,
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -53,6 +55,8 @@ const averageHourlySleep = document.querySelector('.average-hours-slept');
 const averageQualitySleep = document.querySelector('.average-quality-slept');
 
 const hydroBarChart = document.getElementById('hydroChart');
+const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
+const qualityBarChart = document.getElementById('sleep-quality-graph');
 
 // Create the chart
 // const chart = new Chart(hydroBarChart, {
@@ -174,7 +178,7 @@ export const displayDailyHydro = (day, userHydroData) => {
 //   chart.update();
 // }
 
-export const createBarGraph = (day, hydroData) => {
+export const createHydroBarGraph = (day, hydroData) => {
   const chart = new Chart(hydroBarChart, {
     type: 'bar',
     data: {
@@ -196,6 +200,49 @@ export const createBarGraph = (day, hydroData) => {
   });
 }
 
+export const createHourlySleepBarGraph = (sleepData, day) => {
+  const chart = new Chart(hourlySleepBarChart, {
+    type: 'bar',
+    data: {
+      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      datasets: [{
+        label: 'Last Weeks Hourly Sleep Data',
+        data: weeklyHourlySleepData(sleepData, day),
+        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+export const createQualitySleepBarGraph = (sleepData, day) => {
+  const chart = new Chart(qualityBarChart, {
+    type: 'line',
+    data: {
+      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      datasets: [{
+        label: 'Last Weeks Quality',
+        data: weeklyQualitySleepData(sleepData, day),
+        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
 export const displaySleepDataToDom = (day, sleepData) => {
   todaysHourlySleep.innerText = `${getUserDailyHrSleep(day, sleepData)}`;
   todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;

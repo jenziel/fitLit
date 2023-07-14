@@ -206,7 +206,14 @@ main {
   height: 100%;
 }
 
-#hydroChart{
+.sleep-graph-pane{
+  display:flex;
+  flex-direction: column;
+}
+
+#hydroChart
+#sleep-hourly-graph
+#sleep-quality-graph{
   width: 60%;
   height: 75%;
   padding-bottom: 20px;

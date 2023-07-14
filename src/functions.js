@@ -103,6 +103,7 @@ export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   for(let i = endDateIndex-6; i <= endDateIndex; i++){
     weeklyHourSleepData.push(userSleep[i].hoursSlept);
   }
+  console.log('weeklyHourSleepData',weeklyHourSleepData)
   return weeklyHourSleepData;
 }
 
