@@ -22,6 +22,8 @@ import {
   weeklyActivityData
 } from './functions';
 
+import { imagesArray } from './images/svgFiles'
+
 // import returnAverageSteps from './scripts';
 // query selectors
 const userName = document.querySelector('.user-greeting');
@@ -105,14 +107,27 @@ export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
 };
 
+// export const updateIcon = () => {
+//   var container = document.getElementById("circle");
+//   console.log("container", container)
+//   var iconImage = document.createElement("img");
+//   iconImage.src = "./images/femaleAvatar.jpg";
+//   console.log("iconImage:", iconImage)
+//   container.appendChild(iconImage);
+// }
+
 export const updateIcon = () => {
-  var container = document.getElementById("circle");
+  const randomIndex = Math.floor(Math.random() * imagesArray.length);
+  const imageToBeUsed = imagesArray[randomIndex];
+  var container = document.getElementById("icon");
   console.log("container", container)
   var iconImage = document.createElement("img");
-  iconImage.src = "./images/femaleAvatar.jpg";
+  iconImage.src = imageToBeUsed;
   console.log("iconImage:", iconImage)
   container.appendChild(iconImage);
 }
+
+
 export const updateUserInfoPage = (user, data) => {
   userNameField.innerText = user.name
   addressField.innerText = user.address
