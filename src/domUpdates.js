@@ -197,7 +197,7 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
       datasets: [{
         label: 'Last Weeks Hourly Sleep Data',
         data: weeklyHourlySleepData(sleepData, day),
-        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+        backgroundColor: 'rgba(58, 13, 143, 0.6)', // Customize the bar color
       }]
     },
     options: {
@@ -224,7 +224,7 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
       datasets: [{
         label: 'Last Weeks Quality',
         data: weeklyQualitySleepData(sleepData, day),
-        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+        backgroundColor: 'rgba(58, 13, 143, 0.6)', // Customize the bar color
       }]
     },
     options: {
@@ -265,7 +265,7 @@ export const createUserActivityGraph = (activityData, day) => {
       datasets: [{
         label: 'Last Weeks Activity',
         data: weeklyStepData(activityData, day),
-        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+        backgroundColor: '#f40722', // Customize the bar color
       }]
     },
     options: {

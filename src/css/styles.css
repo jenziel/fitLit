@@ -7,10 +7,10 @@
   --light-gray: #e5e7eb;
   --white: #ffffff;
   --blue: #1f80f3;
-  --red: #ff4244;
+  --red: #f40722;
   --orange: #ff9c1b;
   --green: #4bb84a;
-  --purple: #b13ee7;
+  --purple: rgb(85, 48, 156);
   --pink: #e770be;
 }
 
@@ -188,10 +188,10 @@ main {
 }
 
 .sleep-box > div > h2 {
-  color: var(--pink);
+  color: var(--purple);
 }
 
-#box4 > h2 {
+.box-title > h2 {
   color: var(--red);
 }
 
