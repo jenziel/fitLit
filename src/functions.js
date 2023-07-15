@@ -161,28 +161,6 @@ export const formatDate = (weeklyData) => {
   const previous7Days = daysArray.map(previousDay => weekDays[previousDay.getDay()])
   return previous7Days
 }
-//sample step data
-//   {"userID": 23,
-// "date": "2023/03/25",
-// "numSteps": 10949,
-// "minutesActive": 25,
-// "flightsOfStairs": 43}
-//sample user data
-// {
-//   "id": 1,
-// "name": "Trystan Gorczany",
-// "address": "9484 Lucas Flat, West Kittymouth WA 67504",
-// "email": "Taurean_Pollich31@gmail.com",
-// "strideLength": 4,
-// "dailyStepGoal": 7000,
-// "friends": [
-// 5,
-// 43,
-// 46,
-// 11
-// ]
-// }
-
 
 // 2. Return how many minutes a user was active for a given day
 
