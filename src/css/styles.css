@@ -119,6 +119,15 @@ main {
   margin-bottom: 5vh;
   color: var(--gray);
 }
+.activity-box-contents-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.box-contents-wrapper{
+  display: flex;
+}
+
 .box-contents-container {
   display: flex;
   justify-content: space-evenly;

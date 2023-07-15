@@ -16,6 +16,10 @@ import {
   calculateMinutesActive,
   getDaySteps,
   calculateDayMileage,
+  formatDate,
+  weeklyStepData,
+  weeklySleepData,
+  weeklyActivityData
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -66,7 +70,7 @@ const userDistanceDisplay = document.querySelector('.miles-walked');
 const hydroBarChart = document.getElementById('hydroChart');
 const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
 const qualityBarChart = document.getElementById('sleep-quality-graph');
-
+const activityBarChart = document.getElementById('user-activity-graph');
 // Create the chart
 // const chart = new Chart(hydroBarChart, {
 //   type: 'bar',
@@ -151,33 +155,9 @@ export const displayAvgHydro = (userHydroData) => {
   avgHydro.innerText = `${getAllTimeAverageFlOz(userHydroData)}`
 }
 
-export const formatDate = (weeklyData) => {
-  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  const justDates = weeklyData.map(datum => datum.date)
-  const daysArray = justDates.map(date => new Date(date))
-  const previous7Days = daysArray.map(previousDay => weekDays[previousDay.getDay()])
-  return previous7Days
-}
-
 export const displayDailyHydro = (day, userHydroData) => {
   const weeklyData = weeklyHydroData(userHydroData, day);
-  const days = formatDate(weeklyData)
-  
-  // day1Hydro.innerText = `${weeklyData[0].numOunces}`;
-  // day2Hydro.innerText = `${weeklyData[1].numOunces}`;
-  // day3Hydro.innerText = `${weeklyData[2].numOunces}`;
-  // day4Hydro.innerText = `${weeklyData[3].numOunces}`;
-  // day5Hydro.innerText = `${weeklyData[4].numOunces}`;
-  // day6Hydro.innerText = `${weeklyData[5].numOunces}`;
-  // day7Hydro.innerText = `${weeklyData[6].numOunces}`;
-
-  // day1Date.innerText = `${days[0]}`; 
-  // day2Date.innerText = `${days[1]}`; 
-  // day3Date.innerText = `${days[2]}`; 
-  // day4Date.innerText = `${days[3]}`; 
-  // day5Date.innerText = `${days[4]}`; 
-  // day6Date.innerText = `${days[5]}`; 
-  // day7Date.innerText = `${days[6]}`; 
+  // const days = formatDate(weeklyData)
   const ouncesperDay = weeklyData.map(data => data.numOunces);
   return ouncesperDay;
 }
@@ -191,7 +171,7 @@ export const createHydroBarGraph = (day, hydroData) => {
   const chart = new Chart(hydroBarChart, {
     type: 'bar',
     data: {
-      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      labels: formatDate(weeklyHydroData(hydroData, day)),
       datasets: [{
         label: 'Last Weeks Hydration',
         data: displayDailyHydro(day, hydroData),
@@ -213,7 +193,7 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
   const chart = new Chart(hourlySleepBarChart, {
     type: 'bar',
     data: {
-      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      labels: formatDate(weeklySleepData(sleepData, day)),
       datasets: [{
         label: 'Last Weeks Hourly Sleep Data',
         data: weeklyHourlySleepData(sleepData, day),
@@ -223,6 +203,11 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
     options: {
       maintainAspectRatio: false,
       scales: {
+        x: {
+          ticks: {
+            display: false
+          }
+        },
         y: {
           beginAtZero: true
         }
@@ -235,7 +220,7 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
   const chart = new Chart(qualityBarChart, {
     type: 'line',
     data: {
-      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      labels: formatDate(weeklySleepData(sleepData, day)),
       datasets: [{
         label: 'Last Weeks Quality',
         data: weeklyQualitySleepData(sleepData, day),
@@ -252,6 +237,7 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
     }
   });
 }
+
 export const displaySleepDataToDom = (day, sleepData) => {
   todaysHourlySleep.innerText = `${getUserDailyHrSleep(day, sleepData)}`;
   todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;
@@ -271,6 +257,27 @@ export const displayDistanceWalked = (activityData, day, currentUserData) => {
   userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 
+export const createUserActivityGraph = (activityData, day) => {
+  const chart = new Chart(activityBarChart, {
+    type: 'line',
+    data: {
+      labels: formatDate(weeklyActivityData(activityData, day)),
+      datasets: [{
+        label: 'Last Weeks Activity',
+        data: weeklyStepData(activityData, day),
+        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 // const exampleFunction1 = (person) => {
 //   console.log(`oh hi there ${person}`);

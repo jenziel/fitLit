@@ -114,6 +114,13 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
   return weeklySleepQuality;
 }
 
+export const weeklySleepData = (userSleep, endDateIndex) => {
+  const weeklySleepData = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklySleepData.push(userSleep[i]);
+  }
+  return weeklySleepData;
+}
 
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter(data => data.userID === user.id);
@@ -149,7 +156,21 @@ export const weeklyStepData = (userActivityData, endDateIndex) => {
   return weeklyStepData;
 }
 
+export const weeklyActivityData = (userActivityData, endDateIndex) => {
+  const weeklyActivityData = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklyActivityData.push(userActivityData[i]);
+  }
+  return weeklyActivityData;
+}
 
+export const formatDate = (weeklyData) => {
+  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const justDates = weeklyData.map(datum => datum.date)
+  const daysArray = justDates.map(date => new Date(date))
+  const previous7Days = daysArray.map(previousDay => weekDays[previousDay.getDay()])
+  return previous7Days
+}
 //sample step data
 //   {"userID": 23,
 // "date": "2023/03/25",
