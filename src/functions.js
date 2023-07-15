@@ -162,6 +162,19 @@ export const formatDate = (weeklyData) => {
   return previous7Days
 }
 
+export const compareUserStepGoal = (weeklyStepData, userData) => {
+  const colorArray = [];
+  const colorChecks = ['rgba(247, 113, 2, 1)', 'rgba(180, 236, 52, .8)'];
+    for(var i = 0; i < weeklyStepData.length; i++){
+      if(weeklyStepData[i] >= userData.dailyStepGoal){
+        colorArray.push(colorChecks[1]);
+      }
+      else{
+        colorArray.push(colorChecks[0]);
+      }
+    }
+  return colorArray;
+}
 // 2. Return how many minutes a user was active for a given day
 
 // 3. Return if a user reached their step goal for a given day

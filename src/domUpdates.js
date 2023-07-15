@@ -19,7 +19,8 @@ import {
   formatDate,
   weeklyStepData,
   weeklySleepData,
-  weeklyActivityData
+  weeklyActivityData,
+  compareUserStepGoal,
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -257,15 +258,15 @@ export const displayDistanceWalked = (activityData, day, currentUserData) => {
   userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 
-export const createUserActivityGraph = (activityData, day) => {
+export const createUserActivityGraph = (activityData, day, userData) => {
   const chart = new Chart(activityBarChart, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: formatDate(weeklyActivityData(activityData, day)),
       datasets: [{
         label: 'Last Weeks Activity',
         data: weeklyStepData(activityData, day),
-        backgroundColor: '#f40722', // Customize the bar color
+        backgroundColor: compareUserStepGoal(weeklyStepData(activityData, day), userData)
       }]
     },
     options: {
@@ -277,6 +278,7 @@ export const createUserActivityGraph = (activityData, day) => {
       }
     }
   });
+  console.log(compareUserStepGoal(weeklyStepData(activityData, day), userData));
 }
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 // const exampleFunction1 = (person) => {

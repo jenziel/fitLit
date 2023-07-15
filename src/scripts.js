@@ -79,7 +79,7 @@ const generateWebPage = () => {
   displayAvgHydro(currentUserH2O);
   createHourlySleepBarGraph(currentUserSleep, 99);
   createQualitySleepBarGraph(currentUserSleep, 99);
-  createUserActivityGraph(currentUserActivity,99);
+  createUserActivityGraph(currentUserActivity,99, mainData.currentUser);
 
   // displayDailyHydro(99, currentUserH2O);
   // populateHydroGraph(99, currentUserH2O);
