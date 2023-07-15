@@ -124,14 +124,31 @@ export const createUserStepData = (user, stepData) => {
 // 1. Calculate the miles a user has walked based on their number of steps
 //  (use their strideLength to help calculate this), based on a specific day
 export const getDaySteps = (day, userStepData) => {
+  console.log("Day", day, "STEP DATA", userStepData)
   const dailySteps = userStepData.find(datum => datum.date === day)
   return dailySteps.numSteps
   };
 
 export const calculateDayMileage = (userStepData, userData) => {
+  console.log("user step data" ,userData)
   const miles = (userStepData * userData.strideLength) / 5280
+  console.log(miles)
   return Number(miles.toFixed(2))
 }
+
+export const calculateMinutesActive = (userData, day) => {
+  const dayActivity = userData.find(data => data.date === day);
+  return dayActivity.minutesActive;
+}
+
+export const weeklyStepData = (userActivityData, endDateIndex) => {
+  const weeklyStepData = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklyStepData.push(userActivityData[i].numSteps);
+  }
+  return weeklyStepData;
+}
+
 
 //sample step data
 //   {"userID": 23,

@@ -27,6 +27,8 @@ import {
   createUserStepData,
   getDaySteps,
   calculateDayMileage,
+  calculateMinutesActive,
+  weeklyStepData,
 } from './functions';
 
 import{
@@ -46,6 +48,9 @@ import{
   displaySleepDataToDom,
   createHourlySleepBarGraph,
   createQualitySleepBarGraph,
+  displayMinutesActive,
+  displayUserSteps,
+  displayDistanceWalked,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -61,10 +66,6 @@ const generateWebPage = () => {
   const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
   const currentUserActivity = createUserStepData(mainData.currentUser, mainData.activity);
   
-  console.log("activity data:", mainData.activity)
-  console.log('day steps', getDaySteps(mainData.today, currentUserActivity));
-
-
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(mainData.currentUser);
@@ -82,6 +83,9 @@ const generateWebPage = () => {
   // populateHydroGraph(99, currentUserH2O);
   createHydroBarGraph(99, currentUserH2O);
   displaySleepDataToDom(mainData.today, currentUserSleep);
+  displayMinutesActive(currentUserActivity, mainData.today);
+  displayUserSteps(currentUserActivity, mainData.today);
+  displayDistanceWalked(currentUserActivity, mainData.today, mainData.currentUser);
 
 
 

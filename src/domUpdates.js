@@ -1,6 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 // import users from './data/users';
-import { returnAverageSteps, 
+import { 
+  returnAverageSteps, 
   nameFriends, 
   currentUser, 
   getDailyFlOz, 
@@ -12,6 +13,9 @@ import { returnAverageSteps,
   calculateUserAverageSleepQuality,
   weeklyHourlySleepData,
   weeklyQualitySleepData,
+  calculateMinutesActive,
+  getDaySteps,
+  calculateDayMileage,
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -53,6 +57,11 @@ const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
 const todaysQualitySleep = document.querySelector('.todays-quality-sleep');
 const averageHourlySleep = document.querySelector('.average-hours-slept');
 const averageQualitySleep = document.querySelector('.average-quality-slept');
+
+const userStepsDisplay = document.querySelector('.step-amount');
+const minutesActiveDisplay = document.querySelector('.minutes-active');
+const minutesActiveDate = document.querySelector('.active-minutes-date')
+const userDistanceDisplay = document.querySelector('.miles-walked');
 
 const hydroBarChart = document.getElementById('hydroChart');
 const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
@@ -248,6 +257,18 @@ export const displaySleepDataToDom = (day, sleepData) => {
   todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;
   averageHourlySleep.innerText = `${calculateUserAverageSleep(sleepData)}`;
   averageQualitySleep.innerText = `${calculateUserAverageSleepQuality(sleepData)}`;
+}
+
+export const displayMinutesActive = (activityData, day) => {
+  minutesActiveDisplay.innerText = `${calculateMinutesActive(activityData, day)}`;
+}
+
+export const displayUserSteps = (activityData, day) => {
+  userStepsDisplay.innerText = `${getDaySteps(day, activityData)}`;
+}
+
+export const displayDistanceWalked = (activityData, day, currentUserData) => {
+  userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
