@@ -75,8 +75,8 @@ const generateWebPage = () => {
   calcStepComparison(mainData.currentUser, mainData.users);
   updateUserInfoPage(mainData.currentUser, mainData.users);
   displayTodayHydro(mainData.today, currentUserH2O);
-
   displayAvgHydro(currentUserH2O);
+
   createHourlySleepBarGraph(currentUserSleep, 99);
   createQualitySleepBarGraph(currentUserSleep, 99);
   createUserActivityGraph(currentUserActivity,99, mainData.currentUser);

@@ -191,6 +191,7 @@ main {
   color: var(--purple);
 }
 
+
 .box-title > h2 {
   color: var(--red);
 }
@@ -239,4 +240,11 @@ main {
 .sleep-graph-pane {
   display:flex;
   flex-direction: column;
+}
+
+p.red {
+  color: var(--red)
+}
+p.green {
+  color: var(--green);
 }
