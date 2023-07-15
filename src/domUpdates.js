@@ -257,7 +257,6 @@ export const displaySleepDataToDom = (day, sleepData) => {
 
 export const displayMinutesActive = (activityData, day) => {
   minutesActiveDisplay.innerText = `${calculateMinutesActive(activityData, day)}`;
-  minutesActiveDate.innerText = `on ${day}`;
 }
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
