@@ -100,19 +100,11 @@ export const getUserDailyQualitySleep = (day, sleepData) => {
 };
 
 export const describeSleepQuality = (userSleepQuality) => {
-  if (userSleepQuality >= 3.0) {
-    return "good";
-  } else {
-    return "poor";
-  }
+  return userSleepQuality >= 3 ? "good" : "poor"
 };
 
 export const changeGoodBadColor = (userSleepQuality) => {
-  if (userSleepQuality >= 3.0) {
-    return "green";
-  } else {
-    return "red";
-  }
+  return userSleepQuality >= 3 ? "green" : "red"
 };
 
 export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
