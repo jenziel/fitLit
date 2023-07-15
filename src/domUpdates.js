@@ -14,6 +14,8 @@ import {
   weeklyHourlySleepData,
   weeklyQualitySleepData,
   calculateMinutesActive,
+  getDaySteps,
+  calculateDayMileage,
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -56,8 +58,10 @@ const todaysQualitySleep = document.querySelector('.todays-quality-sleep');
 const averageHourlySleep = document.querySelector('.average-hours-slept');
 const averageQualitySleep = document.querySelector('.average-quality-slept');
 
+const userStepsDisplay = document.querySelector('.step-amount');
 const minutesActiveDisplay = document.querySelector('.minutes-active');
-const minutesActiveDate = document.querySelector('.active-minutes-date');
+const minutesActiveDate = document.querySelector('.active-minutes-date')
+const userDistanceDisplay = document.querySelector('.miles-walked');
 
 const hydroBarChart = document.getElementById('hydroChart');
 const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
@@ -257,6 +261,15 @@ export const displaySleepDataToDom = (day, sleepData) => {
 
 export const displayMinutesActive = (activityData, day) => {
   minutesActiveDisplay.innerText = `${calculateMinutesActive(activityData, day)}`;
+}
+
+export const displayUserSteps = (activityData, day) => {
+  userStepsDisplay.innerText = `${getDaySteps(day, activityData)}`;
+}
+
+export const displayDistanceWalked = (activityData, day, currentUserData) => {
+  console.log("FUNCTION CALL AMOUNT" ,getDaySteps(day,activityData));
+  userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.

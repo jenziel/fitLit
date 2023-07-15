@@ -47,7 +47,9 @@ import{
   displaySleepDataToDom,
   createHourlySleepBarGraph,
   createQualitySleepBarGraph,
-  displayMinutesActive
+  displayMinutesActive,
+  displayUserSteps,
+  displayDistanceWalked,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -85,6 +87,8 @@ const generateWebPage = () => {
   createHydroBarGraph(99, currentUserH2O);
   displaySleepDataToDom(mainData.today, currentUserSleep);
   displayMinutesActive(currentUserActivity, mainData.today);
+  displayUserSteps(currentUserActivity, mainData.today);
+  displayDistanceWalked(currentUserActivity, mainData.today, mainData.currentUser);
 
 
 
