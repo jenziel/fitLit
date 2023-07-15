@@ -1,4 +1,7 @@
-// functions
+// User Data Functions:
+
+import { lastNightQualityGoodBad, avgQualityGoodBad } from "./domUpdates";
+
 export const createRandomUser = (usersArray) => {
   const randomIndex = Math.floor(Math.random() * usersArray.length);
   let currentUser = usersArray[randomIndex];
@@ -27,6 +30,7 @@ export const nameFriends = (currentUser, usersArray) => {
   return formattedArray;
 };
 
+//Hydro Data Functions:
 export const createUserHydroData = (user, hydroData) => {
   const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
   return userHydroData;
@@ -63,6 +67,7 @@ export const weeklyHydroData = (userHydroData, endDateIndex) => {
   return weeklyData;
 };
 
+//Sleep Data Functions:
 export const getUserSleepData = (user, sleepData) => {
   const userSleep = sleepData.filter((data) => data.userID === user.id);
   return userSleep;
@@ -94,6 +99,22 @@ export const getUserDailyQualitySleep = (day, sleepData) => {
   return dailySleep.sleepQuality;
 };
 
+export const describeSleepQuality = (userSleepQuality) => {
+  if (userSleepQuality >= 3.0) {
+    return "good";
+  } else {
+    return "poor";
+  }
+};
+
+export const changeGoodBadColor = (userSleepQuality) => {
+  if (userSleepQuality >= 3.0) {
+    return "green";
+  } else {
+    return "red";
+  }
+};
+
 export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   const weeklyHourSleepData = [];
   for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
@@ -108,16 +129,17 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
     weeklySleepQuality.push(userSleep[i].sleepQuality);
   }
   return weeklySleepQuality;
-}
+};
 
 export const weeklySleepData = (userSleep, endDateIndex) => {
   const weeklySleepData = [];
-  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
     weeklySleepData.push(userSleep[i]);
   }
   return weeklySleepData;
-}
+};
 
+//Activity Data Functions:
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter((data) => data.userID === user.id);
   return userSteps;
@@ -144,37 +166,46 @@ export const weeklyStepData = (userActivityData, endDateIndex) => {
     weeklyStepData.push(userActivityData[i].numSteps);
   }
   return weeklyStepData;
-}
+};
 
 export const weeklyActivityData = (userActivityData, endDateIndex) => {
   const weeklyActivityData = [];
-  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
     weeklyActivityData.push(userActivityData[i]);
   }
   return weeklyActivityData;
-}
+};
 
 export const formatDate = (weeklyData) => {
-  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  const justDates = weeklyData.map(datum => datum.date)
-  const daysArray = justDates.map(date => new Date(date))
-  const previous7Days = daysArray.map(previousDay => weekDays[previousDay.getDay()])
-  return previous7Days
-}
+  const weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const justDates = weeklyData.map((datum) => datum.date);
+  const daysArray = justDates.map((date) => new Date(date));
+  const previous7Days = daysArray.map(
+    (previousDay) => weekDays[previousDay.getDay()]
+  );
+  return previous7Days;
+};
 
 export const compareUserStepGoal = (weeklyStepData, userData) => {
   const colorArray = [];
-  const colorChecks = ['rgba(247, 113, 2, 1)', 'rgba(180, 236, 52, .8)'];
-    for(var i = 0; i < weeklyStepData.length; i++){
-      if(weeklyStepData[i] >= userData.dailyStepGoal){
-        colorArray.push(colorChecks[1]);
-      }
-      else{
-        colorArray.push(colorChecks[0]);
-      }
+  const colorChecks = ["rgba(247, 113, 2, 1)", "rgba(180, 236, 52, .8)"];
+  for (var i = 0; i < weeklyStepData.length; i++) {
+    if (weeklyStepData[i] >= userData.dailyStepGoal) {
+      colorArray.push(colorChecks[1]);
+    } else {
+      colorArray.push(colorChecks[0]);
     }
+  }
   return colorArray;
-}
+};
 // 2. Return how many minutes a user was active for a given day
 
 // 3. Return if a user reached their step goal for a given day

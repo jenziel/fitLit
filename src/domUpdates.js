@@ -11,6 +11,8 @@ import {
   getUserDailyQualitySleep, 
   calculateUserAverageSleep,
   calculateUserAverageSleepQuality,
+  describeSleepQuality,
+  changeGoodBadColor,
   weeklyHourlySleepData,
   weeklyQualitySleepData,
   calculateMinutesActive,
@@ -21,6 +23,7 @@ import {
   weeklySleepData,
   weeklyActivityData,
   compareUserStepGoal,
+  
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -58,10 +61,14 @@ const avgHydro = document.querySelector('.average-water');
 // const day6Date = document.querySelector('.day6');
 // const day7Date = document.querySelector('.day7');
 
+//last night:
 const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
-const todaysQualitySleep = document.querySelector('.todays-quality-sleep');
+const todaysQualitySleep = document.querySelector('.todays-quality-sleep-num');
+export const lastNightQualityGoodBad = document.querySelector('.sleep-quality-today-descriptive');
+//weekly:
 const averageHourlySleep = document.querySelector('.average-hours-slept');
-const averageQualitySleep = document.querySelector('.average-quality-slept');
+const averageQualitySleep = document.querySelector('.average-quality-slept-num');
+export const avgQualityGoodBad = document.querySelector('.sleep-quality-avg-descriptive');
 
 const userStepsDisplay = document.querySelector('.step-amount');
 const minutesActiveDisplay = document.querySelector('.minutes-active');
@@ -72,6 +79,7 @@ const hydroBarChart = document.getElementById('hydroChart');
 const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
 const qualityBarChart = document.getElementById('sleep-quality-graph');
 const activityBarChart = document.getElementById('user-activity-graph');
+
 // Create the chart
 // const chart = new Chart(hydroBarChart, {
 //   type: 'bar',
@@ -244,7 +252,12 @@ export const displaySleepDataToDom = (day, sleepData) => {
   todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;
   averageHourlySleep.innerText = `${calculateUserAverageSleep(sleepData)}`;
   averageQualitySleep.innerText = `${calculateUserAverageSleepQuality(sleepData)}`;
+  lastNightQualityGoodBad.innerText = `${describeSleepQuality(getUserDailyQualitySleep(day, sleepData))}`
+  avgQualityGoodBad.innerText = `${describeSleepQuality(calculateUserAverageSleepQuality(sleepData))}`
+  lastNightQualityGoodBad.classList.add(changeGoodBadColor(getUserDailyQualitySleep(day, sleepData)))
+  avgQualityGoodBad.classList.add(changeGoodBadColor(calculateUserAverageSleepQuality(sleepData)))
 }
+
 
 export const displayMinutesActive = (activityData, day) => {
   minutesActiveDisplay.innerText = `${calculateMinutesActive(activityData, day)}`;
