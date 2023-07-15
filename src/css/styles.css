@@ -42,11 +42,15 @@ main {
   justify-content: flex-start;
   align-items: center;
 }
+.app-name{
+  margin-left: 585px;
+  font-size: 100px;
+  font-weight: bold;
+}
 
 #icon {
   width: 140px;
   height: 140px;
-  /* border-radius: 50%; */
   overflow: hidden;
   margin-right: 2vw;
 }
@@ -58,24 +62,30 @@ main {
 }
 
 .lower-pane {
-  height: 75%;
+  height: 80%;
   background-color: var(--dark-gray);
   padding: 3vw;
   display: flex;
   flex-direction: column;
-  align-items: space-around;
+  align-items: center;
+  justify-content: space-between;
   overflow-y: scroll;
 }
 
 .alt-lower-pane {
-  height: 75vh;
+  height: 80%;
   background-color: var(--dark-gray);
-  padding: 20px;
+  display:flex;
+  padding: 3vw;
+  display: flex;
+  align-items: center;
 }
+
 .profile-box {
   padding-left: 50px;
   height: 60vh;
   width: 100%;
+  border-radius: 15px;
   background-color: var(--light-gray);
   display: flex;
   justify-content: flex-start;
@@ -97,7 +107,7 @@ main {
   padding-right: 50px;
   height: auto;
   width: 100%;
-  margin-top: 5vh;
+  margin: 25px;
   border-radius: 15px;
   background-color: var(--light-gray);
   display: flex;
