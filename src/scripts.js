@@ -27,6 +27,7 @@ import {
   createUserStepData,
   getDaySteps,
   calculateDayMileage,
+  calculateMinutesActive
 } from './functions';
 
 import{
@@ -46,6 +47,7 @@ import{
   displaySleepDataToDom,
   createHourlySleepBarGraph,
   createQualitySleepBarGraph,
+  displayMinutesActive
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -82,6 +84,7 @@ const generateWebPage = () => {
   // populateHydroGraph(99, currentUserH2O);
   createHydroBarGraph(99, currentUserH2O);
   displaySleepDataToDom(mainData.today, currentUserSleep);
+  displayMinutesActive(currentUserActivity, mainData.today);
 
 
 

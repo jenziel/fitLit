@@ -1,6 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 // import users from './data/users';
-import { returnAverageSteps, 
+import { 
+  returnAverageSteps, 
   nameFriends, 
   currentUser, 
   getDailyFlOz, 
@@ -12,6 +13,7 @@ import { returnAverageSteps,
   calculateUserAverageSleepQuality,
   weeklyHourlySleepData,
   weeklyQualitySleepData,
+  calculateMinutesActive,
 } from './functions';
 
 // import returnAverageSteps from './scripts';
@@ -53,6 +55,9 @@ const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
 const todaysQualitySleep = document.querySelector('.todays-quality-sleep');
 const averageHourlySleep = document.querySelector('.average-hours-slept');
 const averageQualitySleep = document.querySelector('.average-quality-slept');
+
+const minutesActiveDisplay = document.querySelector('.minutes-active');
+const minutesActiveDate = document.querySelector('.active-minutes-date');
 
 const hydroBarChart = document.getElementById('hydroChart');
 const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
@@ -248,6 +253,11 @@ export const displaySleepDataToDom = (day, sleepData) => {
   todaysQualitySleep.innerText = `${getUserDailyQualitySleep(day, sleepData)}`;
   averageHourlySleep.innerText = `${calculateUserAverageSleep(sleepData)}`;
   averageQualitySleep.innerText = `${calculateUserAverageSleepQuality(sleepData)}`;
+}
+
+export const displayMinutesActive = (activityData, day) => {
+  minutesActiveDisplay.innerText = `${calculateMinutesActive(activityData, day)}`;
+  minutesActiveDate.innerText = `on ${day}`;
 }
 
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.

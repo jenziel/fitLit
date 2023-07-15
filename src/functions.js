@@ -133,6 +133,12 @@ export const calculateDayMileage = (userStepData, userData) => {
   return Number(miles.toFixed(2))
 }
 
+export const calculateMinutesActive = (userData, day) => {
+  const dayActivity = userData.find(data => data.date === day);
+  return dayActivity.minutesActive;
+  }
+
+
 //sample step data
 //   {"userID": 23,
 // "date": "2023/03/25",
