@@ -27,7 +27,8 @@ import {
   createUserStepData,
   getDaySteps,
   calculateDayMileage,
-  calculateMinutesActive
+  calculateMinutesActive,
+  weeklyStepData,
 } from './functions';
 
 import{
@@ -65,10 +66,6 @@ const generateWebPage = () => {
   const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
   const currentUserActivity = createUserStepData(mainData.currentUser, mainData.activity);
   
-  console.log("activity data:", mainData.activity)
-  console.log('day steps', getDaySteps(mainData.today, currentUserActivity));
-
-
   updateIcon();
   weeklyHydroData(currentUserH2O,99);
   updateUserDailyStepGoal(mainData.currentUser);

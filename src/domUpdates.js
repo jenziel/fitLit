@@ -268,7 +268,6 @@ export const displayUserSteps = (activityData, day) => {
 }
 
 export const displayDistanceWalked = (activityData, day, currentUserData) => {
-  console.log("FUNCTION CALL AMOUNT" ,getDaySteps(day,activityData));
   userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 

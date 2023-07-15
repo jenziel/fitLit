@@ -139,7 +139,15 @@ export const calculateDayMileage = (userStepData, userData) => {
 export const calculateMinutesActive = (userData, day) => {
   const dayActivity = userData.find(data => data.date === day);
   return dayActivity.minutesActive;
+}
+
+export const weeklyStepData = (userActivityData, endDateIndex) => {
+  const weeklyStepData = [];
+  for(let i = endDateIndex-6; i <= endDateIndex; i++){
+    weeklyStepData.push(userActivityData[i].numSteps);
   }
+  return weeklyStepData;
+}
 
 
 //sample step data
