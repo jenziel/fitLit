@@ -29,6 +29,7 @@ import {
   calculateDayMileage,
   calculateMinutesActive,
   weeklyStepData,
+  friendsStepChallenge,
 } from './functions';
 
 import{
@@ -88,13 +89,14 @@ const generateWebPage = () => {
   displayMinutesActive(currentUserActivity, mainData.today);
   displayUserSteps(currentUserActivity, mainData.today);
   displayDistanceWalked(currentUserActivity, mainData.today, mainData.currentUser);
+  friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity);
+
 };
 
 // event handlers
 window.addEventListener('load', () => {
   Promise.all(promises)
   .then(response => {
-    console.log("response:", response)
       const [usersPromise, hydroPromise, sleepPromise, activityPromise] = response
       // add second keys to actually be able to access the value from the key (create key/value pairs)
       mainData.users = usersPromise; 

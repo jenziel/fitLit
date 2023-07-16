@@ -134,6 +134,7 @@ export const weeklySleepData = (userSleep, endDateIndex) => {
 //Activity Data Functions:
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter((data) => data.userID === user.id);
+  console.log("USERSTEPS :", userSteps)
   return userSteps;
 };
 
@@ -198,6 +199,53 @@ export const compareUserStepGoal = (weeklyStepData, userData) => {
   }
   return colorArray;
 };
+
+export const getUserData = (userID, usersData) => {
+  return (usersData.find(user => user.id === userID));
+}
+
+export const friendsStepChallenge = (userData, allUsersData, activityData) => {
+  const friends = userData.friends;
+  const friendsData = [];
+  friends.forEach(friend => {
+    friendsData.push(getUserData(friend, allUsersData));
+  })
+  const friendsSteps = [];
+  friendsData.forEach(friend => {
+    friendsSteps.push(
+      {
+        friendName: friend.name,
+        friendSteps: totalSteps(weeklyStepData(createUserStepData(friend, activityData),99)),
+      })
+      
+    });
+    
+    if((friendsSteps.find(friend => friend.friendName === userData.name)) === undefined){
+    friendsSteps.push({
+      friendName: userData.name,
+      friendSteps: totalSteps(weeklyStepData(createUserStepData(userData,activityData),99)),
+    })
+  }
+  const sortedFriends = friendsSteps.sort((a,b) => b.friendSteps - a.friendSteps);
+  console.log(displayStepChallenge(sortedFriends))
+}
+
+export const displayStepChallenge = (totalSteps) => {
+  const sortedWithNames = [];
+  totalSteps.forEach(friend => {
+    sortedWithNames.push( `${friend.friendName} has ${friend.friendSteps} steps.`)
+  })
+  return sortedWithNames;
+}
+
+export const totalSteps = (stepData) => {
+  return stepData.reduce((acc, cv) => {
+    acc += cv
+    console.log(acc)
+    return acc;
+
+  },0)
+}
 // 2. Return how many minutes a user was active for a given day
 
 // 3. Return if a user reached their step goal for a given day
