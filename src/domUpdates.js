@@ -47,21 +47,6 @@ const userIcon = document.querySelector(".user-icon");
 
 const todayHydro = document.querySelector('.todays-hydro');
 const avgHydro = document.querySelector('.average-water');
-// const day1Hydro = document.querySelector('.hydro1');
-// const day2Hydro = document.querySelector('.hydro2');
-// const day3Hydro = document.querySelector('.hydro3');
-// const day4Hydro = document.querySelector('.hydro4');
-// const day5Hydro = document.querySelector('.hydro5');
-// const day6Hydro = document.querySelector('.hydro6');
-// const day7Hydro = document.querySelector('.hydro7');
-
-// const day1Date = document.querySelector('.day1');
-// const day2Date = document.querySelector('.day2');
-// const day3Date = document.querySelector('.day3');
-// const day4Date = document.querySelector('.day4');
-// const day5Date = document.querySelector('.day5');
-// const day6Date = document.querySelector('.day6');
-// const day7Date = document.querySelector('.day7');
 
 //last night:
 const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
@@ -82,57 +67,20 @@ const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
 const qualityBarChart = document.getElementById('sleep-quality-graph');
 const activityBarChart = document.getElementById('user-activity-graph');
 
-// Create the chart
-// const chart = new Chart(hydroBarChart, {
-//   type: 'bar',
-//   data: {
-//     labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-//     datasets: [{
-//       label: 'Last Weeks Hydration',
-//       data: ['0','0','0','0','0','0','0'],
-//       backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
-//     }]
-//   },
-//   options: {
-//     maintainAspectRatio: false,
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// });
-
-
-// universal variables
-
-// functions
-
-// const randomIndex = Math.floor(Math.random() * users.users.length);
-
-// let currentUser = users.users[randomIndex];
+const displayStepChallenge = document.querySelector('.challenge-results');
+const activityTrendText = document.querySelector('.activity-trend-title');
+const activityTrendGraph = document.getElementById('activity-trend-graph-display');
 
 export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
 };
 
-// export const updateIcon = () => {
-//   var container = document.getElementById("circle");
-//   console.log("container", container)
-//   var iconImage = document.createElement("img");
-//   iconImage.src = "./images/femaleAvatar.jpg";
-//   console.log("iconImage:", iconImage)
-//   container.appendChild(iconImage);
-// }
-
 export const updateIcon = () => {
   const randomIndex = Math.floor(Math.random() * imagesArray.length);
   const imageToBeUsed = imagesArray[randomIndex];
   var container = document.getElementById("icon");
-  console.log("container", container)
   var iconImage = document.createElement("img");
   iconImage.src = imageToBeUsed;
-  console.log("iconImage:", iconImage)
   container.appendChild(iconImage);
 }
 
@@ -155,6 +103,19 @@ export const calcStepComparison = (user, data) => {
 
 export const displayCohortStepAverage = (data) => {
   cohortStepGoal.innerText = `${returnAverageSteps(data)}`;
+};
+
+export const displayStepChallengeToDom = (challengeData) => {
+  displayStepChallenge.innerHTML = '';
+  challengeData.forEach((datum, index) => {
+    let crown = '👑';
+    if(index !== 0){
+      crown = '';
+    }
+
+    displayStepChallenge.innerHTML += 
+      `<p>${index+1}. ${datum} ${crown}</p>`;
+  });
 };
 
 export const updateUserName = (user) => {
@@ -186,11 +147,6 @@ export const displayDailyHydro = (day, userHydroData) => {
   return ouncesperDay;
 }
 
-// export const populateHydroGraph = (day, hydroData) => {
-//   chart.data.datasets[0].data = displayDailyHydro(day, hydroData);
-//   chart.update();
-// }
-
 export const createHydroBarGraph = (day, hydroData) => {
   const chart = new Chart(hydroBarChart, {
     type: 'bar',
@@ -206,7 +162,11 @@ export const createHydroBarGraph = (day, hydroData) => {
       maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Fluid Ounces'
+          }
         }
       }
     }
@@ -233,7 +193,11 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
           }
         },
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Hours Slept'
+          }
         }
       }
     }
@@ -255,7 +219,11 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
       maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Sleep Quality'
+          }
         }
       }
     }
@@ -301,20 +269,55 @@ export const createUserActivityGraph = (activityData, day, userData) => {
       maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Steps'
+          }
         }
       }
     }
   });
-  console.log(compareUserStepGoal(weeklyStepData(activityData, day), userData));
 }
-//Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-// const exampleFunction1 = (person) => {
-//   console.log(`oh hi there ${person}`);
-// };
 
-// const exampleFunction2 = (person) => {
-//   console.log(`bye now ${person}`);
-// };
+activityTrendText
+activityTrendGraph
 
-// export { exampleFunction1, exampleFunction2 };
+export const displayActivityTrendGraph = (trendData) => {
+  let lastObject = trendData[trendData.length-1];
+  let mostRecentSteps = lastObject.map(datum => datum.numSteps)
+  let mostRecentDates = lastObject.map(datum => datum.date)
+  let reformattedMostRecentDates = []
+  mostRecentDates.forEach((date) => {
+    let splitDate = date.split('/');
+    splitDate.shift();
+    let joinDate = splitDate.join('/');
+    reformattedMostRecentDates.push(joinDate);
+  })
+
+
+console.log('mostRecentDates', mostRecentDates)
+  const chart = new Chart(activityTrendGraph, {
+    type: 'bar',
+    data: {
+      labels: reformattedMostRecentDates,
+      datasets: [{
+        label: 'Latest Trend',
+        data: mostRecentSteps,
+        backgroundColor: 'rgba(242, 15, 15, 1)',
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Steps'
+          }
+        }
+      }
+    }
+  });
+}

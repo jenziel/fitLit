@@ -53,7 +53,7 @@ export const getDailyFlOz = (day, hydroData) => {
 export function findStartingIndex(userHydroData, endDate) {
   for (let i = 0; i < userHydroData.length; i++) {
     if (userHydroData[i].date === endDate) {
-      console.log(i);
+  
       return i;
     }
   }
@@ -134,7 +134,6 @@ export const weeklySleepData = (userSleep, endDateIndex) => {
 //Activity Data Functions:
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter((data) => data.userID === user.id);
-  console.log("USERSTEPS :", userSteps)
   return userSteps;
 };
 
@@ -217,7 +216,6 @@ export const friendsStepChallenge = (userData, allUsersData, activityData) => {
         friendName: friend.name,
         friendSteps: totalSteps(weeklyStepData(createUserStepData(friend, activityData),99)),
       })
-      
     });
     
     if((friendsSteps.find(friend => friend.friendName === userData.name)) === undefined){
@@ -227,7 +225,7 @@ export const friendsStepChallenge = (userData, allUsersData, activityData) => {
     })
   }
   const sortedFriends = friendsSteps.sort((a,b) => b.friendSteps - a.friendSteps);
-  console.log(displayStepChallenge(sortedFriends))
+  return sortedFriends
 }
 
 export const displayStepChallenge = (totalSteps) => {
@@ -247,26 +245,20 @@ export const totalSteps = (stepData) => {
 
 export const increasingStepDays = (stepData) => {
   const increasedDays = [];
-  console.log("test",stepData);
-  console.log(stepData.length)
   for(var i = 0 ; i < stepData.length-2 ; i++){
-    console.log("TESTTESTTEST");
+
     if(stepData[i].numSteps < stepData[i+1].numSteps && stepData[i+1].numSteps < stepData[i+2].numSteps){
-      increasedDays.push([stepData[i].date, stepData[i+1].date, stepData[i+2].date]);
+      increasedDays.push([{
+        date: stepData[i].date, 
+        numSteps: stepData[i].numSteps,
+      },{
+        date: stepData[i+1].date, 
+        numSteps: stepData[i+1].numSteps,
+      },{
+        date: stepData[i+2].date, 
+        numSteps: stepData[i+2].numSteps,
+      }]);
     }
   }
-  console.log("Increasing days: ", increasedDays);
   return increasedDays;
 }
-// 2. Return how many minutes a user was active for a given day
-
-// 3. Return if a user reached their step goal for a given day
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
-// An example of how you tell webpack to use a JS file
-
-// Example of one way to import functions from the domUpdates file.  You will delete these examples.
-
-// exampleFunction1('Travis');
-// exampleFunction2('Travis');

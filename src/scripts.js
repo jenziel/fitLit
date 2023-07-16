@@ -31,6 +31,7 @@ import {
   weeklyStepData,
   friendsStepChallenge,
   increasingStepDays,
+  displayStepChallenge,
 } from './functions';
 
 import{
@@ -54,6 +55,8 @@ import{
   displayUserSteps,
   displayDistanceWalked,
   createUserActivityGraph,
+  displayStepChallengeToDom,
+  displayActivityTrendGraph,
 } from './domUpdates'
 
 // const userHydrationData = hydration.hydrationData
@@ -74,6 +77,9 @@ const generateWebPage = () => {
   updateUserDailyStepGoal(mainData.currentUser);
   updateUserName(mainData.currentUser);
   displayCohortStepAverage(mainData.users);
+  displayStepChallengeToDom(displayStepChallenge(friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity)));
+
+  displayActivityTrendGraph(increasingStepDays(currentUserActivity));
   calcStepComparison(mainData.currentUser, mainData.users);
   updateUserInfoPage(mainData.currentUser, mainData.users);
   displayTodayHydro(mainData.today, currentUserH2O);
