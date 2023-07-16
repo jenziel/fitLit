@@ -241,10 +241,22 @@ export const displayStepChallenge = (totalSteps) => {
 export const totalSteps = (stepData) => {
   return stepData.reduce((acc, cv) => {
     acc += cv
-    console.log(acc)
     return acc;
-
   },0)
+}
+
+export const increasingStepDays = (stepData) => {
+  const increasedDays = [];
+  console.log("test",stepData);
+  console.log(stepData.length)
+  for(var i = 0 ; i < stepData.length-2 ; i++){
+    console.log("TESTTESTTEST");
+    if(stepData[i].numSteps < stepData[i+1].numSteps && stepData[i+1].numSteps < stepData[i+2].numSteps){
+      increasedDays.push([stepData[i].date, stepData[i+1].date, stepData[i+2].date]);
+    }
+  }
+  console.log("Increasing days: ", increasedDays);
+  return increasedDays;
 }
 // 2. Return how many minutes a user was active for a given day
 

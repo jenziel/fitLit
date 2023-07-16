@@ -30,6 +30,7 @@ import {
   calculateMinutesActive,
   weeklyStepData,
   friendsStepChallenge,
+  increasingStepDays,
 } from './functions';
 
 import{
@@ -90,7 +91,7 @@ const generateWebPage = () => {
   displayUserSteps(currentUserActivity, mainData.today);
   displayDistanceWalked(currentUserActivity, mainData.today, mainData.currentUser);
   friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity);
-
+  increasingStepDays(currentUserActivity)
 };
 
 // event handlers
