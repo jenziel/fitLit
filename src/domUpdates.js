@@ -68,6 +68,8 @@ const qualityBarChart = document.getElementById('sleep-quality-graph');
 const activityBarChart = document.getElementById('user-activity-graph');
 
 const displayStepChallenge = document.querySelector('.challenge-results');
+const activityTrendText = document.querySelector('.activity-trend-title');
+const activityTrendGraph = document.getElementById('activity-trend-graph-display');
 
 export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
@@ -261,6 +263,48 @@ export const createUserActivityGraph = (activityData, day, userData) => {
         label: 'Last Weeks Activity',
         data: weeklyStepData(activityData, day),
         backgroundColor: compareUserStepGoal(weeklyStepData(activityData, day), userData)
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Steps'
+          }
+        }
+      }
+    }
+  });
+}
+
+activityTrendText
+activityTrendGraph
+
+export const displayActivityTrendGraph = (trendData) => {
+  let lastObject = trendData[trendData.length-1];
+  let mostRecentSteps = lastObject.map(datum => datum.numSteps)
+  let mostRecentDates = lastObject.map(datum => datum.date)
+  let reformattedMostRecentDates = []
+  mostRecentDates.forEach((date) => {
+    let splitDate = date.split('/');
+    splitDate.shift();
+    let joinDate = splitDate.join('/');
+    reformattedMostRecentDates.push(joinDate);
+  })
+
+
+console.log('mostRecentDates', mostRecentDates)
+  const chart = new Chart(activityTrendGraph, {
+    type: 'bar',
+    data: {
+      labels: reformattedMostRecentDates,
+      datasets: [{
+        label: 'Latest Trend',
+        data: mostRecentSteps,
+        backgroundColor: 'rgba(242, 15, 15, 1)',
       }]
     },
     options: {

@@ -248,7 +248,16 @@ export const increasingStepDays = (stepData) => {
   for(var i = 0 ; i < stepData.length-2 ; i++){
 
     if(stepData[i].numSteps < stepData[i+1].numSteps && stepData[i+1].numSteps < stepData[i+2].numSteps){
-      increasedDays.push([stepData[i].date, stepData[i+1].date, stepData[i+2].date]);
+      increasedDays.push([{
+        date: stepData[i].date, 
+        numSteps: stepData[i].numSteps,
+      },{
+        date: stepData[i+1].date, 
+        numSteps: stepData[i+1].numSteps,
+      },{
+        date: stepData[i+2].date, 
+        numSteps: stepData[i+2].numSteps,
+      }]);
     }
   }
   return increasedDays;

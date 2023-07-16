@@ -154,6 +154,13 @@ main {
 
 .box-contents-wrapper{
   display: flex;
+  margin-bottom: 30px;
+}
+
+.activity-box-contents{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .box-contents-container {
@@ -289,6 +296,21 @@ main {
 .sleep-graph-wrapper {
   display:flex;
   flex-direction: column;
+}
+
+.activity-trend-graph {
+  height: 35%;
+}
+
+.activity-data{
+  /* height: 120vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.user-activity-chart {
+  margin-bottom: 30px;
 }
 
 p.red {
