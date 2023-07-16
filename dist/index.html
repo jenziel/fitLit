@@ -8,11 +8,23 @@
   </head>
   <body>
     <main>
-      <section class="upper-pane">
+      <!-- <section class="upper-pane">
         <div id="icon"></div>
         <div>
           <h1 class="user-greeting"></h1>
           <button class="user-info-button">User Info</button>
+        </div>
+      </section> -->
+      <section class="upper-pane">
+        <div class="upper-left-pane">
+          <div id="icon"></div>
+          <div class="user-greeting-wrapper">
+            <h1 class="user-greeting"></h1>
+            <button class="user-info-button">User Info</button>
+          </div>
+        </div>
+        <div class="upper-right-pane">
+          <p class="app-name">FitLit</p>
         </div>
       </section>
       <section class="alt-lower-pane hidden">
@@ -55,6 +67,12 @@
                 <p>steps</p>
               </div>
             </div>
+            <div class="box-contents">
+              <h3>Step Challenge:</h3>
+              <div class="challenge-results">
+                <p>steps</p>
+              </div>
+            </div>
           </div>
           <div class="data-analysis">
             <p class="avg-user-step-comparison">
@@ -68,7 +86,7 @@
           </div>
           <div class="box-contents-container">
             <div class="box-contents2 smallBox">
-              <h3>Today's Water Consumption:</h3>
+              <h3>Today's Water <br>Consumption:</h3>
               <div class="number-with-units">
                 <h2 class="todays-hydro">20</h2>
                 <p>oz</p>
@@ -78,7 +96,7 @@
               <canvas id="hydroChart"></canvas>
             </div>
             <div class="box-contents2 smallBox">
-              <h3>Average Daily Water Consumption:</h3>
+              <h3>Average Daily <br> Water Consumption:</h3>
               <div class="number-with-units">
                 <h2 class="average-water">70</h2>
                 <p>oz</p>
@@ -90,13 +108,13 @@
           <div class="box-title">
             <h2>Sleep</h2>
           </div>
-          <div class="box-contents-container">
+          <div class="box-contents-container sleep-data-wrapper">
             <div class="last-night-sleep">
               <div class="box-contents2 smallBox">
                 <h3>Last Night:</h3>
                 <div class="number-with-units">
                   <h2 class="todays-hourly-sleep">20</h2>
-                  <p>Hours</p>
+                  <p>hours</p>
                 </div>
               </div>
               <div class="box-contents2 smallBox">
@@ -107,7 +125,7 @@
                 </div>
               </div>
             </div>
-            <div class="sleep-graph-pane">
+            <div class="graph-chart sleep-graph-wrapper">
               <div class="sleep-graph-chart">
                 <canvas id="sleep-hourly-graph"></canvas>
               </div>
@@ -120,7 +138,7 @@
                 <h3>Weekly Average:</h3>
                 <div class="number-with-units">
                   <h2 class="average-hours-slept">20</h2>
-                  <p>hours per night</p>
+                  <p>hours</p>
                 </div>
               </div>
               <div class="box-contents2 smallBox">
@@ -145,14 +163,14 @@
             </div>
             <div class="box-contents-wrapper">
               <div class="box-contents">
-                <h3>Today's Step Count</h3>
+                <h3>Today's Step Count:</h3>
                 <div class="number-with-units">
                   <h2 class="step-amount">6</h2>
                   <p>steps</p>
                 </div>
               </div>
               <div class="box-contents">
-                <h3>Minutes Active</h3>
+                <h3>Minutes Active:</h3>
                 <div class="number-with-units">
                   <h2 class="minutes-active">6</h2>
                   <p>minutes</p>
