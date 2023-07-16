@@ -39,10 +39,18 @@ main {
   height: 25%;
   background-color: var(--lime-green);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 80px;
+}
+.upper-left-pane {
+  display: flex;
   align-items: center;
 }
-
+.user-greeting-wrapper {
+  display:flex;
+  flex-direction: column;
+}
 #icon {
   width: 140px;
   height: 140px;
@@ -56,7 +64,9 @@ main {
   height: 100%;
   object-fit: cover;
 }
-
+.user-info-button {
+  width: 40%;
+}
 .lower-pane {
   height: 75%;
   background-color: var(--dark-gray);
@@ -67,11 +77,20 @@ main {
   overflow-y: scroll;
 }
 
+.app-name{
+  font-size: 100px;
+  font-weight: bold;
+}
+
+/* Profile Info Page */
 .alt-lower-pane {
+  display: flex;
+  align-items: center;
   height: 75vh;
   background-color: var(--dark-gray);
   padding: 20px;
 }
+
 .profile-box {
   padding-left: 50px;
   height: 60vh;
@@ -80,7 +99,9 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: space-between;
+  border-radius: 15px;
 }
+
 .list{
   display: flex;
   flex-direction: column;
@@ -90,6 +111,7 @@ main {
   margin-left: 40px;
   margin-right: 40px;
 }
+/* Display data Lower Pane */
 
 .data-box {
   padding: 25px;
@@ -103,9 +125,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.data-box2 {
-  justify-content: flex-start;
 }
 
 .wideBox > h3 {
@@ -133,18 +152,28 @@ main {
   justify-content: space-evenly;
   height: 80%;
 }
+.sleep-data-wrapper {
+  display: flex; 
+  /* justify-content: ; */
+}
 .box-contents {
   width: 50%;
   margin-right: 20px;
 }
 .box-contents2 {
-  width: 50%;
+  width: 100%;
   /* margin-right: 25px; */
   /* margin-left: 5px; */
 }
+
+.box-contents2 > h3 {
+  white-space: nowrap;
+}
+
 .smallBox {
   width: 20%;
 }
+
 .wideBox {
   display:flex;
   flex-direction: column;
@@ -221,7 +250,7 @@ main {
   height: 100%;
 }
 
-.sleep-graph-pane{
+.sleep-graph-wrapper {
   display:flex;
   flex-direction: column;
 }
@@ -237,14 +266,15 @@ main {
 
 .last-night-sleep
 .average-sleep 
-.sleep-graph-pane {
+.sleep-graph-wrapper {
   display:flex;
   flex-direction: column;
 }
 
 p.red {
-  color: var(--red)
+  color: var(--red) !important;
 }
+
 p.green {
-  color: var(--green);
+  color: var(--green)!important;
 }
