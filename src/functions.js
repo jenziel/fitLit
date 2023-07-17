@@ -1,6 +1,5 @@
 // User Data Functions:
 
-import { lastNightQualityGoodBad, avgQualityGoodBad } from "./domUpdates";
 
 export const createRandomUser = (usersArray) => {
   const randomIndex = Math.floor(Math.random() * usersArray.length);
@@ -201,7 +200,7 @@ export const dateToMonth = (trendData) => {
   const monthNames =[];
   reformattedMostRecentDates.forEach(date => {
     const splitDate = date.split('/');
-    monthNames.push(months[parseInt(splitDate[0])] + ' ' + splitDate[1]);
+    monthNames.push(months[parseInt(splitDate[0])-1] + ' ' + splitDate[1]);
   });
   return monthNames;
 }
@@ -209,13 +208,13 @@ export const dateToMonth = (trendData) => {
 export const compareUserStepGoal = (weeklyStepData, userData) => {
   const colorArray = [];
   const colorChecks = ["rgba(247, 113, 2, 1)", "rgba(180, 236, 52, .8)"];
-  for (var i = 0; i < weeklyStepData.length; i++) {
-    if (weeklyStepData[i] >= userData.dailyStepGoal) {
+  weeklyStepData.forEach(datum => {
+    if(datum >= userData.dailyStepGoal) {
       colorArray.push(colorChecks[1]);
     } else {
       colorArray.push(colorChecks[0]);
     }
-  }
+  })
   return colorArray;
 };
 
@@ -266,7 +265,6 @@ export const totalSteps = (stepData) => {
 export const increasingStepDays = (stepData) => {
   const increasedDays = [];
   for(var i = 0 ; i < stepData.length-2 ; i++){
-
     if(stepData[i].numSteps < stepData[i+1].numSteps && stepData[i+1].numSteps < stepData[i+2].numSteps){
       increasedDays.push([{
         date: stepData[i].date, 
@@ -280,5 +278,5 @@ export const increasingStepDays = (stepData) => {
       }]);
     }
   }
-  return increasedDays;
+ return increasedDays;
 }

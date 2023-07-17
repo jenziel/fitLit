@@ -1,9 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
-// import users from './data/users';
 import { 
   returnAverageSteps, 
   nameFriends, 
-  currentUser, 
   getDailyFlOz, 
   getAllTimeAverageFlOz, 
   weeklyHydroData, 
@@ -44,7 +42,7 @@ const emailField = document.querySelector('.user-email');
 const strideLengthField = document.querySelector('.user-stride-length');
 const stepGoalField = document.querySelector('.user-step-goal');
 const friendsField = document.querySelector('.user-friends');
-const userIcon = document.querySelector(".user-icon");
+
 
 const todayHydro = document.querySelector('.todays-hydro');
 const avgHydro = document.querySelector('.average-water');
@@ -60,7 +58,7 @@ export const avgQualityGoodBad = document.querySelector('.sleep-quality-avg-desc
 
 const userStepsDisplay = document.querySelector('.step-amount');
 const minutesActiveDisplay = document.querySelector('.minutes-active');
-const minutesActiveDate = document.querySelector('.active-minutes-date')
+
 const userDistanceDisplay = document.querySelector('.miles-walked');
 
 const hydroBarChart = document.getElementById('hydroChart');
@@ -145,7 +143,6 @@ export const displayAvgHydro = (userHydroData) => {
 
 export const displayDailyHydro = (day, userHydroData) => {
   const weeklyData = weeklyHydroData(userHydroData, day);
-  // const days = formatDate(weeklyData)
   const ouncesperDay = weeklyData.map(data => data.numOunces);
   return ouncesperDay;
 }
@@ -257,34 +254,74 @@ export const displayDistanceWalked = (activityData, day, currentUserData) => {
   userDistanceDisplay.innerText = `${calculateDayMileage(getDaySteps(day, activityData), currentUserData)}`;
 }
 
+// export const createUserActivityGraph = (activityData, day, userData) => {
+//   const chart = new Chart(activityBarChart, {
+//     type: 'bar',
+//     data: {
+//       labels: formatDate(weeklyActivityData(activityData, day)),
+//       datasets: [{
+//         label: 'Last Weeks Activity',
+//         data: weeklyStepData(activityData, day),
+//         backgroundColor: compareUserStepGoal(weeklyStepData(activityData, day), userData)
+//       }]
+//     },
+//     options: {
+//       maintainAspectRatio: false,
+//       scales: {
+//         y: {
+//           beginAtZero: true,
+//           title: {
+//             display: true,
+//             text: 'Number of Steps'
+//           }
+//         }
+//       }
+//     }
+//   });
+// }
+
 export const createUserActivityGraph = (activityData, day, userData) => {
+  
+
   const chart = new Chart(activityBarChart, {
     type: 'bar',
     data: {
       labels: formatDate(weeklyActivityData(activityData, day)),
-      datasets: [{
-        label: 'Last Weeks Activity',
-        data: weeklyStepData(activityData, day),
-        backgroundColor: compareUserStepGoal(weeklyStepData(activityData, day), userData)
-      }]
+      datasets: [
+        {
+          type: 'bar',
+          label: 'Last Weeks Activity',
+          data: weeklyStepData(activityData, day),
+          backgroundColor: compareUserStepGoal(weeklyStepData(activityData, day), userData),
+          yAxisID: 'steps-y-axis', // Assign this dataset to the left y-axis
+        },
+        {
+          type: 'line',
+          label: 'Step Goal',
+          data: [userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal],
+          borderColor: 'red', // Change the color of the line as needed
+          borderWidth: 3, // Adjust the width of the line as needed
+          fill: false, // Disable filling the area under the line
+          yAxisID: 'steps-y-axis', // Assign this dataset to the left y-axis
+        },
+      ],
     },
     options: {
       maintainAspectRatio: false,
       scales: {
-        y: {
+        'steps-y-axis': {
+          type: 'linear',
+          position: 'left',
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Number of Steps'
-          }
-        }
-      }
-    }
+            text: 'Number of Steps',
+          },
+        },
+      },
+    },
   });
-}
-
-activityTrendText
-activityTrendGraph
+};
 
 export const displayActivityTrendGraph = (trendData, today) => {
   let lastObject = trendData[trendData.length-1];
