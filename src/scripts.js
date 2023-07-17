@@ -79,7 +79,7 @@ const generateWebPage = () => {
   displayCohortStepAverage(mainData.users);
   displayStepChallengeToDom(displayStepChallenge(friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity)));
 
-  displayActivityTrendGraph(increasingStepDays(currentUserActivity));
+  displayActivityTrendGraph(increasingStepDays(currentUserActivity), mainData.today);
   calcStepComparison(mainData.currentUser, mainData.users);
   updateUserInfoPage(mainData.currentUser, mainData.users);
   displayTodayHydro(mainData.today, currentUserH2O);

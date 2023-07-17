@@ -186,6 +186,26 @@ export const formatDate = (weeklyData) => {
   return previous7Days;
 };
 
+export const dateToMonth = (trendData) => {
+  let lastObject = trendData[trendData.length-1];
+  let mostRecentSteps = lastObject.map(datum => datum.numSteps)
+  let mostRecentDates = lastObject.map(datum => datum.date)
+  let reformattedMostRecentDates = []
+  mostRecentDates.forEach((date) => {
+    let splitDate = date.split('/');
+    splitDate.shift();
+    let joinDate = splitDate.join('/');
+    reformattedMostRecentDates.push(joinDate);
+  })
+  const months = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+  const monthNames =[];
+  reformattedMostRecentDates.forEach(date => {
+    const splitDate = date.split('/');
+    monthNames.push(months[parseInt(splitDate[0])] + ' ' + splitDate[1]);
+  });
+  return monthNames;
+}
+
 export const compareUserStepGoal = (weeklyStepData, userData) => {
   const colorArray = [];
   const colorChecks = ["rgba(247, 113, 2, 1)", "rgba(180, 236, 52, .8)"];
