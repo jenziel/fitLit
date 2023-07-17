@@ -32,7 +32,6 @@ This project was our first chance to practice accessing API data.
 
 ## 💻 Technologies Used
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)
 ![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
@@ -41,8 +40,6 @@ This project was our first chance to practice accessing API data.
 ![Mocha](https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown)
 ![Chai](https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red)
 
-
-## Additional Development
 
 ## Installation and Setup Instructions
 
