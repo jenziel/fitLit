@@ -27,7 +27,8 @@ This project was our first chance to practice accessing API data.
 * **Jen Ziel** -  [jenziel](https://github.com/jenziel)
 
 ## 📷 Preview
-https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd1a3I5M2xid2EyanZjc2VvOXJxdWpvYWVqcmsyZGlocW52NnpxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/afJcHzIPOom2h4IyX5/giphy.gif
+![FitLit_Preview](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd1a3I5M2xid2EyanZjc2VvOXJxdWpvYWVqcmsyZGlocW52NnpxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/afJcHzIPOom2h4IyX5/giphy.gif)
+
 
 ## 💻 Technologies Used
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
