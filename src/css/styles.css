@@ -18,7 +18,6 @@ body,
 html {
   font-family: "Helvetica", sans-serif;
   height: 100vh;
-
 }
 
 * {
@@ -51,14 +50,13 @@ main {
 }
 
 .user-greeting-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-#icon {
+img {
   width: 140px;
   height: 140px;
-  /* border-radius: 50%; */
   overflow: hidden;
   margin-right: 2vw;
 }
@@ -83,7 +81,7 @@ main {
   overflow-y: scroll;
 }
 
-.app-name{
+.app-name {
   font-size: 100px;
   font-weight: bold;
 }
@@ -108,7 +106,7 @@ main {
   border-radius: 15px;
 }
 
-.list{
+.list {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -117,7 +115,6 @@ main {
   margin-left: 40px;
   margin-right: 40px;
 }
-/* Display data Lower Pane */
 
 .data-box {
   padding: 25px;
@@ -147,18 +144,18 @@ main {
   color: var(--gray);
 }
 
-.activity-box-contents-container{
-  display:flex;
+.activity-box-contents-container {
+  display: flex;
   flex-direction: column;
 }
 
-.box-contents-wrapper{
+.box-contents-wrapper {
   display: flex;
   margin-bottom: 30px;
   justify-content: space-between;
 }
 
-.activity-box-contents{
+.activity-box-contents {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,8 +168,7 @@ main {
 }
 
 .sleep-data-wrapper {
-  display: flex; 
-  /* justify-content: ; */
+  display: flex;
 }
 
 .box-contents {
@@ -182,8 +178,6 @@ main {
 
 .box-contents2 {
   width: 100%;
-  /* margin-right: 25px; */
-  /* margin-left: 5px; */
 }
 
 .box-contents2 > h3 {
@@ -197,12 +191,12 @@ main {
   justify-content: space-evenly;
 }
 
-.small-box-right{
+.small-box-right {
   margin-left: 50px;
 }
 
 .wideBox {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 60%;
@@ -218,7 +212,6 @@ main {
   font-weight: bolder;
   color: var(--gray);
 }
-
 
 .number-with-units {
   display: flex;
@@ -272,7 +265,7 @@ main {
   justify-content: space-around;
 }
 
-.graph-chart{
+.graph-chart {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -280,22 +273,18 @@ main {
 }
 
 .sleep-graph-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-#hydroChart
-#sleep-hourly-graph
-#sleep-quality-graph{
+#hydroChart #sleep-hourly-graph #sleep-quality-graph {
   width: 60%;
   height: 75%;
   padding-bottom: 20px;
 }
 
-.last-night-sleep
-.average-sleep 
-.sleep-graph-wrapper {
-  display:flex;
+.last-night-sleep .average-sleep .sleep-graph-wrapper {
+  display: flex;
   flex-direction: column;
 }
 
@@ -303,8 +292,7 @@ main {
   height: 35%;
 }
 
-.activity-data{
-  /* height: 120vh; */
+.activity-data {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -319,14 +307,14 @@ p.red {
 }
 
 p.green {
-  color: var(--green)!important;
+  color: var(--green) !important;
 }
 
-.activity-data-boxes{
-  width:20%;
+.activity-data-boxes {
+  width: 20%;
   margin-left: 8%;
 }
 
-.first-place{
-  color:rgb(193, 33, 33);
+.first-place {
+  color: rgb(193, 33, 33);
 }

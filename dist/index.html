@@ -8,16 +8,9 @@
   </head>
   <body>
     <main>
-      <!-- <section class="upper-pane">
-        <div id="icon"></div>
-        <div>
-          <h1 class="user-greeting"></h1>
-          <button class="user-info-button">User Info</button>
-        </div>
-      </section> -->
       <section class="upper-pane">
         <div class="upper-left-pane">
-          <div id="icon"></div>
+          <img id="icon" alt="randomly generated user icon"></img>
           <div class="user-greeting-wrapper">
             <h1 class="user-greeting"></h1>
             <button class="user-info-button">User Info</button>
@@ -86,7 +79,7 @@
           </div>
           <div class="box-contents-container">
             <div class="box-contents2 small-box">
-              <h3>Today's Water <br>Consumption:</h3>
+              <h3>Today's Water <br />Consumption:</h3>
               <div class="number-with-units">
                 <h2 class="todays-hydro">20</h2>
                 <p>oz</p>
@@ -96,7 +89,10 @@
               <canvas id="hydroChart"></canvas>
             </div>
             <div class="box-contents2 small-box small-box-right">
-              <h3>Average Daily <br> Water Consumption:</h3>
+              <h3>
+                Average Daily <br />
+                Water Consumption:
+              </h3>
               <div class="number-with-units">
                 <h2 class="average-water">70</h2>
                 <p>oz</p>
@@ -109,7 +105,7 @@
             <h2>Sleep</h2>
           </div>
           <div class="box-contents-container sleep-data-wrapper">
-            <div class="last-night-sleep  small-box">
+            <div class="last-night-sleep small-box">
               <div class="box-contents2">
                 <h3>Last Night:</h3>
                 <div class="number-with-units">
@@ -185,14 +181,13 @@
               </div>
             </div>
             <div class="activity-trend-graph">
-              <p class="activity-trend-title"> 🔥 You're on a trend! 🔥</p>
+              <p class="activity-trend-title">🔥 You're on a trend! 🔥</p>
               <canvas id="activity-trend-graph-display"></canvas>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>

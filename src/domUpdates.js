@@ -1,4 +1,3 @@
-//NOTE: Your DOM manipulation will occur in this file
 import { 
   returnAverageSteps, 
   nameFriends, 
@@ -22,12 +21,10 @@ import {
   weeklyActivityData,
   compareUserStepGoal,
   dateToMonth,
-  
 } from './functions';
 
 import { imagesArray } from './images/svgFiles'
 
-// import returnAverageSteps from './scripts';
 // query selectors
 const userName = document.querySelector('.user-greeting');
 const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
@@ -77,10 +74,8 @@ export const updateUserDailyStepGoal = (user) => {
 export const updateIcon = () => {
   const randomIndex = Math.floor(Math.random() * imagesArray.length);
   const imageToBeUsed = imagesArray[randomIndex];
-  var container = document.getElementById("icon");
-  var iconImage = document.createElement("img");
+  var iconImage = document.getElementById("icon");
   iconImage.src = imageToBeUsed;
-  container.appendChild(iconImage);
 }
 
 
