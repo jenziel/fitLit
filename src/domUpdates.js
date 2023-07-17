@@ -23,6 +23,7 @@ import {
   weeklySleepData,
   weeklyActivityData,
   compareUserStepGoal,
+  dateToMonth,
   
 } from './functions';
 
@@ -109,12 +110,14 @@ export const displayStepChallengeToDom = (challengeData) => {
   displayStepChallenge.innerHTML = '';
   challengeData.forEach((datum, index) => {
     let crown = '👑';
+    let firstPlace = "first-place";
     if(index !== 0){
       crown = '';
+      firstPlace = '';
     }
 
     displayStepChallenge.innerHTML += 
-      `<p>${index+1}. ${datum} ${crown}</p>`;
+      `<p class=${firstPlace}>${index+1}. ${datum} ${crown}</p>`;
   });
 };
 
@@ -283,20 +286,15 @@ export const createUserActivityGraph = (activityData, day, userData) => {
 activityTrendText
 activityTrendGraph
 
-export const displayActivityTrendGraph = (trendData) => {
+export const displayActivityTrendGraph = (trendData, today) => {
   let lastObject = trendData[trendData.length-1];
   let mostRecentSteps = lastObject.map(datum => datum.numSteps)
-  let mostRecentDates = lastObject.map(datum => datum.date)
-  let reformattedMostRecentDates = []
-  mostRecentDates.forEach((date) => {
-    let splitDate = date.split('/');
-    splitDate.shift();
-    let joinDate = splitDate.join('/');
-    reformattedMostRecentDates.push(joinDate);
-  })
+  let reformattedMostRecentDates = (dateToMonth(trendData));
 
+  if(lastObject[2].date !== today){
+    activityTrendText.innerText = `Your most recent trend:`
+  }
 
-console.log('mostRecentDates', mostRecentDates)
   const chart = new Chart(activityTrendGraph, {
     type: 'bar',
     data: {
