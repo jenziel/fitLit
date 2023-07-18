@@ -7,27 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <main>
-      <!-- <section class="upper-pane">
-        <div id="icon"></div>
-        <div>
-          <h1 class="user-greeting"></h1>
-          <button class="user-info-button">User Info</button>
-        </div>
-      </section> -->
-      <section class="upper-pane">
+    
+      <header class="upper-pane">
         <div class="upper-left-pane">
-          <div id="icon"></div>
+          <img id="icon" alt="randomly generated user icon"></img>
           <div class="user-greeting-wrapper">
             <h1 class="user-greeting"></h1>
-            <button class="user-info-button">User Info</button>
+            <button class="user-info-button" alt="user info button">User Info</button>
           </div>
         </div>
         <div class="upper-right-pane">
           <p class="app-name">FitLit</p>
         </div>
-      </section>
-      <section class="alt-lower-pane hidden">
+      </header>
+      <main>
+        <section class="alt-lower-pane hidden">
         <section class="profile-box">
           <div class="list" id="property names">
             <h3>Name:</h3>
@@ -48,7 +42,7 @@
         </section>
       </section>
       <section class="lower-pane">
-        <div class="data-box" id="box1">
+        <article class="data-box" id="box1">
           <div class="box-title">
             <h2>User Data</h2>
           </div>
@@ -79,37 +73,40 @@
               Your step goal is 200% of the average user's step goal!
             </p>
           </div>
-        </div>
-        <div class="data-box databox2" id="box2">
+        </article>
+        <article class="data-box databox2" id="box2">
           <div class="box-title">
             <h2>Hydration</h2>
           </div>
           <div class="box-contents-container">
             <div class="box-contents2 small-box">
-              <h3>Today's Water <br>Consumption:</h3>
+              <h3>Today's Water <br />Consumption:</h3>
               <div class="number-with-units">
                 <h2 class="todays-hydro">20</h2>
                 <p>oz</p>
               </div>
             </div>
-            <div class="graph-chart">
+            <figure class="graph-chart">
               <canvas id="hydroChart"></canvas>
-            </div>
+            </figure>
             <div class="box-contents2 small-box small-box-right">
-              <h3>Average Daily <br> Water Consumption:</h3>
+              <h3>
+                Average Daily <br />
+                Water Consumption:
+              </h3>
               <div class="number-with-units">
                 <h2 class="average-water">70</h2>
                 <p>oz</p>
               </div>
             </div>
           </div>
-        </div>
-        <div class="data-box sleep-box">
+        </article>
+        <article class="data-box sleep-box">
           <div class="box-title">
             <h2>Sleep</h2>
           </div>
           <div class="box-contents-container sleep-data-wrapper">
-            <div class="last-night-sleep  small-box">
+            <div class="last-night-sleep small-box">
               <div class="box-contents2">
                 <h3>Last Night:</h3>
                 <div class="number-with-units">
@@ -126,12 +123,12 @@
               </div>
             </div>
             <div class="graph-chart sleep-graph-wrapper">
-              <div class="sleep-graph-chart">
+              <figure class="sleep-graph-chart">
                 <canvas id="sleep-hourly-graph"></canvas>
-              </div>
-              <div class="sleep-graph-chart">
+              </figure>
+              <figure class="sleep-graph-chart">
                 <canvas id="sleep-quality-graph"></canvas>
-              </div>
+              </figure>
             </div>
             <div class="average-sleep small-box small-box-right">
               <div class="box-contents2">
@@ -150,16 +147,16 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="data-box activity-data" id="box4">
+        </article>
+        <article class="data-box activity-data" id="box4">
           <div class="box-title">
             <h2>User Activity</h2>
           </div>
           <div class="activity-box-contents-container">
             <div class="user-activity-graph">
-              <div class="user-activity-chart">
+              <figure class="user-activity-chart">
                 <canvas id="user-activity-graph"></canvas>
-              </div>
+              </figure>
             </div>
             <div class="box-contents-wrapper">
               <div class="box-contents activity-data-boxes">
@@ -184,15 +181,14 @@
                 </div>
               </div>
             </div>
-            <div class="activity-trend-graph">
-              <p class="activity-trend-title"> 🔥 You're on a trend! 🔥</p>
+            <figure class="activity-trend-graph">
+              <p class="activity-trend-title">🔥 You're on a trend! 🔥</p>
               <canvas id="activity-trend-graph-display"></canvas>
-            </div>
+            </figure>
           </div>
-        </div>
+        </article>
       </section>
     </main>
-    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>

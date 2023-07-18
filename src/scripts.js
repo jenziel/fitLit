@@ -1,25 +1,20 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+// imports
+import "./css/styles.css";
+import "./domUpdates";
+import { promises } from "./apiCalls";
 
-// imports 
-import './css/styles.css';
-import './images/turing-logo.png';
-import './images/femaleAvatar.jpg';
-import './domUpdates';
-import { promises } from './apiCalls';
-
-import { 
+import {
   createRandomUser,
   createUserHydroData,
-  weeklyHydroData,  
+  weeklyHydroData,
   getUserSleepData,
   createUserStepData,
   friendsStepChallenge,
   increasingStepDays,
   displayStepChallenge,
-} from './functions';
+} from "./functions";
 
-import{
+import {
   updateUserDailyStepGoal,
   updateUserInfoPage,
   calcStepComparison,
@@ -40,61 +35,86 @@ import{
   createUserActivityGraph,
   displayStepChallengeToDom,
   displayActivityTrendGraph,
-} from './domUpdates'
+} from "./domUpdates";
 
-// const userHydrationData = hydration.hydrationData
-//   .filter((datum) => datum.userID === currentUser.id);
-
+// master data object
 const mainData = {
-  today: '2023/07/01',
-}
+  today: "2023/07/01",
+};
 
-const generateWebPage = () => { 
-  mainData.currentUser = createRandomUser(mainData.users);
-  const currentUserH2O = createUserHydroData(mainData.currentUser, mainData.hydration);
-  const currentUserSleep = getUserSleepData(mainData.currentUser, mainData.sleep);
-  const currentUserActivity = createUserStepData(mainData.currentUser, mainData.activity);
-  
+const generateWebPage = () => {
   updateIcon();
-  weeklyHydroData(currentUserH2O,99);
+
+  // user data
+  mainData.currentUser = createRandomUser(mainData.users);
   updateUserDailyStepGoal(mainData.currentUser);
   updateUserName(mainData.currentUser);
   displayCohortStepAverage(mainData.users);
-  displayStepChallengeToDom(displayStepChallenge(friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity)));
+  displayStepChallengeToDom(
+    displayStepChallenge(
+      friendsStepChallenge(
+        mainData.currentUser,
+        mainData.users,
+        mainData.activity
+      )
+    )
+  );
 
-  displayActivityTrendGraph(increasingStepDays(currentUserActivity), mainData.today);
-  calcStepComparison(mainData.currentUser, mainData.users);
   updateUserInfoPage(mainData.currentUser, mainData.users);
+
+  // hydration data
+  const currentUserH2O = createUserHydroData(
+    mainData.currentUser,
+    mainData.hydration
+  );
+  weeklyHydroData(currentUserH2O, 99);
   displayTodayHydro(mainData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
-
+  createHydroBarGraph(99, currentUserH2O);
+  
+  // sleep data
+  const currentUserSleep = getUserSleepData(
+    mainData.currentUser,
+    mainData.sleep
+  );
   createHourlySleepBarGraph(currentUserSleep, 99);
   createQualitySleepBarGraph(currentUserSleep, 99);
-  createUserActivityGraph(currentUserActivity,99, mainData.currentUser);
-
-  // displayDailyHydro(99, currentUserH2O);
-  // populateHydroGraph(99, currentUserH2O);
-  createHydroBarGraph(99, currentUserH2O);
   displaySleepDataToDom(mainData.today, currentUserSleep);
+
+  // activity data
+  const currentUserActivity = createUserStepData(
+    mainData.currentUser,
+    mainData.activity
+  );
+  displayActivityTrendGraph(
+    increasingStepDays(currentUserActivity),
+    mainData.today
+  );
+  calcStepComparison(mainData.currentUser, mainData.users);
+  createUserActivityGraph(currentUserActivity, 99, mainData.currentUser);
   displayMinutesActive(currentUserActivity, mainData.today);
   displayUserSteps(currentUserActivity, mainData.today);
-  displayDistanceWalked(currentUserActivity, mainData.today, mainData.currentUser);
+  displayDistanceWalked(
+    currentUserActivity,
+    mainData.today,
+    mainData.currentUser
+  );
   friendsStepChallenge(mainData.currentUser, mainData.users, mainData.activity);
-  increasingStepDays(currentUserActivity)
+  increasingStepDays(currentUserActivity);
 };
 
 // event handlers
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   Promise.all(promises)
-  .then(response => {
-      const [usersPromise, hydroPromise, sleepPromise, activityPromise] = response
-      // add second keys to actually be able to access the value from the key (create key/value pairs)
-      mainData.users = usersPromise; 
+    .then((response) => {
+      const [usersPromise, hydroPromise, sleepPromise, activityPromise] =
+        response;
+      mainData.users = usersPromise;
       mainData.hydration = hydroPromise;
       mainData.sleep = sleepPromise;
       mainData.activity = activityPromise;
     })
-  .then(generateWebPage)
+    .then(generateWebPage);
 });
 
-userInfoButton.addEventListener('click', toggleInfo);
+userInfoButton.addEventListener("click", toggleInfo);

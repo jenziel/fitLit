@@ -17,8 +17,8 @@
 body,
 html {
   font-family: "Helvetica", sans-serif;
-  height: 100vh;
-
+  height: 100%;
+  overflow: hidden;
 }
 
 * {
@@ -29,7 +29,7 @@ html {
 main {
   width: 100%;
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   overflow: hidden;
   position: relative;
@@ -51,22 +51,15 @@ main {
 }
 
 .user-greeting-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-#icon {
+img {
   width: 140px;
   height: 140px;
-  /* border-radius: 50%; */
   overflow: hidden;
   margin-right: 2vw;
-}
-
-#icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .user-info-button {
@@ -83,7 +76,7 @@ main {
   overflow-y: scroll;
 }
 
-.app-name{
+.app-name {
   font-size: 100px;
   font-weight: bold;
 }
@@ -108,16 +101,16 @@ main {
   border-radius: 15px;
 }
 
-.list{
+.list {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+
 .list > h3 {
   margin-left: 40px;
   margin-right: 40px;
 }
-/* Display data Lower Pane */
 
 .data-box {
   padding: 25px;
@@ -133,11 +126,6 @@ main {
   justify-content: space-between;
 }
 
-.wideBox > h3 {
-  margin-bottom: 3vh;
-  margin-left: 1.25vw;
-}
-
 .small-box > h3 {
   margin-bottom: 2.5vh;
 }
@@ -147,18 +135,18 @@ main {
   color: var(--gray);
 }
 
-.activity-box-contents-container{
-  display:flex;
+.activity-box-contents-container {
+  display: flex;
   flex-direction: column;
 }
 
-.box-contents-wrapper{
+.box-contents-wrapper {
   display: flex;
   margin-bottom: 30px;
   justify-content: space-between;
 }
 
-.activity-box-contents{
+.activity-box-contents {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,8 +159,7 @@ main {
 }
 
 .sleep-data-wrapper {
-  display: flex; 
-  /* justify-content: ; */
+  display: flex;
 }
 
 .box-contents {
@@ -182,8 +169,6 @@ main {
 
 .box-contents2 {
   width: 100%;
-  /* margin-right: 25px; */
-  /* margin-left: 5px; */
 }
 
 .box-contents2 > h3 {
@@ -197,16 +182,8 @@ main {
   justify-content: space-evenly;
 }
 
-.small-box-right{
+.small-box-right {
   margin-left: 50px;
-}
-
-.wideBox {
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 60%;
-  margin-right: 80px;
 }
 
 .sub-box > .number-with-units > h3 {
@@ -219,7 +196,6 @@ main {
   color: var(--gray);
 }
 
-
 .number-with-units {
   display: flex;
   flex-direction: row;
@@ -229,12 +205,6 @@ main {
 .number-with-units > h2 {
   font-size: 60px;
   font-weight: bold;
-}
-
-.quality {
-  margin-left: 20px;
-  color: var(--pink);
-  font-size: 30px;
 }
 
 #box1 > div > h2 {
@@ -253,26 +223,11 @@ main {
   color: var(--red);
 }
 
-#exception {
-  margin-top: 27px;
-}
-
 .hidden {
   display: none;
 }
 
-.sub-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.week-display {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.graph-chart{
+.graph-chart {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -280,22 +235,18 @@ main {
 }
 
 .sleep-graph-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-#hydroChart
-#sleep-hourly-graph
-#sleep-quality-graph{
+#hydroChart #sleep-hourly-graph #sleep-quality-graph {
   width: 60%;
   height: 75%;
   padding-bottom: 20px;
 }
 
-.last-night-sleep
-.average-sleep 
-.sleep-graph-wrapper {
-  display:flex;
+.last-night-sleep .average-sleep .sleep-graph-wrapper {
+  display: flex;
   flex-direction: column;
 }
 
@@ -303,8 +254,7 @@ main {
   height: 35%;
 }
 
-.activity-data{
-  /* height: 120vh; */
+.activity-data {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -319,14 +269,14 @@ p.red {
 }
 
 p.green {
-  color: var(--green)!important;
+  color: var(--green) !important;
 }
 
-.activity-data-boxes{
-  width:20%;
+.activity-data-boxes {
+  width: 20%;
   margin-left: 8%;
 }
 
-.first-place{
-  color:rgb(193, 33, 33);
+.first-place {
+  color: rgb(193, 33, 33);
 }

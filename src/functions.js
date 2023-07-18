@@ -1,6 +1,5 @@
 // User Data Functions:
 
-
 export const createRandomUser = (usersArray) => {
   const randomIndex = Math.floor(Math.random() * usersArray.length);
   let currentUser = usersArray[randomIndex];
@@ -29,7 +28,7 @@ export const nameFriends = (currentUser, usersArray) => {
   return formattedArray;
 };
 
-//Hydro Data Functions:
+// Hydro Data Functions:
 export const createUserHydroData = (user, hydroData) => {
   const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
   return userHydroData;
@@ -52,7 +51,6 @@ export const getDailyFlOz = (day, hydroData) => {
 export function findStartingIndex(userHydroData, endDate) {
   for (let i = 0; i < userHydroData.length; i++) {
     if (userHydroData[i].date === endDate) {
-  
       return i;
     }
   }
@@ -66,7 +64,7 @@ export const weeklyHydroData = (userHydroData, endDateIndex) => {
   return weeklyData;
 };
 
-//Sleep Data Functions:
+// Sleep Data Functions:
 export const getUserSleepData = (user, sleepData) => {
   const userSleep = sleepData.filter((data) => data.userID === user.id);
   return userSleep;
@@ -99,11 +97,11 @@ export const getUserDailyQualitySleep = (day, sleepData) => {
 };
 
 export const describeSleepQuality = (userSleepQuality) => {
-  return userSleepQuality >= 3 ? "good" : "poor"
+  return userSleepQuality >= 3 ? "good" : "poor";
 };
 
 export const changeGoodBadColor = (userSleepQuality) => {
-  return userSleepQuality >= 3 ? "green" : "red"
+  return userSleepQuality >= 3 ? "green" : "red";
 };
 
 export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
@@ -130,7 +128,7 @@ export const weeklySleepData = (userSleep, endDateIndex) => {
   return weeklySleepData;
 };
 
-//Activity Data Functions:
+// Activity Data Functions:
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter((data) => data.userID === user.id);
   return userSteps;
@@ -186,97 +184,127 @@ export const formatDate = (weeklyData) => {
 };
 
 export const dateToMonth = (trendData) => {
-  let lastObject = trendData[trendData.length-1];
-  let mostRecentSteps = lastObject.map(datum => datum.numSteps)
-  let mostRecentDates = lastObject.map(datum => datum.date)
-  let reformattedMostRecentDates = []
+  let lastObject = trendData[trendData.length - 1];
+  let mostRecentSteps = lastObject.map((datum) => datum.numSteps);
+  let mostRecentDates = lastObject.map((datum) => datum.date);
+  let reformattedMostRecentDates = [];
   mostRecentDates.forEach((date) => {
-    let splitDate = date.split('/');
+    let splitDate = date.split("/");
     splitDate.shift();
-    let joinDate = splitDate.join('/');
+    let joinDate = splitDate.join("/");
     reformattedMostRecentDates.push(joinDate);
-  })
-  const months = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
-  const monthNames =[];
-  reformattedMostRecentDates.forEach(date => {
-    const splitDate = date.split('/');
-    monthNames.push(months[parseInt(splitDate[0])-1] + ' ' + splitDate[1]);
+  });
+  const months = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const monthNames = [];
+  reformattedMostRecentDates.forEach((date) => {
+    const splitDate = date.split("/");
+    monthNames.push(months[parseInt(splitDate[0]) - 1] + " " + splitDate[1]);
   });
   return monthNames;
-}
+};
 
 export const compareUserStepGoal = (weeklyStepData, userData) => {
   const colorArray = [];
   const colorChecks = ["rgba(247, 113, 2, 1)", "rgba(180, 236, 52, .8)"];
-  weeklyStepData.forEach(datum => {
-    if(datum >= userData.dailyStepGoal) {
+  weeklyStepData.forEach((datum) => {
+    if (datum >= userData.dailyStepGoal) {
       colorArray.push(colorChecks[1]);
     } else {
       colorArray.push(colorChecks[0]);
     }
-  })
+  });
   return colorArray;
 };
 
 export const getUserData = (userID, usersData) => {
-  return (usersData.find(user => user.id === userID));
-}
+  return usersData.find((user) => user.id === userID);
+};
 
 export const friendsStepChallenge = (userData, allUsersData, activityData) => {
   const friends = userData.friends;
   const friendsData = [];
-  friends.forEach(friend => {
+  friends.forEach((friend) => {
     friendsData.push(getUserData(friend, allUsersData));
-  })
+  });
   const friendsSteps = [];
-  friendsData.forEach(friend => {
-    friendsSteps.push(
-      {
-        friendName: friend.name,
-        friendSteps: totalSteps(weeklyStepData(createUserStepData(friend, activityData),99)),
-      })
+  friendsData.forEach((friend) => {
+    friendsSteps.push({
+      friendName: friend.name,
+      friendSteps: totalSteps(
+        weeklyStepData(createUserStepData(friend, activityData), 99)
+      ),
     });
-    
-    if((friendsSteps.find(friend => friend.friendName === userData.name)) === undefined){
+  });
+
+  if (
+    friendsSteps.find((friend) => friend.friendName === userData.name) ===
+    undefined
+  ) {
     friendsSteps.push({
       friendName: userData.name,
-      friendSteps: totalSteps(weeklyStepData(createUserStepData(userData,activityData),99)),
-    })
+      friendSteps: totalSteps(
+        weeklyStepData(createUserStepData(userData, activityData), 99)
+      ),
+    });
   }
-  const sortedFriends = friendsSteps.sort((a,b) => b.friendSteps - a.friendSteps);
-  return sortedFriends
-}
+  const sortedFriends = friendsSteps.sort(
+    (a, b) => b.friendSteps - a.friendSteps
+  );
+  return sortedFriends;
+};
 
 export const displayStepChallenge = (totalSteps) => {
   const sortedWithNames = [];
-  totalSteps.forEach(friend => {
-    sortedWithNames.push( `${friend.friendName} has ${friend.friendSteps} steps.`)
-  })
+  totalSteps.forEach((friend) => {
+    sortedWithNames.push(
+      `${friend.friendName} has ${friend.friendSteps} steps.`
+    );
+  });
   return sortedWithNames;
-}
+};
 
 export const totalSteps = (stepData) => {
   return stepData.reduce((acc, cv) => {
-    acc += cv
+    acc += cv;
     return acc;
-  },0)
-}
+  }, 0);
+};
 
 export const increasingStepDays = (stepData) => {
   const increasedDays = [];
-  for(var i = 0 ; i < stepData.length-2 ; i++){
-    if(stepData[i].numSteps < stepData[i+1].numSteps && stepData[i+1].numSteps < stepData[i+2].numSteps){
-      increasedDays.push([{
-        date: stepData[i].date, 
-        numSteps: stepData[i].numSteps,
-      },{
-        date: stepData[i+1].date, 
-        numSteps: stepData[i+1].numSteps,
-      },{
-        date: stepData[i+2].date, 
-        numSteps: stepData[i+2].numSteps,
-      }]);
+  for (var i = 0; i < stepData.length - 2; i++) {
+    if (
+      stepData[i].numSteps < stepData[i + 1].numSteps &&
+      stepData[i + 1].numSteps < stepData[i + 2].numSteps
+    ) {
+      increasedDays.push([
+        {
+          date: stepData[i].date,
+          numSteps: stepData[i].numSteps,
+        },
+        {
+          date: stepData[i + 1].date,
+          numSteps: stepData[i + 1].numSteps,
+        },
+        {
+          date: stepData[i + 2].date,
+          numSteps: stepData[i + 2].numSteps,
+        },
+      ]);
     }
   }
- return increasedDays;
-}
+  return increasedDays;
+};
