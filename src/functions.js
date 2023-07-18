@@ -28,7 +28,7 @@ export const nameFriends = (currentUser, usersArray) => {
   return formattedArray;
 };
 
-//Hydro Data Functions:
+// Hydro Data Functions:
 export const createUserHydroData = (user, hydroData) => {
   const userHydroData = hydroData.filter((datum) => datum.userID === user.id);
   return userHydroData;
@@ -64,7 +64,7 @@ export const weeklyHydroData = (userHydroData, endDateIndex) => {
   return weeklyData;
 };
 
-//Sleep Data Functions:
+// Sleep Data Functions:
 export const getUserSleepData = (user, sleepData) => {
   const userSleep = sleepData.filter((data) => data.userID === user.id);
   return userSleep;
@@ -128,7 +128,7 @@ export const weeklySleepData = (userSleep, endDateIndex) => {
   return weeklySleepData;
 };
 
-//Activity Data Functions:
+// Activity Data Functions:
 export const createUserStepData = (user, stepData) => {
   const userSteps = stepData.filter((data) => data.userID === user.id);
   return userSteps;

@@ -71,8 +71,8 @@ const generateWebPage = () => {
   displayTodayHydro(mainData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
   createHydroBarGraph(99, currentUserH2O);
+  
   // sleep data
-
   const currentUserSleep = getUserSleepData(
     mainData.currentUser,
     mainData.sleep
