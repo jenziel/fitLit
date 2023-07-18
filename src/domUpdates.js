@@ -276,7 +276,7 @@ export const displayDistanceWalked = (activityData, day, currentUserData) => {
 // }
 
 export const createUserActivityGraph = (activityData, day, userData) => {
-  
+  const userStepGoal = ['','','','','','','']
 
   const chart = new Chart(activityBarChart, {
     type: 'bar',
@@ -293,7 +293,7 @@ export const createUserActivityGraph = (activityData, day, userData) => {
         {
           type: 'line',
           label: 'Step Goal',
-          data: [userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal,userData.dailyStepGoal],
+          data: userStepGoal.fill(userData.dailyStepGoal),
           borderColor: 'red', // Change the color of the line as needed
           borderWidth: 3, // Adjust the width of the line as needed
           fill: false, // Disable filling the area under the line
