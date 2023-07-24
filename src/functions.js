@@ -110,7 +110,8 @@ export const changeGoodBadColor = (userSleepQuality) => {
 
 export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   const weeklyHourSleepData = [];
-  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
+  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyHourSleepData.push(userSleep[i].hoursSlept);
   }
   return weeklyHourSleepData;
@@ -118,7 +119,8 @@ export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
 
 export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
   const weeklySleepQuality = [];
-  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
+  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklySleepQuality.push(userSleep[i].sleepQuality);
   }
   return weeklySleepQuality;
@@ -126,7 +128,8 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
 
 export const weeklySleepData = (userSleep, endDateIndex) => {
   const weeklySleepData = [];
-  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
+  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklySleepData.push(userSleep[i]);
   }
   return weeklySleepData;
@@ -155,7 +158,8 @@ export const calculateMinutesActive = (userStepData, day) => {
 
 export const weeklyStepData = (userActivityData, endDateIndex) => {
   const weeklyStepData = [];
-  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
+  let startingIndex = (userActivityData.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyStepData.push(userActivityData[i].numSteps);
   }
   return weeklyStepData;
@@ -163,7 +167,8 @@ export const weeklyStepData = (userActivityData, endDateIndex) => {
 
 export const weeklyActivityData = (userActivityData, endDateIndex) => {
   const weeklyActivityData = [];
-  for (let i = endDateIndex - 6; i <= endDateIndex; i++) {
+  let startingIndex = (userActivityData.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyActivityData.push(userActivityData[i]);
   }
   return weeklyActivityData;

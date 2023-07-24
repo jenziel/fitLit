@@ -16,6 +16,7 @@ import {
   getUserDailyQualitySleep,
   weeklyHourlySleepData,
   weeklyQualitySleepData,
+  weeklySleepData,
   createUserStepData,
   getDaySteps,
   calculateDayMileage,
@@ -125,7 +126,6 @@ describe("Weekly Hydro Data Function", function () {
   it("should have a function that returns an array of data for 1 week", function () {
     let day2 = "2023/07/01";
     let day3 = findStartingIndex(mockAllTimeHydroData, day2);
-    // console.log("mockAllTimeHydroData", mockAllTimeHydroData)
     expect(weeklyHydroData(mockAllTimeHydroData, day3)).to.deep.equal([
       { userID: 3, date: "2023/06/25", numOunces: 78 },
       { userID: 3, date: "2023/06/26", numOunces: 56 },
@@ -334,13 +334,98 @@ describe("Sleep Logic: Weekly Values", function () {
     ]);
   });
 
+  it("should be dynamic to allow for an array length less than 7", function () {
+    expect(weeklyHourlySleepData(mockSleepData, 3)).to.deep.equal([
+      9.6, 8.4, 9.7, 4.7
+    ]);
+  });
+
   it("should return a weeks worth of sleep quality data for current user", function () {
     let day = "2023/03/29";
     expect(weeklyQualitySleepData(mockSleepData, 6)).to.deep.equal([
       4.3, 3.5, 4.7, 3, 1.2, 3.9, 1.6,
     ]);
   });
-});
+
+  it("should be dynamic to allow for an array length less than 7", function () {
+    let day = "2023/03/29";
+    expect(weeklyQualitySleepData(mockSleepData, 2)).to.deep.equal([
+      4.3, 3.5, 4.7
+    ]);
+  });
+
+  it("should return an array of objects containing a weeks worth of user sleep data", function () {
+    expect(weeklySleepData(mockSleepData, 6)).to.deep.equal([
+        {
+          userID: 1,
+          date: "2023/03/23",
+          hoursSlept: 9.6,
+          sleepQuality: 4.3,
+        },
+        {
+          userID: 1,
+          date: "2023/03/24",
+          hoursSlept: 8.4,
+          sleepQuality: 3.5,
+        },
+        {
+          userID: 1,
+          date: "2023/03/25",
+          hoursSlept: 9.7,
+          sleepQuality: 4.7,
+        },
+        {
+          userID: 1,
+          date: "2023/03/26",
+          hoursSlept: 4.7,
+          sleepQuality: 3,
+        },
+        {
+          userID: 1,
+          date: "2023/03/27",
+          hoursSlept: 4.2,
+          sleepQuality: 1.2,
+        },
+        {
+          userID: 1,
+          date: "2023/03/28",
+          hoursSlept: 4.1,
+          sleepQuality: 3.9,
+        },
+        {
+          userID: 1,
+          date: "2023/03/29",
+          hoursSlept: 9.2,
+          sleepQuality: 1.6,
+        }
+    ])
+  })
+ 
+
+  it("should be dynamic enough to return a shorter array if there isn't a weeks worth of data", function () {
+    expect(weeklySleepData(mockSleepData, 2)).to.deep.equal([
+        {
+          userID: 1,
+          date: "2023/03/23",
+          hoursSlept: 9.6,
+          sleepQuality: 4.3,
+        },
+        {
+          userID: 1,
+          date: "2023/03/24",
+          hoursSlept: 8.4,
+          sleepQuality: 3.5,
+        },
+        {
+          userID: 1,
+          date: "2023/03/25",
+          hoursSlept: 9.7,
+          sleepQuality: 4.7,
+        },
+    ])
+  })
+
+}); 
 
 describe("Activity data calculations", function () {
   let cohortActivityData;
@@ -474,7 +559,7 @@ describe("Activity data calculations", function () {
       },
     ]);
   });
-  it("should have a function to access user step data for a specific day", function () {
+  it("should be a function", function () {
     expect(getDaySteps).to.be.a("function");
   });
   it("should return the number of steps for the day we want", function () {
@@ -495,6 +580,11 @@ describe("Activity data calculations", function () {
   it(`should return an array of 7 numbers representing number of steps`, function () {
     expect(weeklyStepData(user1StepData, 6)).to.deep.equal([
       7362, 14264, 8646, 5405, 8638, 9608, 14960,
+    ]);
+  });
+  it('should be dynamic enough to handle an array lenght less than 7', function () {
+    expect(weeklyStepData(user1StepData, 2)).to.deep.equal([
+      7362, 14264, 8646
     ]);
   });
 });
