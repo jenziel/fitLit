@@ -1,6 +1,7 @@
 // Fetch requests
 
 
+
 // user data
 const usersPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
   .then(response => response.json()) 

@@ -67,10 +67,10 @@ const generateWebPage = () => {
     mainData.currentUser,
     mainData.hydration
   );
-  weeklyHydroData(currentUserH2O, 99);
+  weeklyHydroData(currentUserH2O, 2);
   displayTodayHydro(mainData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
-  createHydroBarGraph(99, currentUserH2O);
+  createHydroBarGraph(2, currentUserH2O);
   
   // sleep data
   const currentUserSleep = getUserSleepData(

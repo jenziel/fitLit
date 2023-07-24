@@ -136,6 +136,15 @@ describe("Weekly Hydro Data Function", function () {
       { userID: 3, date: "2023/07/01", numOunces: 31 },
     ]);
   });
+  it("Should be dynamic to handle an array length < 7", function (){
+    expect(weeklyHydroData(mockAllTimeHydroData, 4)).to.deep.equal([
+      {userID: 3, date: '2023/03/24', numOunces: 95},
+      {userID: 3, date: '2023/03/25', numOunces: 59},
+      {userID: 3, date: '2023/03/26', numOunces: 63},
+      {userID: 3, date: '2023/03/27', numOunces: 58},
+      {userID: 3, date: '2023/03/30', numOunces: 27}
+    ]);
+  });
 });
 
 describe("Sleep Logic: Averages and Daily Values", function () {
