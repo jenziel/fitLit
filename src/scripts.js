@@ -1,7 +1,7 @@
 // imports
 import "./css/styles.css";
 import "./domUpdates";
-import { promises } from "./apiCalls";
+import { createFetchRequest } from "./apiCalls";
 
 import {
   createRandomUser,
@@ -104,17 +104,33 @@ const generateWebPage = () => {
 };
 
 // event handlers
+// window.addEventListener("load", () => {
+//   Promise.all(promises)
+//     .then((response) => {
+//       const [usersPromise, hydroPromise, sleepPromise, activityPromise] =
+//         response;
+//       mainData.users = usersPromise;
+//       mainData.hydration = hydroPromise;
+//       mainData.sleep = sleepPromise;
+//       mainData.activity = activityPromise;
+//     })
+//     .then(generateWebPage);
+// });
+
 window.addEventListener("load", () => {
-  Promise.all(promises)
-    .then((response) => {
+  Promise.all(createFetchRequest())
+    .then((promisesArray) => {
+      console.log(promisesArray)
       const [usersPromise, hydroPromise, sleepPromise, activityPromise] =
-        response;
-      mainData.users = usersPromise;
-      mainData.hydration = hydroPromise;
-      mainData.sleep = sleepPromise;
-      mainData.activity = activityPromise;
+        promisesArray;
+      mainData.users = usersPromise.users;
+      mainData.hydration = hydroPromise.hydrationData;
+      mainData.sleep = sleepPromise.sleepData;
+      mainData.activity = activityPromise.activityData;
+      console.log(mainData)
     })
     .then(generateWebPage);
 });
+
 
 userInfoButton.addEventListener("click", toggleInfo);
