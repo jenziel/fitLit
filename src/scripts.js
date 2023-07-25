@@ -120,14 +120,12 @@ const generateWebPage = () => {
 window.addEventListener("load", () => {
   Promise.all(createFetchRequest())
     .then((promisesArray) => {
-      console.log(promisesArray)
-      const [usersPromise, hydroPromise, sleepPromise, activityPromise] =
-        promisesArray;
-      mainData.users = usersPromise.users;
-      mainData.hydration = hydroPromise.hydrationData;
-      mainData.sleep = sleepPromise.sleepData;
-      mainData.activity = activityPromise.activityData;
-      console.log(mainData)
+      console.log("PROMISES ARRAY:", promisesArray)
+      mainData.users = promisesArray[0].users;
+      mainData.hydration = promisesArray[1].hydrationData;
+      mainData.sleep = promisesArray[2].sleepData;
+      mainData.activity = promisesArray[3].activityData;
+      console.log("MAIN DATA:", mainData)
     })
     .then(generateWebPage);
 });
