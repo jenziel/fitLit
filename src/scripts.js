@@ -1,7 +1,7 @@
 // imports
 import "./css/styles.css";
 import "./domUpdates";
-import { createFetchRequest } from "./apiCalls";
+import { createFetchRequest, postUserInput } from "./apiCalls";
 
 import {
   createRandomUser,
@@ -35,12 +35,17 @@ import {
   createUserActivityGraph,
   displayStepChallengeToDom,
   displayActivityTrendGraph,
+  gatherUserInput,
+  hydroUserInput,
+  hydroUserInputButton,
+  errorMessage,
 } from "./domUpdates";
 
 // master data object
 const mainData = {
   today: "2023/07/01",
 };
+
 
 const generateWebPage = () => {
   updateIcon();
@@ -103,20 +108,6 @@ const generateWebPage = () => {
   increasingStepDays(currentUserActivity);
 };
 
-// event handlers
-// window.addEventListener("load", () => {
-//   Promise.all(promises)
-//     .then((response) => {
-//       const [usersPromise, hydroPromise, sleepPromise, activityPromise] =
-//         response;
-//       mainData.users = usersPromise;
-//       mainData.hydration = hydroPromise;
-//       mainData.sleep = sleepPromise;
-//       mainData.activity = activityPromise;
-//     })
-//     .then(generateWebPage);
-// });
-
 window.addEventListener("load", () => {
   Promise.all(createFetchRequest())
     .then((promisesArray) => {
@@ -130,5 +121,16 @@ window.addEventListener("load", () => {
     .then(generateWebPage);
 });
 
-
 userInfoButton.addEventListener("click", toggleInfo);
+
+hydroUserInputButton.addEventListener('click', () => {
+  let input = gatherUserInput() 
+        postUserInput(mainData.currentUser, input)
+        .then(() => {
+          return fetch('http://localhost:3001/api/v1/hydration');
+        })
+        .then(response => response.json())
+        .then(data => console.log('get data', data))
+        .catch(error => console.log(error));
+});
+

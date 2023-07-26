@@ -1,9 +1,12 @@
+// import { globalCurrentUser } from "./scripts"
+// import { gatherUserInput } from "./domUpdates";
+
 // Fetch requests
 
-const userURL = 'https://fitlit-api.herokuapp.com/api/v1/users';
-const hydroURL = 'https://fitlit-api.herokuapp.com/api/v1/hydration';
-const sleepURL = 'https://fitlit-api.herokuapp.com/api/v1/sleep';
-const activityURL = 'https://fitlit-api.herokuapp.com/api/v1/activity';
+const userURL = 'http://localhost:3001/api/v1/users';
+const hydroURL = 'http://localhost:3001/api/v1/hydration';
+const sleepURL = 'http://localhost:3001/api/v1/sleep';
+const activityURL = 'http://localhost:3001/api/v1/activity	';
 
 const urlArray = [userURL, hydroURL, sleepURL, activityURL];
 
@@ -16,24 +19,52 @@ const urlArray = [userURL, hydroURL, sleepURL, activityURL];
   }
 
 
-// // user data
-// const usersPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
-//   .then(response => response.json()) 
-//   .then(data => data.users)
 
-// // hydration data
-// const hydroPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
-//   .then(response => response.json()) 
-//   .then(data => data.hydrationData)
 
-// // sleep data 
-// const sleepPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
-//   .then(response => response.json()) 
-//   .then(data => data.sleepData)
+// export const postUserInput = (currentUser, input) => {
+//   console.log('cu', currentUser)
+//   console.log('input', input)
+//   let data = { userID: currentUser.id, 
+//                   date: '2023/07/02', 
+//                   numOunces: input }
+//   fetch(hydroURL, {
+//     method: 'POST',
+//     body: JSON.stringify(data), 
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//     .then(response => 
+//       // console.log('response', response)
+//       // console.log('response.json',response.json())
+//      response.json()
+//     )
+//     .then(data => {
+//       console.log(data)
+//     return data})
+    
+//   }
 
-// // activity data
-// const activityPromise = fetch('https://fitlit-api.herokuapp.com/api/v1/activity')
-//   .then(response => response.json()) 
-//   .then(data => data.activityData)
+export const postUserInput = (currentUser, input) => {
+  let data = {
+    userID: currentUser.id,
+    date: '2023/07/02',
+    numOunces: input
+  };
 
-// export const promises = [usersPromise, hydroPromise, sleepPromise, activityPromise];
+  return fetch(hydroURL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }) 
+  .catch(error => {
+    console.log(error);
+    throw error;
+  });
+};
+
+
+
+
