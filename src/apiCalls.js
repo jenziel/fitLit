@@ -1,9 +1,9 @@
 // Fetch requests
 
-const userURL = 'https://fitlit-api.herokuapp.com/api/v1/users';
-const hydroURL = 'https://fitlit-api.herokuapp.com/api/v1/hydration';
-const sleepURL = 'https://fitlit-api.herokuapp.com/api/v1/sleep';
-const activityURL = 'https://fitlit-api.herokuapp.com/api/v1/activity';
+const userURL = 'http://localhost:3001/api/v1/users';
+const hydroURL = 'http://localhost:3001/api/v1/hydration';
+const sleepURL = 'http://localhost:3001/api/v1/sleep';
+const activityURL = 'http://localhost:3001/api/v1/activity	';
 
 const urlArray = [userURL, hydroURL, sleepURL, activityURL];
 

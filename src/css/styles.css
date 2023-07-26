@@ -130,9 +130,15 @@ img {
   margin-bottom: 2.5vh;
 }
 
+.hydro-box-title,
 .box-title {
   margin-bottom: 5vh;
   color: var(--gray);
+}
+
+.hydro-box-title{
+  display: flex;
+  justify-content: space-between;
 }
 
 .activity-box-contents-container {
