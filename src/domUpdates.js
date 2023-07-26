@@ -186,7 +186,7 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
         {
           label: "Last Weeks Hourly Sleep Data",
           data: weeklyHourlySleepData(sleepData, day),
-          backgroundColor: "rgba(58, 13, 143, 0.6)",
+          backgroundColor: "rgba(58, 13, 143, 0.9)",
         },
       ],
     },
@@ -219,7 +219,7 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
         {
           label: "Last Weeks Quality",
           data: weeklyQualitySleepData(sleepData, day),
-          backgroundColor: "rgba(58, 13, 143, 0.6)",
+          backgroundColor: "rgba(58, 13, 143, 0.9)",
         },
       ],
     },

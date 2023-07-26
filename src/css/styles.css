@@ -1,15 +1,16 @@
 :root {
   --lime-green: #b4ec34;
-  --dark-lime-green: #7aa037;
+  --dark-lime-green: #1A6D0D;
+  /* #5C792A; */
   --black: #142122;
   --gray: #828b94;
   --dark-gray: #4e535c;
   --light-gray: #e5e7eb;
   --white: #ffffff;
   --blue: #1f80f3;
-  --red: #f40722;
+  --red: #c5031a;
   --orange: #ff9c1b;
-  --green: #4bb84a;
+  --green: #347d4e;
   --purple: rgb(85, 48, 156);
   --pink: #e770be;
 }
@@ -68,7 +69,7 @@ img {
 
 .lower-pane {
   height: 75%;
-  background-color: var(--dark-gray);
+  background-color: var(--black);
   padding: 3vw;
   display: flex;
   flex-direction: column;
@@ -86,7 +87,7 @@ img {
   display: flex;
   align-items: center;
   height: 75vh;
-  background-color: var(--dark-gray);
+  background-color: var(--black);
   padding: 20px;
 }
 
@@ -94,7 +95,7 @@ img {
   padding-left: 50px;
   height: 60vh;
   width: 100%;
-  background-color: var(--light-gray);
+  background-color: var(--white);
   display: flex;
   justify-content: flex-start;
   align-items: space-between;
@@ -120,7 +121,7 @@ img {
   width: 100%;
   margin-top: 5vh;
   border-radius: 15px;
-  background-color: var(--light-gray);
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -193,7 +194,7 @@ img {
 .number-with-units > p,
 .data-analysis > p {
   font-weight: bolder;
-  color: var(--gray);
+  color: var(--dark-gray);
 }
 
 .number-with-units {
