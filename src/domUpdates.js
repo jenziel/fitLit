@@ -24,6 +24,7 @@ import {
 } from "./functions";
 
 import { imagesArray } from "./images/svgFiles";
+// import { globalCurrentUser } from "./scripts";
 
 // query selectors
 const userName = document.querySelector(".user-greeting");
@@ -43,13 +44,13 @@ const friendsField = document.querySelector(".user-friends");
 const todayHydro = document.querySelector(".todays-hydro");
 const avgHydro = document.querySelector(".average-water");
 
-//last night:
+// last night:
 const todaysHourlySleep = document.querySelector(".todays-hourly-sleep");
 const todaysQualitySleep = document.querySelector(".todays-quality-sleep-num");
 export const lastNightQualityGoodBad = document.querySelector(
   ".sleep-quality-today-descriptive"
 );
-//weekly:
+// weekly:
 const averageHourlySleep = document.querySelector(".average-hours-slept");
 const averageQualitySleep = document.querySelector(
   ".average-quality-slept-num"
@@ -73,6 +74,25 @@ const activityTrendText = document.querySelector(".activity-trend-title");
 const activityTrendGraph = document.getElementById(
   "activity-trend-graph-display"
 );
+
+export const hydroUserInput = document.getElementById('user-hydration-input');
+export const hydroUserInputButton = document.querySelector('.user-hydration-input-button');
+export const errorMessage = document.querySelector('.error-message');
+
+export const gatherUserInput = () => {
+  let userInput = hydroUserInput.value;
+    if(isNaN(userInput)) { 
+      // error message appear 
+      errorMessage.innerText = ''
+      errorMessage.innerText = 'Please enter a number'
+  } else {
+    errorMessage.innerText = ''
+    errorMessage.innerText = 'Today I drank'
+      // capture input and POST
+    }
+    console.log(userInput) 
+  return userInput
+}
 
 export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
@@ -134,6 +154,13 @@ export const toggleInfo = () => {
     userInfoButton.innerText = `User Info`;
   }
 };
+
+// export const displayUserHydrationInput = () => {
+//   hydroUserInput
+
+// }
+
+
 
 export const displayTodayHydro = (day, data) => {
   todayHydro.innerText = `${getDailyFlOz(day, data)}`;
