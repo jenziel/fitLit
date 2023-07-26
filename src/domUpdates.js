@@ -75,6 +75,10 @@ const activityTrendGraph = document.getElementById(
   "activity-trend-graph-display"
 );
 
+
+let hydroChart 
+
+
 export const hydroUserInput = document.getElementById('user-hydration-input');
 export const hydroUserInputButton = document.querySelector('.user-hydration-input-button');
 export const errorMessage = document.querySelector('.error-message');
@@ -91,7 +95,8 @@ export const gatherUserInput = () => {
       // capture input and POST
     }
     console.log(userInput) 
-  return userInput
+  
+  return parseInt(userInput)
 }
 
 export const updateUserDailyStepGoal = (user) => {
@@ -155,18 +160,26 @@ export const toggleInfo = () => {
   }
 };
 
-// export const displayUserHydrationInput = () => {
-//   hydroUserInput
-
-// }
-
-
+export const updateHydroGraph = (day, currentUserH2O) => {
+  let hydroGraphData = { 
+    labels: formatDate(weeklyHydroData(currentUserH2O, day)),
+    datasets: [
+      {
+        label: "Last Weeks Hydration",
+        data: displayDailyHydro(day, currentUserH2O),
+        backgroundColor: "rgba(42, 184, 250, 0.6)", // Customize the bar color
+      }]
+    };
+  hydroChart.data = hydroGraphData;
+  hydroChart.update()
+}
 
 export const displayTodayHydro = (day, data) => {
   todayHydro.innerText = `${getDailyFlOz(day, data)}`;
 };
 
 export const displayAvgHydro = (userHydroData) => {
+  avgHydro.innerText = ``
   avgHydro.innerText = `${getAllTimeAverageFlOz(userHydroData)}`;
 };
 
@@ -177,7 +190,7 @@ export const displayDailyHydro = (day, userHydroData) => {
 };
 
 export const createHydroBarGraph = (day, hydroData) => {
-  const chart = new Chart(hydroBarChart, {
+  hydroChart = new Chart(hydroBarChart, {
     type: "bar",
     data: {
       labels: formatDate(weeklyHydroData(hydroData, day)),
