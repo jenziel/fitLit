@@ -12,6 +12,7 @@ import {
   friendsStepChallenge,
   increasingStepDays,
   displayStepChallenge,
+  getAllTimeAverageFlOz,
 } from "./functions";
 
 import {
@@ -39,6 +40,7 @@ import {
   hydroUserInput,
   hydroUserInputButton,
   errorMessage,
+  updateHydroGraph
 } from "./domUpdates";
 
 // master data object
@@ -72,6 +74,8 @@ const generateWebPage = () => {
     mainData.currentUser,
     mainData.hydration
   );
+  console.log('original hydro data', mainData.hydration)
+  console.log('original current user hydro data', currentUserH2O)
   weeklyHydroData(currentUserH2O, 99);
   displayTodayHydro(mainData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
@@ -116,7 +120,7 @@ window.addEventListener("load", () => {
       mainData.hydration = promisesArray[1].hydrationData;
       mainData.sleep = promisesArray[2].sleepData;
       mainData.activity = promisesArray[3].activityData;
-      console.log("MAIN DATA:", mainData)
+      // console.log("MAIN DATA:", mainData)
     })
     .then(generateWebPage);
 });
@@ -130,7 +134,28 @@ hydroUserInputButton.addEventListener('click', () => {
           return fetch('http://localhost:3001/api/v1/hydration');
         })
         .then(response => response.json())
-        .then(data => console.log('get data', data))
+        .then(data => {
+
+          mainData.hydration = data.hydrationData
+          
+          let currentUserH2O = mainData.hydration
+          .filter(data => mainData.currentUser.id === data.userID)
+
+          console.log('after user input hydto data', currentUserH2O)
+          weeklyHydroData(currentUserH2O, 100);
+          mainData.today = '2023/07/02'
+          displayTodayHydro(mainData.today, currentUserH2O);
+
+          getAllTimeAverageFlOz(currentUserH2O);
+
+          displayAvgHydro(currentUserH2O);
+          // const hydroChart = document.querySelector('.graph-chart');
+          // hydroChart.removeChild();
+
+          updateHydroGraph(100, currentUserH2O)
+
+          console.log('after-Post all hydro data', mainData.hydration)
+        })
         .catch(error => console.log(error));
 });
 
