@@ -83,6 +83,27 @@ export const hydroUserInput = document.getElementById('user-hydration-input');
 export const hydroUserInputButton = document.querySelector('.user-hydration-input-button');
 export const errorMessage = document.querySelector('.error-message');
 
+const sortableContainerElem = document.getElementById('sortable-container');
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const sortableContainer = new Sortable(sortableContainerElem,
+    { 
+    animation: 300,
+    ghostClass: 'sortGhost', 
+    onChoose(evt) {
+      // Add a CSS class to the element being dragged
+      evt.item.classList.add('sortable-item-dragging');
+    },
+    onUnchoose(evt) {
+      // Remove the CSS class when dragging ends
+      evt.item.classList.remove('sortable-item-dragging')
+    }
+  })
+})
+
+
+
 export const gatherUserInput = () => {
   let userInput = hydroUserInput.value.trim()
   console.log("userInput", userInput)
