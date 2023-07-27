@@ -84,12 +84,32 @@ export const hydroUserInputButton = document.querySelector('.user-hydration-inpu
 export const errorMessage = document.querySelector('.error-message');
 
 export const gatherUserInput = () => {
-  let userInput = hydroUserInput.value;
+  let userInput = hydroUserInput.value.trim()
+  console.log("userInput", userInput)
+  let numberInput = Number(userInput)
     if(isNaN(userInput)) { 
       // error message appear 
       errorMessage.innerText = ''
       errorMessage.innerText = 'Please enter a number'
-  } else {
+      return false
+    } 
+    else if((numberInput) > 150){
+      errorMessage.innerText = ''
+      errorMessage.innerText = 'Please enter a lower number'
+      return false
+    }
+    else if(!Number.isInteger(numberInput)) {
+      errorMessage.innerText = ''
+      errorMessage.innerText = 'Enter a whole number'
+      return false
+    }
+    else if(userInput === "") {
+  
+      errorMessage.innerText = ''
+      errorMessage.innerText = 'Please enter more than a space'
+      return false
+    }
+   else {
     errorMessage.innerText = ''
     errorMessage.innerText = 'Today I drank'
       // capture input and POST

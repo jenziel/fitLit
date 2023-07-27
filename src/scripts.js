@@ -129,18 +129,18 @@ userInfoButton.addEventListener("click", toggleInfo);
 
 hydroUserInputButton.addEventListener('click', () => {
   let input = gatherUserInput() 
+   if(input === false) {
+    return
+   }
         postUserInput(mainData.currentUser, input)
         .then(() => {
           return fetch('http://localhost:3001/api/v1/hydration');
         })
         .then(response => response.json())
         .then(data => {
-
-          mainData.hydration = data.hydrationData
-          
+          mainData.hydration = data.hydrationData 
           let currentUserH2O = mainData.hydration
           .filter(data => mainData.currentUser.id === data.userID)
-
           console.log('after user input hydto data', currentUserH2O)
           weeklyHydroData(currentUserH2O, 100);
           mainData.today = '2023/07/02'
@@ -149,11 +149,8 @@ hydroUserInputButton.addEventListener('click', () => {
           getAllTimeAverageFlOz(currentUserH2O);
 
           displayAvgHydro(currentUserH2O);
-          // const hydroChart = document.querySelector('.graph-chart');
-          // hydroChart.removeChild();
 
           updateHydroGraph(100, currentUserH2O)
-
           console.log('after-Post all hydro data', mainData.hydration)
         })
         .catch(error => console.log(error));
