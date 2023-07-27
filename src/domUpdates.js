@@ -97,10 +97,43 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     onUnchoose(evt) {
       // Remove the CSS class when dragging ends
-      evt.item.classList.remove('sortable-item-dragging')
+      evt.item.classList.remove('sortable-item-dragging');
     }
-  })
-})
+  });
+});
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const element = document.querySelector('.click-and-hold');
+//   let isClicked = false;
+
+//   // Function to handle the click-and-hold action
+//   function clickAndHoldHandler() {
+//     isClicked = true;
+//     element.classList.add('clicked');
+//   }
+
+//   // Function to reset the cursor when released
+//   function releaseHandler() {
+//     isClicked = false;
+//     element.classList.remove('clicked');
+//   }
+
+//   // Add event listeners for click and release
+//   element.addEventListener('mousedown', clickAndHoldHandler);
+//   element.addEventListener('mouseup', releaseHandler);
+//   element.addEventListener('mouseleave', releaseHandler);
+
+//   // Add event listener for mousemove to keep the cursor in "grabbing" style while moving
+//   const lowerPane = document.querySelector('.lower-pane')
+//   lowerPane.addEventListener('mousemove', function(evt) {
+//     if (isClicked) {
+//       element.classList.add('clicked');
+//       // Prevent text selection while dragging
+//       evt.preventDefault();
+//     }
+//   });
+// });
+
 
 
 
