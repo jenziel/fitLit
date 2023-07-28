@@ -5,6 +5,7 @@
     <title>Fitlit</title>
     <link rel="stylesheet" href="../src/css/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
   </head>
   <body>
     
@@ -42,7 +43,8 @@
         </section>
       </section>
       <section class="lower-pane">
-        <article class="data-box" id="box1">
+        <div id="sortable-container">
+        <article class="data-box click-and-hold" id="box1">
           <div class="box-title">
             <h2>User Data</h2>
           </div>
@@ -74,7 +76,7 @@
             </p>
           </div>
         </article>
-        <article class="data-box databox2" id="box2">
+        <article class="data-box databox2 click-and-hold" id="box2">
           <div class="hydro-box-title">
             <h2>Hydration</h2>
             
@@ -107,7 +109,7 @@
             </div>
           </div>
         </article>
-        <article class="data-box sleep-box">
+        <article class="data-box sleep-box click-and-hold">
           <div class="box-title">
             <h2>Sleep</h2>
           </div>
@@ -154,7 +156,7 @@
             </div>
           </div>
         </article>
-        <article class="data-box activity-data" id="box4">
+        <article class="data-box activity-data click-and-hold" id="box4">
           <div class="box-title">
             <h2>User Activity</h2>
           </div>
@@ -193,6 +195,7 @@
             </figure>
           </div>
         </article>
+      </div>
       </section>
     </main>
     <script src="bundle.js"></script>

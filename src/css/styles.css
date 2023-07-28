@@ -287,3 +287,33 @@ p.green {
 .first-place {
   color: rgb(193, 33, 33);
 }
+
+#box4{
+  height: 75vh;
+  /* cursor:pointer; */
+}
+
+.sortGhost{
+  opacity: .6;
+  background-color: var(--lime-green);
+  border: none;
+}
+
+.sortable-item-dragging{
+  border: solid 3px var(--black);
+  /* cursor: grabbing; */
+}
+
+/* .click-and-hold {
+  cursor: default;
+} */
+
+/* .clicked {
+  /* Define the styles for the cursor during the click-and-hold action */
+  /* cursor: grabbing;
+} */
+
+
+/* .data-box:hover{
+  cursor: pointer;
+} */ 

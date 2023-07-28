@@ -121,8 +121,9 @@ window.addEventListener("load", () => {
       mainData.sleep = promisesArray[2].sleepData;
       mainData.activity = promisesArray[3].activityData;
       // console.log("MAIN DATA:", mainData)
-    })
-    .then(generateWebPage);
+      generateWebPage();
+    });
+    // .then(generateWebPage);
 });
 
 userInfoButton.addEventListener("click", toggleInfo);
