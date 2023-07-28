@@ -189,6 +189,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .small-box-right {
@@ -313,16 +314,8 @@ p.green {
   /* cursor: grabbing; */
 }
 
-/* .click-and-hold {
-  cursor: default;
-} */
-
-/* .clicked {
-  /* Define the styles for the cursor during the click-and-hold action */
-  /* cursor: grabbing;
-} */
-
-
-/* .data-box:hover{
+i:hover,
+.box-title:hover,
+.hydro-box-title:hover{
   cursor: pointer;
-} */ 
+} 

@@ -40,14 +40,14 @@ import {
   hydroUserInput,
   hydroUserInputButton,
   errorMessage,
-  updateHydroGraph
+  updateHydroGraph,
+  resetDomAfterPost
 } from "./domUpdates";
 
 // master data object
 const mainData = {
   today: "2023/07/01",
 };
-
 
 const generateWebPage = () => {
   updateIcon();
@@ -74,13 +74,12 @@ const generateWebPage = () => {
     mainData.currentUser,
     mainData.hydration
   );
-  console.log('original hydro data', mainData.hydration)
-  console.log('original current user hydro data', currentUserH2O)
+
   weeklyHydroData(currentUserH2O, 99);
   displayTodayHydro(mainData.today, currentUserH2O);
   displayAvgHydro(currentUserH2O);
   createHydroBarGraph(99, currentUserH2O);
-  
+
   // sleep data
   const currentUserSleep = getUserSleepData(
     mainData.currentUser,
@@ -113,47 +112,37 @@ const generateWebPage = () => {
 };
 
 window.addEventListener("load", () => {
-  Promise.all(createFetchRequest())
-    .then((promisesArray) => {
-      console.log("PROMISES ARRAY:", promisesArray)
-      mainData.users = promisesArray[0].users;
-      mainData.hydration = promisesArray[1].hydrationData;
-      mainData.sleep = promisesArray[2].sleepData;
-      mainData.activity = promisesArray[3].activityData;
-      // console.log("MAIN DATA:", mainData)
-      generateWebPage();
-    });
-    // .then(generateWebPage);
+  Promise.all(createFetchRequest()).then((promisesArray) => {
+    console.log("PROMISES ARRAY:", promisesArray);
+    mainData.users = promisesArray[0].users;
+    mainData.hydration = promisesArray[1].hydrationData;
+    mainData.sleep = promisesArray[2].sleepData;
+    mainData.activity = promisesArray[3].activityData;
+    // console.log("MAIN DATA:", mainData)
+    generateWebPage();
+  });
+  // .then(generateWebPage);
 });
 
 userInfoButton.addEventListener("click", toggleInfo);
 
-hydroUserInputButton.addEventListener('click', () => {
-  let input = gatherUserInput() 
-   if(input === false) {
-    return
-   }
-        postUserInput(mainData.currentUser, input)
-        .then(() => {
-          return fetch('http://localhost:3001/api/v1/hydration');
-        })
-        .then(response => response.json())
-        .then(data => {
-          mainData.hydration = data.hydrationData 
-          let currentUserH2O = mainData.hydration
-          .filter(data => mainData.currentUser.id === data.userID)
-          console.log('after user input hydto data', currentUserH2O)
-          weeklyHydroData(currentUserH2O, 100);
-          mainData.today = '2023/07/02'
-          displayTodayHydro(mainData.today, currentUserH2O);
-
-          getAllTimeAverageFlOz(currentUserH2O);
-
-          displayAvgHydro(currentUserH2O);
-
-          updateHydroGraph(100, currentUserH2O)
-          console.log('after-Post all hydro data', mainData.hydration)
-        })
-        .catch(error => console.log(error));
+hydroUserInputButton.addEventListener("click", () => {
+  let input = gatherUserInput();
+  if (input === false) {
+    return;
+  }
+  postUserInput(mainData.currentUser, input)
+    .then(() => {
+      return fetch("http://localhost:3001/api/v1/hydration");
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      mainData.hydration = data.hydrationData;
+      let currentUserH2O = mainData.hydration.filter(
+        (data) => mainData.currentUser.id === data.userID
+      );
+    mainData.today = "2023/07/02";
+    resetDomAfterPost(currentUserH2O, mainData.today)
+    })
+    .catch((error) => console.log(error));
 });
-

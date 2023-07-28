@@ -78,7 +78,7 @@ const activityTrendGraph = document.getElementById(
 
 let hydroChart 
 
-
+const dynamicWaterText = document.querySelector('.water-text');
 export const hydroUserInput = document.getElementById('user-hydration-input');
 export const hydroUserInputButton = document.querySelector('.user-hydration-input-button');
 export const errorMessage = document.querySelector('.error-message');
@@ -102,44 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   const element = document.querySelector('.click-and-hold');
-//   let isClicked = false;
+export const resetDomAfterPost = (currentUser, today) => {
 
-//   // Function to handle the click-and-hold action
-//   function clickAndHoldHandler() {
-//     isClicked = true;
-//     element.classList.add('clicked');
-//   }
-
-//   // Function to reset the cursor when released
-//   function releaseHandler() {
-//     isClicked = false;
-//     element.classList.remove('clicked');
-//   }
-
-//   // Add event listeners for click and release
-//   element.addEventListener('mousedown', clickAndHoldHandler);
-//   element.addEventListener('mouseup', releaseHandler);
-//   element.addEventListener('mouseleave', releaseHandler);
-
-//   // Add event listener for mousemove to keep the cursor in "grabbing" style while moving
-//   const lowerPane = document.querySelector('.lower-pane')
-//   lowerPane.addEventListener('mousemove', function(evt) {
-//     if (isClicked) {
-//       element.classList.add('clicked');
-//       // Prevent text selection while dragging
-//       evt.preventDefault();
-//     }
-//   });
-// });
-
-
-
+  weeklyHydroData(currentUser, 100);
+  displayTodayHydro(today, currentUser);
+  getAllTimeAverageFlOz(currentUser);
+  displayAvgHydro(currentUser);
+  updateHydroGraph(100, currentUser);
+  hydroUserInputButton.disabled = true;
+  dynamicWaterText.innerText = '';
+  dynamicWaterText.innerText = 'Today, you drank:';
+  
+}
 
 export const gatherUserInput = () => {
   let userInput = hydroUserInput.value.trim()
-  console.log("userInput", userInput)
   let numberInput = Number(userInput)
     if(isNaN(userInput)) { 
       // error message appear 
