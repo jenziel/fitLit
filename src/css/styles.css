@@ -1,7 +1,6 @@
 :root {
   --lime-green: #b4ec34;
-  --dark-lime-green: #1A6D0D;
-  /* #5C792A; */
+  --dark-lime-green: #1a6d0d;
   --black: #142122;
   --gray: #828b94;
   --dark-gray: #4e535c;
@@ -56,37 +55,23 @@ main {
   flex-direction: column;
 }
 
+.user-greeting {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
 img {
   width: 140px;
   height: 140px;
   overflow: hidden;
   margin-right: 2vw;
 }
-/* <!-- HTML !-->
-<button class="button-33" role="button">Button 33</button> */
-
-/* CSS */
-/* .button-33 {
-  background-color: #c2fbd7;
-  border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-  color: green;
-  cursor: pointer;
-  display: inline-block;
-  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 250ms;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-} */
 
 .user-info-button:hover {
-  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }
 
@@ -96,11 +81,9 @@ img {
   font-size: 15px;
   background-color: var(--black);
   border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: var(--white);
   cursor: pointer;
   display: inline-block;
-  /* font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif; */
   padding: 7px 20px;
   text-align: center;
   text-decoration: none;
@@ -120,13 +103,12 @@ img {
 }
 
 .app-name {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 100px;
   font-weight: bold;
   font-style: italic;
 }
 
-/* Profile Info Page */
 .alt-lower-pane {
   display: flex;
   align-items: center;
@@ -177,17 +159,13 @@ img {
   justify-content: space-between;
 }
 
-.small-box > h3 {
-  margin-bottom: 2.5vh;
-}
-
 .hydro-box-title,
 .box-title {
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
   color: var(--gray);
 }
 
-.hydro-box-title{
+.hydro-box-title {
   display: flex;
   justify-content: space-between;
 }
@@ -240,11 +218,17 @@ img {
   margin-left: 50px;
 }
 
-.sub-box > .number-with-units > h3 {
-  font-size: xx-large;
+.data-title {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
-.number-with-units > p,
+.units,
 .data-analysis > p {
   font-weight: bolder;
   color: var(--dark-gray);
@@ -256,7 +240,7 @@ img {
   align-items: baseline;
 }
 
-.number-with-units > h2 {
+.number {
   font-size: 60px;
   font-weight: bold;
 }
@@ -283,14 +267,13 @@ img {
 
 .graph-chart {
   width: 100%;
-  /* display: flex;
-  justify-content: center; */
   height: 100%;
 }
 
 .sleep-graph-wrapper {
   display: flex;
   flex-direction: column;
+  width: 85%;
 }
 
 #hydroChart #sleep-hourly-graph #sleep-quality-graph {
@@ -337,35 +320,31 @@ p.green {
 .first-place {
   color: rgb(193, 33, 33);
 }
-.fa-solid{
+
+.fa-solid {
   margin-right: 10px;
 }
 
-/* h2 {
-  margin-right: 1 rem;
-} */
-
-#box4{
-  height: 75vh;
-  /* cursor:pointer; */
+#box4 {
+  height: 80vh;
 }
 
-.sortGhost{
-  opacity: .6;
+.sortGhost {
+  opacity: 0.6;
   background-color: var(--lime-green);
   border: none;
 }
 
-.sortable-item-dragging{
+.sortable-item-dragging {
   border: solid 3px var(--black);
-  /* cursor: grabbing; */
 }
 
 i:hover,
 .box-title:hover,
-.hydro-box-title:hover{
+.hydro-box-title:hover {
   cursor: pointer;
-} 
+}
+
 .visually-hidden {
   position: absolute;
   left: -9999px;
@@ -376,7 +355,39 @@ i:hover,
 
 .hydro-data-box {
   height: 40vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.hydration-input-wrapper {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-hydration-input-button {
+  width: 20%;
+  border-radius: 15px;
+  font-size: 15px;
+  background-color: rgba(42, 184, 250, 0.6);
+  color: var(--black);
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 20px;
+  text-align: center;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#user-hydration-input {
+  height: 100%;
+}
+
+.error-message {
+  color: black;
 }

@@ -1,7 +1,7 @@
 // imports
-import "./css/styles.css";
-import "./domUpdates";
-import { createFetchRequest, postUserInput } from "./apiCalls";
+import './css/styles.css';
+import './domUpdates';
+import { createFetchRequest, postUserInput } from './apiCalls';
 
 import {
   createRandomUser,
@@ -12,8 +12,7 @@ import {
   friendsStepChallenge,
   increasingStepDays,
   displayStepChallenge,
-  getAllTimeAverageFlOz,
-} from "./functions";
+} from './functions';
 
 import {
   updateUserDailyStepGoal,
@@ -37,16 +36,13 @@ import {
   displayStepChallengeToDom,
   displayActivityTrendGraph,
   gatherUserInput,
-  hydroUserInput,
   hydroUserInputButton,
-  errorMessage,
-  updateHydroGraph,
-  resetDomAfterPost
-} from "./domUpdates";
+  resetDomAfterPost,
+} from './domUpdates';
 
 // master data object
 const mainData = {
-  today: "2023/07/01",
+  today: '2023/07/01',
 };
 
 const generateWebPage = () => {
@@ -111,29 +107,29 @@ const generateWebPage = () => {
   increasingStepDays(currentUserActivity);
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   Promise.all(createFetchRequest()).then((promisesArray) => {
-    console.log("PROMISES ARRAY:", promisesArray);
+    console.log('PROMISES ARRAY:', promisesArray);
     mainData.users = promisesArray[0].users;
     mainData.hydration = promisesArray[1].hydrationData;
     mainData.sleep = promisesArray[2].sleepData;
     mainData.activity = promisesArray[3].activityData;
-    // console.log("MAIN DATA:", mainData)
+    // console.log('MAIN DATA:', mainData)
     generateWebPage();
   });
   // .then(generateWebPage);
 });
 
-userInfoButton.addEventListener("click", toggleInfo);
+userInfoButton.addEventListener('click', toggleInfo);
 
-hydroUserInputButton.addEventListener("click", () => {
+hydroUserInputButton.addEventListener('click', () => {
   let input = gatherUserInput();
   if (input === false) {
     return;
   }
   postUserInput(mainData.currentUser, input)
     .then(() => {
-      return fetch("http://localhost:3001/api/v1/hydration");
+      return fetch('http://localhost:3001/api/v1/hydration');
     })
     .then((response) => response.json())
     .then((data) => {
@@ -141,8 +137,8 @@ hydroUserInputButton.addEventListener("click", () => {
       let currentUserH2O = mainData.hydration.filter(
         (data) => mainData.currentUser.id === data.userID
       );
-    mainData.today = "2023/07/02";
-    resetDomAfterPost(currentUserH2O, mainData.today)
+      mainData.today = '2023/07/02';
+      resetDomAfterPost(currentUserH2O, mainData.today);
     })
     .catch((error) => console.log(error));
 });

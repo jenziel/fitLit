@@ -21,76 +21,74 @@ import {
   weeklyActivityData,
   compareUserStepGoal,
   dateToMonth,
-} from "./functions";
+} from './functions';
 
-import { imagesArray } from "./images/svgFiles";
-// import { globalCurrentUser } from "./scripts";
+import { imagesArray } from './images/svgFiles';
 
 // query selectors
-const userName = document.querySelector(".user-greeting");
-const userDailyStepGoal = document.querySelector(".user-daily-step-goal");
-const cohortStepGoal = document.querySelector(".average-step");
-const userStepComparison = document.querySelector(".avg-user-step-comparison");
-export const userInfoButton = document.querySelector(".user-info-button");
-const altLowerPane = document.querySelector(".alt-lower-pane");
-const lowerPane = document.querySelector(".lower-pane");
-const userNameField = document.querySelector(".user-name");
-const addressField = document.querySelector(".user-address");
-const emailField = document.querySelector(".user-email");
-const strideLengthField = document.querySelector(".user-stride-length");
-const stepGoalField = document.querySelector(".user-step-goal");
-const friendsField = document.querySelector(".user-friends");
+const userName = document.querySelector('.user-greeting');
+const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
+const cohortStepGoal = document.querySelector('.average-step');
+const userStepComparison = document.querySelector('.avg-user-step-comparison');
+export const userInfoButton = document.querySelector('.user-info-button');
+const altLowerPane = document.querySelector('.alt-lower-pane');
+const lowerPane = document.querySelector('.lower-pane');
+const userNameField = document.querySelector('.user-name');
+const addressField = document.querySelector('.user-address');
+const emailField = document.querySelector('.user-email');
+const strideLengthField = document.querySelector('.user-stride-length');
+const stepGoalField = document.querySelector('.user-step-goal');
+const friendsField = document.querySelector('.user-friends');
 
-const todayHydro = document.querySelector(".todays-hydro");
-const avgHydro = document.querySelector(".average-water");
+const todayHydro = document.querySelector('.todays-hydro');
+const avgHydro = document.querySelector('.average-water');
 
 // last night:
-const todaysHourlySleep = document.querySelector(".todays-hourly-sleep");
-const todaysQualitySleep = document.querySelector(".todays-quality-sleep-num");
+const todaysHourlySleep = document.querySelector('.todays-hourly-sleep');
+const todaysQualitySleep = document.querySelector('.todays-quality-sleep-num');
 export const lastNightQualityGoodBad = document.querySelector(
-  ".sleep-quality-today-descriptive"
+  '.sleep-quality-today-descriptive'
 );
 // weekly:
-const averageHourlySleep = document.querySelector(".average-hours-slept");
+const averageHourlySleep = document.querySelector('.average-hours-slept');
 const averageQualitySleep = document.querySelector(
-  ".average-quality-slept-num"
+  '.average-quality-slept-num'
 );
 export const avgQualityGoodBad = document.querySelector(
-  ".sleep-quality-avg-descriptive"
+  '.sleep-quality-avg-descriptive'
 );
 
-const userStepsDisplay = document.querySelector(".step-amount");
-const minutesActiveDisplay = document.querySelector(".minutes-active");
+const userStepsDisplay = document.querySelector('.step-amount');
+const minutesActiveDisplay = document.querySelector('.minutes-active');
 
-const userDistanceDisplay = document.querySelector(".miles-walked");
+const userDistanceDisplay = document.querySelector('.miles-walked');
 
-const hydroBarChart = document.getElementById("hydroChart");
-const hourlySleepBarChart = document.getElementById("sleep-hourly-graph");
-const qualityBarChart = document.getElementById("sleep-quality-graph");
-const activityBarChart = document.getElementById("user-activity-graph");
+const hydroBarChart = document.getElementById('hydroChart');
+const hourlySleepBarChart = document.getElementById('sleep-hourly-graph');
+const qualityBarChart = document.getElementById('sleep-quality-graph');
+const activityBarChart = document.getElementById('user-activity-graph');
 
-const displayStepChallenge = document.querySelector(".challenge-results");
-const activityTrendText = document.querySelector(".activity-trend-title");
+const displayStepChallenge = document.querySelector('.challenge-results');
+const activityTrendText = document.querySelector('.activity-trend-title');
 const activityTrendGraph = document.getElementById(
-  "activity-trend-graph-display"
+  'activity-trend-graph-display'
 );
 
-
-let hydroChart 
+let hydroChart;
 
 const dynamicWaterText = document.querySelector('.water-text');
 export const hydroUserInput = document.getElementById('user-hydration-input');
-export const hydroUserInputButton = document.querySelector('.user-hydration-input-button');
+export const hydroUserInputButton = document.querySelector(
+  '.user-hydration-input-button'
+);
 export const errorMessage = document.querySelector('.error-message');
 
 const sortableContainerElem = document.getElementById('sortable-container');
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  const sortableContainer = new Sortable(sortableContainerElem,
-    { 
+  const sortableContainer = new Sortable(sortableContainerElem, {
     animation: 300,
-    ghostClass: 'sortGhost', 
+    ghostClass: 'sortGhost',
     onChoose(evt) {
       // Add a CSS class to the element being dragged
       evt.item.classList.add('sortable-item-dragging');
@@ -98,12 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     onUnchoose(evt) {
       // Remove the CSS class when dragging ends
       evt.item.classList.remove('sortable-item-dragging');
-    }
+    },
   });
 });
 
 export const resetDomAfterPost = (currentUser, today) => {
-
   weeklyHydroData(currentUser, 100);
   displayTodayHydro(today, currentUser);
   getAllTimeAverageFlOz(currentUser);
@@ -112,43 +109,37 @@ export const resetDomAfterPost = (currentUser, today) => {
   hydroUserInputButton.disabled = true;
   dynamicWaterText.innerText = '';
   dynamicWaterText.innerText = 'Today, you drank:';
-  
-}
+};
 
 export const gatherUserInput = () => {
-  let userInput = hydroUserInput.value.trim()
-  let numberInput = Number(userInput)
-    if(isNaN(userInput)) { 
-      // error message appear 
-      errorMessage.innerText = ''
-      errorMessage.innerText = 'Please enter a number'
-      return false
-    } 
-    else if((numberInput) > 150){
-      errorMessage.innerText = ''
-      errorMessage.innerText = 'Please enter a lower number'
-      return false
-    }
-    else if(!Number.isInteger(numberInput)) {
-      errorMessage.innerText = ''
-      errorMessage.innerText = 'Enter a whole number'
-      return false
-    }
-    else if(userInput === "") {
-  
-      errorMessage.innerText = ''
-      errorMessage.innerText = 'Please enter more than a space'
-      return false
-    }
-   else {
-    errorMessage.innerText = ''
-    errorMessage.innerText = 'Today I drank'
-      // capture input and POST
-    }
-    console.log(userInput) 
-  
-  return parseInt(userInput)
-}
+  let userInput = hydroUserInput.value.trim();
+  let numberInput = Number(userInput);
+  if (isNaN(userInput)) {
+    // error message appear
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Please enter a number';
+    return false;
+  } else if (numberInput > 150) {
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Please enter a lower number';
+    return false;
+  } else if (!Number.isInteger(numberInput)) {
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Enter a whole number';
+    return false;
+  } else if (userInput === '') {
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Please enter more than a space';
+    return false;
+  } else {
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Today I drank';
+    // capture input and POST
+  }
+  console.log(userInput);
+
+  return parseInt(userInput);
+};
 
 export const updateUserDailyStepGoal = (user) => {
   userDailyStepGoal.innerText = `${user.dailyStepGoal}`;
@@ -157,7 +148,7 @@ export const updateUserDailyStepGoal = (user) => {
 export const updateIcon = () => {
   const randomIndex = Math.floor(Math.random() * imagesArray.length);
   const imageToBeUsed = imagesArray[randomIndex];
-  var iconImage = document.getElementById("icon");
+  var iconImage = document.getElementById('icon');
   iconImage.src = imageToBeUsed;
 };
 
@@ -182,13 +173,13 @@ export const displayCohortStepAverage = (data) => {
 };
 
 export const displayStepChallengeToDom = (challengeData) => {
-  displayStepChallenge.innerHTML = "";
+  displayStepChallenge.innerHTML = '';
   challengeData.forEach((datum, index) => {
-    let crown = "👑";
-    let firstPlace = "first-place";
+    let crown = '👑';
+    let firstPlace = 'first-place';
     if (index !== 0) {
-      crown = "";
-      firstPlace = "";
+      crown = '';
+      firstPlace = '';
     }
 
     displayStepChallenge.innerHTML += `<p class=${firstPlace}>${
@@ -202,9 +193,9 @@ export const updateUserName = (user) => {
 };
 
 export const toggleInfo = () => {
-  altLowerPane.classList.toggle("hidden");
-  lowerPane.classList.toggle("hidden");
-  if (lowerPane.classList.contains("hidden")) {
+  altLowerPane.classList.toggle('hidden');
+  lowerPane.classList.toggle('hidden');
+  if (lowerPane.classList.contains('hidden')) {
     userInfoButton.innerText = `Back to Main`;
   } else {
     userInfoButton.innerText = `User Info`;
@@ -212,25 +203,26 @@ export const toggleInfo = () => {
 };
 
 export const updateHydroGraph = (day, currentUserH2O) => {
-  let hydroGraphData = { 
+  let hydroGraphData = {
     labels: formatDate(weeklyHydroData(currentUserH2O, day)),
     datasets: [
       {
-        label: "Last Weeks Hydration",
+        label: 'Last Weeks Hydration',
         data: displayDailyHydro(day, currentUserH2O),
-        backgroundColor: "rgba(42, 184, 250, 0.6)", // Customize the bar color
-      }]
-    };
+        backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
+      },
+    ],
+  };
   hydroChart.data = hydroGraphData;
-  hydroChart.update()
-}
+  hydroChart.update();
+};
 
 export const displayTodayHydro = (day, data) => {
   todayHydro.innerText = `${getDailyFlOz(day, data)}`;
 };
 
 export const displayAvgHydro = (userHydroData) => {
-  avgHydro.innerText = ``
+  avgHydro.innerText = ``;
   avgHydro.innerText = `${getAllTimeAverageFlOz(userHydroData)}`;
 };
 
@@ -242,14 +234,14 @@ export const displayDailyHydro = (day, userHydroData) => {
 
 export const createHydroBarGraph = (day, hydroData) => {
   hydroChart = new Chart(hydroBarChart, {
-    type: "bar",
+    type: 'bar',
     data: {
       labels: formatDate(weeklyHydroData(hydroData, day)),
       datasets: [
         {
-          label: "Last Weeks Hydration",
+          label: 'Last Weeks Hydration',
           data: displayDailyHydro(day, hydroData),
-          backgroundColor: "rgba(42, 184, 250, 0.6)", // Customize the bar color
+          backgroundColor: 'rgba(42, 184, 250, 0.6)', // Customize the bar color
         },
       ],
     },
@@ -260,7 +252,7 @@ export const createHydroBarGraph = (day, hydroData) => {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Fluid Ounces",
+            text: 'Fluid Ounces',
           },
         },
       },
@@ -270,14 +262,14 @@ export const createHydroBarGraph = (day, hydroData) => {
 
 export const createHourlySleepBarGraph = (sleepData, day) => {
   const chart = new Chart(hourlySleepBarChart, {
-    type: "bar",
+    type: 'bar',
     data: {
       labels: formatDate(weeklySleepData(sleepData, day)),
       datasets: [
         {
-          label: "Last Weeks Hourly Sleep Data",
+          label: 'Last Weeks Hourly Sleep Data',
           data: weeklyHourlySleepData(sleepData, day),
-          backgroundColor: "rgba(58, 13, 143, 0.9)",
+          backgroundColor: 'rgba(58, 13, 143, 0.9)',
         },
       ],
     },
@@ -293,7 +285,7 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Hours Slept",
+            text: 'Hours Slept',
           },
         },
       },
@@ -303,14 +295,14 @@ export const createHourlySleepBarGraph = (sleepData, day) => {
 
 export const createQualitySleepBarGraph = (sleepData, day) => {
   const chart = new Chart(qualityBarChart, {
-    type: "line",
+    type: 'line',
     data: {
       labels: formatDate(weeklySleepData(sleepData, day)),
       datasets: [
         {
-          label: "Last Weeks Quality",
+          label: 'Last Weeks Quality',
           data: weeklyQualitySleepData(sleepData, day),
-          backgroundColor: "rgba(58, 13, 143, 0.9)",
+          backgroundColor: 'rgba(58, 13, 143, 0.9)',
         },
       ],
     },
@@ -321,7 +313,7 @@ export const createQualitySleepBarGraph = (sleepData, day) => {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Sleep Quality",
+            text: 'Sleep Quality',
           },
         },
       },
@@ -369,44 +361,44 @@ export const displayDistanceWalked = (activityData, day, currentUserData) => {
 };
 
 export const createUserActivityGraph = (activityData, day, userData) => {
-  const userStepGoal = ["", "", "", "", "", "", ""];
+  const userStepGoal = ['', '', '', '', '', '', ''];
 
   const chart = new Chart(activityBarChart, {
-    type: "bar",
+    type: 'bar',
     data: {
       labels: formatDate(weeklyActivityData(activityData, day)),
       datasets: [
         {
-          type: "bar",
-          label: "Last Weeks Activity",
+          type: 'bar',
+          label: 'Last Weeks Activity',
           data: weeklyStepData(activityData, day),
           backgroundColor: compareUserStepGoal(
             weeklyStepData(activityData, day),
             userData
           ),
-          yAxisID: "steps-y-axis", // Assign this dataset to the left y-axis
+          yAxisID: 'steps-y-axis', // Assign this dataset to the left y-axis
         },
         {
-          type: "line",
-          label: "Step Goal",
+          type: 'line',
+          label: 'Step Goal',
           data: userStepGoal.fill(userData.dailyStepGoal),
-          borderColor: "red", // Change the color of the line as needed
+          borderColor: 'red', // Change the color of the line as needed
           borderWidth: 3, // Adjust the width of the line as needed
           fill: false, // Disable filling the area under the line
-          yAxisID: "steps-y-axis", // Assign this dataset to the left y-axis
+          yAxisID: 'steps-y-axis', // Assign this dataset to the left y-axis
         },
       ],
     },
     options: {
       maintainAspectRatio: false,
       scales: {
-        "steps-y-axis": {
-          type: "linear",
-          position: "left",
+        'steps-y-axis': {
+          type: 'linear',
+          position: 'left',
           beginAtZero: true,
           title: {
             display: true,
-            text: "Number of Steps",
+            text: 'Number of Steps',
           },
         },
       },
@@ -421,18 +413,17 @@ export const displayActivityTrendGraph = (trendData, today) => {
 
   if (lastObject[2].date !== today) {
     activityTrendText.innerText = `Your most recent consecutive days of increased activity:`;
-
   }
 
   const chart = new Chart(activityTrendGraph, {
-    type: "bar",
+    type: 'bar',
     data: {
       labels: reformattedMostRecentDates,
       datasets: [
         {
-          label: "Latest Trend",
+          label: 'Latest Trend',
           data: mostRecentSteps,
-          backgroundColor: "rgba(242, 15, 15, 1)",
+          backgroundColor: 'rgba(242, 15, 15, 1)',
         },
       ],
     },
@@ -443,7 +434,7 @@ export const displayActivityTrendGraph = (trendData, today) => {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Number of Steps",
+            text: 'Number of Steps',
           },
         },
       },

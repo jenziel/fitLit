@@ -58,10 +58,11 @@ export function findStartingIndex(userHydroData, endDate) {
 
 export const weeklyHydroData = (userHydroData, endDateIndex) => {
   const weeklyData = [];
-  let startingIndex = (userHydroData.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
-  // assigning the starting index what to equal 
-  // if hydro index OR end date index < 6, if the index is less than 6, 
-  // then the index will start at 0, otherwise it will start at 6 
+  let startingIndex =
+    userHydroData.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
+  // assigning the starting index what to equal
+  // if hydro index OR end date index < 6, if the index is less than 6,
+  // then the index will start at 0, otherwise it will start at 6
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyData.push(userHydroData[i]);
   }
@@ -101,16 +102,17 @@ export const getUserDailyQualitySleep = (day, sleepData) => {
 };
 
 export const describeSleepQuality = (userSleepQuality) => {
-  return userSleepQuality >= 3 ? "good" : "poor";
+  return userSleepQuality >= 3 ? 'good' : 'poor';
 };
 
 export const changeGoodBadColor = (userSleepQuality) => {
-  return userSleepQuality >= 3 ? "green" : "red";
+  return userSleepQuality >= 3 ? 'green' : 'red';
 };
 
 export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
   const weeklyHourSleepData = [];
-  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  let startingIndex =
+    userSleep.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyHourSleepData.push(userSleep[i].hoursSlept);
   }
@@ -119,7 +121,8 @@ export const weeklyHourlySleepData = (userSleep, endDateIndex) => {
 
 export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
   const weeklySleepQuality = [];
-  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  let startingIndex =
+    userSleep.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklySleepQuality.push(userSleep[i].sleepQuality);
   }
@@ -128,7 +131,8 @@ export const weeklyQualitySleepData = (userSleep, endDateIndex) => {
 
 export const weeklySleepData = (userSleep, endDateIndex) => {
   const weeklySleepData = [];
-  let startingIndex = (userSleep.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  let startingIndex =
+    userSleep.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklySleepData.push(userSleep[i]);
   }
@@ -158,7 +162,8 @@ export const calculateMinutesActive = (userStepData, day) => {
 
 export const weeklyStepData = (userActivityData, endDateIndex) => {
   const weeklyStepData = [];
-  let startingIndex = (userActivityData.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  let startingIndex =
+    userActivityData.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyStepData.push(userActivityData[i].numSteps);
   }
@@ -167,7 +172,8 @@ export const weeklyStepData = (userActivityData, endDateIndex) => {
 
 export const weeklyActivityData = (userActivityData, endDateIndex) => {
   const weeklyActivityData = [];
-  let startingIndex = (userActivityData.length < 6 || endDateIndex < 6 ) ? 0 : endDateIndex - 6
+  let startingIndex =
+    userActivityData.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyActivityData.push(userActivityData[i]);
   }
@@ -176,13 +182,13 @@ export const weeklyActivityData = (userActivityData, endDateIndex) => {
 
 export const formatDate = (weeklyData) => {
   const weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
   ];
   const justDates = weeklyData.map((datum) => datum.date);
   const daysArray = justDates.map((date) => new Date(date));
@@ -198,36 +204,36 @@ export const dateToMonth = (trendData) => {
   let mostRecentDates = lastObject.map((datum) => datum.date);
   let reformattedMostRecentDates = [];
   mostRecentDates.forEach((date) => {
-    let splitDate = date.split("/");
+    let splitDate = date.split('/');
     splitDate.shift();
-    let joinDate = splitDate.join("/");
+    let joinDate = splitDate.join('/');
     reformattedMostRecentDates.push(joinDate);
   });
   const months = [
-    "Jan",
-    "Feb",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
+    'Jan',
+    'Feb',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'Aug',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
   ];
   const monthNames = [];
   reformattedMostRecentDates.forEach((date) => {
-    const splitDate = date.split("/");
-    monthNames.push(months[parseInt(splitDate[0]) - 1] + " " + splitDate[1]);
+    const splitDate = date.split('/');
+    monthNames.push(months[parseInt(splitDate[0]) - 1] + ' ' + splitDate[1]);
   });
   return monthNames;
 };
 
 export const compareUserStepGoal = (weeklyStepData, userData) => {
   const colorArray = [];
-  const colorChecks = ["rgba(247, 113, 2, 1)", "rgba(180, 236, 52, .8)"];
+  const colorChecks = ['rgba(247, 113, 2, 1)', 'rgba(180, 236, 52, .8)'];
   weeklyStepData.forEach((datum) => {
     if (datum >= userData.dailyStepGoal) {
       colorArray.push(colorChecks[1]);

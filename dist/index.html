@@ -1,79 +1,85 @@
 <!DOCTYPE html>
-<html  lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Fitlit</title>
-    <link rel="stylesheet" href="../src/css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
-    <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
+<html lang="en">
 
-  </head>
-  <body>
-    
-      <header class="upper-pane">
-        <div class="upper-left-pane">
-          <img id="icon" alt="profile picture"></img>
-          <div class="user-greeting-wrapper">
-            <h1 class="user-greeting" role="heading" aria-level="1"></h1>
-            <button class="user-info-button" alt="user info button">Your Info</button>
+<head>
+  <meta charset="UTF-8" />
+  <title>Fitlit</title>
+  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="upper-pane">
+    <div class="upper-left-pane">
+      <img id="icon" alt="profile picture"></img>
+      <div class="user-greeting-wrapper">
+        <p class="user-greeting"></p>
+        <button class="user-info-button" alt="user info button">Your Info</button>
+      </div>
+    </div>
+    <div class="upper-right-pane">
+      <h1 class="app-name">FitLit</h1>
+    </div>
+  </header>
+  <main>
+    <section class="alt-lower-pane hidden">
+      <section class="profile-box">
+        <div class="list" id="property names">
+          <div class="user-info-page">
+            <p class="left-element">Name:</p>
+            <p class="user-name"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Address:</p>
+            <p class="user-address"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Email:</p>
+            <p class="user-email"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Stride Length:</p>
+            <p class="user-stride-length"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Daily Step Goal:</p>
+            <p class="user-step-goal"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Friends:</p>
+            <p class="user-friends"></p>
           </div>
         </div>
-        <div class="upper-right-pane">
-          <p class="app-name">FitLit</p>
-        </div>
-      </header>
-      <main>
-        <section class="alt-lower-pane hidden">
-        <section class="profile-box">
-          <div class="list" id="property names">
-            <div class="user-info-page">
-              <p class="left-element">Name:</p><p class="user-name"></p>
-            </div>
-            <div class="user-info-page">
-              <p class="left-element">Address:</p><p class="user-address"></p>
-            </div>
-            <div class="user-info-page">
-              <p class="left-element">Email:</p><p class="user-email"></p>
-            </div>
-            <div class="user-info-page">
-              <p class="left-element">Stride Length:</p><p class="user-stride-length"></p>
-            </div>
-            <div class="user-info-page">
-              <p class="left-element">Daily Step Goal:</p><p class="user-step-goal"></p>
-            </div>
-            <div class="user-info-page">
-              <p class="left-element">Friends:</p><p class="user-friends"></p>
-            </div>
-          </div>
-        </section>
       </section>
-      <section class="lower-pane">
-        <div id="sortable-container">
+    </section>
+    <section class="lower-pane">
+      <div id="sortable-container">
         <article class="data-box click-and-hold" id="box1">
           <div class="box-title">
-            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>User Data</h2>
+            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Your Data</h2>
           </div>
           <div class="box-contents-container">
             <div class="box-contents">
-              <h3>My Step Goal:</h3>
+              <p class="data-title">My Step Goal:</p>
               <div class="number-with-units">
-                <h2 class="user-daily-step-goal"></h2>
-                <p>steps</p>
+                <p class="user-daily-step-goal number"></p>
+                <p class="units">steps</p>
               </div>
             </div>
             <div class="box-contents">
-              <h3>Average User Step Goal:</h3>
+              <p class="data-title">Average User Step Goal:</p>
               <div class="number-with-units">
-                <h2 class="average-step"></h2>
-                <p>steps</p>
+                <p class="average-step number"></p>
+                <p class="units">steps</p>
               </div>
             </div>
             <div class="box-contents">
-              <h3>Step Challenge:</h3>
+              <p class="data-title">Step Challenge:</p>
               <div class="challenge-results">
                 <p>steps</p>
               </div>
@@ -88,43 +94,33 @@
         <article class="data-box hydro-data-box click-and-hold" id="box2">
           <div class="hydro-box-title">
             <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Hydration</h2>
-            
-              <div class="hydration-input-wrapper">
-                <label class="error-message" for="user-hydration-input">Today I drank</label>
-                <input type="text" id="user-hydration-input" placeholder="# ounces of water" maxlength="3">
-                <button class="user-hydration-input-button">Submit</button>
-              </div>
+            <div class="hydration-input-wrapper">
+              <label class="error-message" for="user-hydration-input">Enter today's water intake</label>
+              <input type="text" id="user-hydration-input" placeholder="# ounces of water" maxlength="3">
+              <button class="user-hydration-input-button">Submit</button>
+            </div>
           </div>
           <div class="box-contents-container">
             <div class="box-contents2 small-box">
-              <h3 class="water-text">Yesterday, you drank:</h3>
+              <p class="water-text data-title">Yesterday, you drank:</p>
               <div class="number-with-units">
-                <h2 class="todays-hydro">20</h2>
-                <p>oz</p>
+                <p class="todays-hydro number">20</p>
+                <p class="units">oz</p>
               </div>
             </div>
-          
-            <!-- <figure class="graph-chart">
-              <figcaption>Bar chart showing sales data for the last quarter</figcaption>
-              <canvas id="hydroChart" aria-labelledby="hydroGraphTitle"></canvas>
-              <div class="visually-hidden" id="hydroGraphTitle">
-                Sales data for the last quarter: 100, 200, 150, 300
-              </div>
-            </figure> -->
             <figure class="graph-chart">
-               <!-- <figcaption>Bar chart showing last week's water intake</figcaption> -->
               <canvas id="hydroChart" aria-labelledby="hydroGraphTitle"></canvas>
               <div class="visually-hidden" id="hydroGraphTitle">
                 Bar chart showing last week's water intake
               </div>
             </figure>
             <div class="box-contents2 small-box small-box-right">
-              <h3>
+              <p class="data-title">
                 This past week, you drank an average of:
-              </h3>
+              </p>
               <div class="number-with-units">
-                <h2 class="average-water">70</h2>
-                <p>oz/day</p>
+                <p class="average-water number">70</p>
+                <p class="units">oz/day</p>
               </div>
             </div>
           </div>
@@ -136,17 +132,17 @@
           <div class="box-contents-container sleep-data-wrapper">
             <div class="last-night-sleep small-box">
               <div class="box-contents2">
-                <h3>Last night you slept:</h3>
+                <p class="data-title">Last night you slept:</p>
                 <div class="number-with-units">
-                  <h2 class="todays-hourly-sleep">20</h2>
-                  <p>hours</p>
+                  <p class="todays-hourly-sleep number">20</p>
+                  <p class="units">hours</p>
                 </div>
               </div>
               <div class="box-contents2">
-                <h3>Your sleep quality rating:</h3>
+                <p class="data-title">Your sleep quality rating:</p>
                 <div class="number-with-units">
-                  <h2 class="todays-quality-sleep-num">2</h2>
-                  <p class="sleep-quality-today-descriptive">/5 good</p>
+                  <p class="todays-quality-sleep-num number">2</p>
+                  <p class="sleep-quality-today-descriptive units">/5 good</p>
                 </div>
               </div>
             </div>
@@ -160,17 +156,17 @@
             </div>
             <div class="average-sleep small-box small-box-right">
               <div class="box-contents2">
-                <h3>Last week you slept:</h3>
+                <p class="data-title">Last week you slept:</p>
                 <div class="number-with-units">
-                  <h2 class="average-hours-slept">20</h2>
-                  <p>hours/night</p>
+                  <p class="average-hours-slept number">20</p>
+                  <p class="units">hours/night</p>
                 </div>
               </div>
               <div class="box-contents2">
-                <h3>Your average sleep quality:</h3>
+                <p class="data-title">Your average sleep quality:</p>
                 <div class="number-with-units">
-                  <h2 class="average-quality-slept-num"></h2>
-                  <p class="sleep-quality-avg-descriptive">good</p>
+                  <p class="average-quality-slept-num number"></p>
+                  <p class="sleep-quality-avg-descriptive units">good</p>
                 </div>
               </div>
             </div>
@@ -188,25 +184,24 @@
             </div>
             <div class="box-contents-wrapper">
               <div class="box-contents activity-data-boxes">
-                <h3>Today you were active for:</h3>
+                <p class="data-title">Today you were active for:</p>
                 <div class="number-with-units">
-                  <h2 class="minutes-active">6</h2>
-                  <p>minutes</p>
+                  <p class="minutes-active number">6</p>
+                  <p class="units">minutes</p>
                 </div>
               </div>
               <div class="box-contents activity-data-boxes">
-                <h3>During that time, you took:</h3>
+                <p class="data-title">During that time, you took:</p>
                 <div class="number-with-units">
-                  <h2 class="step-amount">6</h2>
-                  <p>steps</p>
+                  <p class="step-amount number">6</p>
+                  <p class="units">steps</p>
                 </div>
               </div>
-            
               <div class="box-contents activity-data-boxes">
-                <h3>Which equates to:</h3>
+                <p class="data-title">Which equates to:</p>
                 <div class="number-with-units">
-                  <h2 class="miles-walked">8</h2>
-                  <p>Miles</p>
+                  <p class="miles-walked number">8</p>
+                  <p class="units">Miles</p>
                 </div>
               </div>
             </div>
@@ -217,8 +212,9 @@
           </div>
         </article>
       </div>
-      </section>
-    </main>
-    <script src="bundle.js"></script>
-  </body>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+
 </html>
