@@ -198,7 +198,7 @@ export const displayStepChallengeToDom = (challengeData) => {
 };
 
 export const updateUserName = (user) => {
-  userName.innerText = `Hello, ${user.name}!`;
+  userName.innerText = `Welcome Back, ${user.name}!`;
 };
 
 export const toggleInfo = () => {
@@ -336,10 +336,10 @@ export const displaySleepDataToDom = (day, sleepData) => {
   averageQualitySleep.innerText = `${calculateUserAverageSleepQuality(
     sleepData
   )}`;
-  lastNightQualityGoodBad.innerText = `${describeSleepQuality(
+  lastNightQualityGoodBad.innerText = ` / 5 ${describeSleepQuality(
     getUserDailyQualitySleep(day, sleepData)
   )}`;
-  avgQualityGoodBad.innerText = `${describeSleepQuality(
+  avgQualityGoodBad.innerText = ` / 5 ${describeSleepQuality(
     calculateUserAverageSleepQuality(sleepData)
   )}`;
   lastNightQualityGoodBad.classList.add(
@@ -420,7 +420,8 @@ export const displayActivityTrendGraph = (trendData, today) => {
   let reformattedMostRecentDates = dateToMonth(trendData);
 
   if (lastObject[2].date !== today) {
-    activityTrendText.innerText = `Your most recent trend:`;
+    activityTrendText.innerText = `Your most recent consecutive days of increased activity:`;
+
   }
 
   const chart = new Chart(activityTrendGraph, {

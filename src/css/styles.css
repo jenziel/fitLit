@@ -37,7 +37,7 @@ main {
 }
 
 .upper-pane {
-  padding-left: 10vw;
+  padding-left: 3vw;
   height: 25%;
   background-color: var(--lime-green);
   display: flex;
@@ -62,9 +62,51 @@ img {
   overflow: hidden;
   margin-right: 2vw;
 }
+/* <!-- HTML !-->
+<button class="button-33" role="button">Button 33</button> */
+
+/* CSS */
+/* .button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+} */
+
+.user-info-button:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
 
 .user-info-button {
   width: 40%;
+  border-radius: 32px;
+  font-size: 15px;
+  background-color: var(--black);
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  /* font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif; */
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  touch-action: manipulation;
 }
 
 .lower-pane {
@@ -110,9 +152,15 @@ img {
   justify-content: space-around;
 }
 
-.list > h3 {
+.left-element {
   margin-left: 40px;
-  margin-right: 40px;
+  width: 200px;
+}
+
+.user-info-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .data-box {
@@ -180,10 +228,6 @@ img {
   width: 100%;
 }
 
-.box-contents2 > h3 {
-  white-space: nowrap;
-}
-
 .small-box {
   width: 20%;
   display: flex;
@@ -239,8 +283,8 @@ img {
 
 .graph-chart {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   height: 100%;
 }
 
@@ -284,7 +328,10 @@ p.green {
 
 .activity-data-boxes {
   width: 20%;
-  margin-left: 8%;
+  margin-left: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .first-place {
@@ -319,3 +366,17 @@ i:hover,
 .hydro-box-title:hover{
   cursor: pointer;
 } 
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.hydro-data-box {
+  height: 40vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
