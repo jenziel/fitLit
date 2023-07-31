@@ -1,21 +1,24 @@
 # FitLit
 ## 📝 Description
-FitLit is an app that displays a user's fitness data with graphs to encourage the user's health habits.  
+FitLit is an app that displays a user's fitness data with graphs to encourage healthy habits.  
+
+## Context
+FitLit is our first group project from Module 2 at Turing School of Software & Design.  It was completed over the course of two weeks.  During Week 1 we designed and built a fitness app from scratch. In Week 2 we went back and made our app more accessible by refactoring the HTML to be more semantic and read well with a screenreader. We added a drag and drop widget feature to our page so that a user can rearrange the cards on the page.
+
+
+
+### User Experience Design Process: 
 
 At the start of the project we combined several design inspirations and came up with a wireframe for our User-Interface.  
 
-We completed most of this project in paired programming sessions.
+We did usability testing to learn more about what parts of our site were unclear to first-time users and revised the html and css to be more legible.  
 
-We learned to implement 3rd party javascript libraries including chart.js and SortableJS.   
+### Use of Web APIs:  
 
-## Context
-FitLit is our first group project from Module 2 at Turing School of Software & Design.  With double the length of time we are normally alotted for a project, we had the opportunity to build an app from scratch and then implement feedback from instructors and usability testing.  
+We learned to implement 3rd party javascript libraries including chart.js and SortableJS. 
 
-So far in this mod we've learned to make network requests and write our own unit tests.  
+This project was our first chance to practice accessing and updating API datasets using GET and POST requests.  
 
-This project was our first chance to practice accessing and updating API data. 
-
-It was also our first chance to work on fine-tuning user experience based on usability test.  
 
 ## Learning Goals and Objectives
 ### Week One:
@@ -37,7 +40,7 @@ It was also our first chance to work on fine-tuning user experience based on usa
 * **Jen Ziel** -  [jenziel](https://github.com/jenziel)
 
 ## 📷 Preview
-![FitLit_Preview](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnd1a3I5M2xid2EyanZjc2VvOXJxdWpvYWVqcmsyZGlocW52NnpxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/afJcHzIPOom2h4IyX5/giphy.gif)
+![FitLit_Preview](https://files.slack.com/files-pri/T029P2S9M-F05KEPVPVT5/ezgif.com-video-to-gif.gif)
 
 
 ## 💻 Technologies Used
@@ -49,7 +52,8 @@ It was also our first chance to work on fine-tuning user experience based on usa
 ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
 ![Mocha](https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown)
 ![Chai](https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red)
-
+![SortableJS](https://img.shields.io/badge/SortableJS-blue)
+![Chart.js](https://img.shields.io/badge/Chart.js-blue)
 
 ## Installation and Setup Instructions
 
