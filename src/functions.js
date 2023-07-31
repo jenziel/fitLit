@@ -58,11 +58,7 @@ export function findStartingIndex(userHydroData, endDate) {
 
 export const weeklyHydroData = (userHydroData, endDateIndex) => {
   const weeklyData = [];
-  let startingIndex =
-    userHydroData.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
-  // assigning the starting index what to equal
-  // if hydro index OR end date index < 6, if the index is less than 6,
-  // then the index will start at 0, otherwise it will start at 6
+  let startingIndex = userHydroData.length < 6 || endDateIndex < 6 ? 0 : endDateIndex - 6;
   for (let i = startingIndex; i <= endDateIndex; i++) {
     weeklyData.push(userHydroData[i]);
   }
