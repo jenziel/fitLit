@@ -57,11 +57,14 @@ This project was our first chance to practice accessing and updating API dataset
 
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `npm` installed globally on your machine.  
+Clone down this repository to run the front-end application. Additionally, you will need to navigate to this 
+[back-end api](https://github.com/turingschool-examples/fitlit-api.git
+), and follow the set-up instructions. 
+
+You will need `npm` installed globally on your machine.  
 
 Installation:
-
-`npm install`  
+ Open your teminal, and follow the instructions for the back-end api. Once the api is running on your local server, open a second tab in your terminal, navigate to where you cloned down the front-end repository, and run `npm install`  
 
 To Start Server:
 
