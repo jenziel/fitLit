@@ -109,8 +109,8 @@
               </div>
             </div>
             <figure class="graph-chart">
-              <canvas id="hydroChart" aria-labelledby="hydroGraphTitle"></canvas>
-              <div class="visually-hidden" id="hydroGraphTitle">
+              <canvas id="hydroChart" aria-hidden="true"></canvas>
+              <div class="visually-hidden">
                 Bar chart showing last week's water intake
               </div>
             </figure>
@@ -148,11 +148,17 @@
             </div>
             <div class="graph-chart sleep-graph-wrapper">
               <figure class="sleep-graph-chart">
-                <canvas id="sleep-hourly-graph"></canvas>
+                <canvas id="sleep-hourly-graph" aria-hidden="true"></canvas>
               </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the hours slept each night for the previous week
+              </div>
               <figure class="sleep-graph-chart">
-                <canvas id="sleep-quality-graph"></canvas>
+                <canvas id="sleep-quality-graph" aria-hidden="true"></canvas>
               </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the quality of sleep each night for the previous week
+              </div>
             </div>
             <div class="average-sleep small-box small-box-right">
               <div class="box-contents2">
@@ -179,8 +185,11 @@
           <div class="activity-box-contents-container">
             <div class="user-activity-graph">
               <figure class="user-activity-chart">
-                <canvas id="user-activity-graph"></canvas>
+                <canvas id="user-activity-graph" aria-hidden="true"></canvas>
               </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the quality of sleep each night for the previous week
+              </div>
             </div>
             <div class="box-contents-wrapper">
               <div class="box-contents activity-data-boxes">
