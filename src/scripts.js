@@ -109,15 +109,12 @@ const generateWebPage = () => {
 
 window.addEventListener('load', () => {
   Promise.all(createFetchRequest()).then((promisesArray) => {
-    console.log('PROMISES ARRAY:', promisesArray);
     mainData.users = promisesArray[0].users;
     mainData.hydration = promisesArray[1].hydrationData;
     mainData.sleep = promisesArray[2].sleepData;
     mainData.activity = promisesArray[3].activityData;
-    // console.log('MAIN DATA:', mainData)
     generateWebPage();
   });
-  // .then(generateWebPage);
 });
 
 userInfoButton.addEventListener('click', toggleInfo);

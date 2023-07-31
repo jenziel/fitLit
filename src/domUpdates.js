@@ -115,7 +115,6 @@ export const gatherUserInput = () => {
   let userInput = hydroUserInput.value.trim();
   let numberInput = Number(userInput);
   if (isNaN(userInput)) {
-    // error message appear
     errorMessage.innerText = '';
     errorMessage.innerText = 'Please enter a number';
     return false;
@@ -134,10 +133,7 @@ export const gatherUserInput = () => {
   } else {
     errorMessage.innerText = '';
     errorMessage.innerText = 'Today I drank';
-    // capture input and POST
   }
-  console.log(userInput);
-
   return parseInt(userInput);
 };
 
@@ -181,10 +177,7 @@ export const displayStepChallengeToDom = (challengeData) => {
       crown = '';
       firstPlace = '';
     }
-
-    displayStepChallenge.innerHTML += `<p class=${firstPlace}>${
-      index + 1
-    }. ${datum} ${crown}</p>`;
+    displayStepChallenge.innerHTML += `<p class=${firstPlace}>${index + 1}. ${datum} ${crown}</p>`;
   });
 };
 
