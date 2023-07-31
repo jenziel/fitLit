@@ -40,7 +40,7 @@ This project was our first chance to practice accessing and updating API dataset
 * **Jen Ziel** -  [jenziel](https://github.com/jenziel)
 
 ## 📷 Preview
-![FitLit_Preview](https://files.slack.com/files-pri/T029P2S9M-F05KEPVPVT5/ezgif.com-video-to-gif.gif)
+![FitLit_Preview](https://user-images.githubusercontent.com/130857864/257337005-add85e35-e412-4629-82bd-51f99e63ff4d.gif)
 
 
 ## 💻 Technologies Used
