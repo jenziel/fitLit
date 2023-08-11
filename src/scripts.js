@@ -126,7 +126,7 @@ hydroUserInputButton.addEventListener('click', () => {
   }
   postUserInput(mainData.currentUser, input)
     .then(() => {
-      return fetch('http://localhost:3001/api/v1/hydration');
+      return fetch('https://fitlit-api-green.vercel.app/api/v1/hydration');
     })
     .then((response) => response.json())
     .then((data) => {
