@@ -34,9 +34,9 @@ This project was our first chance to practice accessing and updating API dataset
 2.  Ensure your app follows best practices for accessibility.  
 3.  Implement feedback from a usability test to improve product.
 
-## Authors
-* **Banjamin Hatch** -  [Jwensloff](https://github.com/Jwensloff)
-* **Jocelyn Wensloff** -  [banjaminh](https://github.com/banjaminh)
+## Authors  
+* **Banjamin Hatch** -  [banjaminh](https://github.com/banjaminh)
+* **Jocelyn Wensloff** -  [Jwensloff](https://github.com/Jwensloff)
 * **Jen Ziel** -  [jenziel](https://github.com/jenziel)
 
 ## 📷 Preview
